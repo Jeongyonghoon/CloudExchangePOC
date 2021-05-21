@@ -3,7 +3,6 @@ import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
 import Link from 'next/link'
-// import { makeStyles } from '@material-ui/core/styles';
 import * as MaterialIcons from '@material-ui/icons'
 
 class Menu extends PureComponent {

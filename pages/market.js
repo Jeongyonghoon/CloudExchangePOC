@@ -2,10 +2,6 @@ import React, { Component } from 'react'
 import PageHeader from '../src/components/PageHeader'
 
 class MarketProductList extends Component {
-  // constructor(props){
-  //     super(props);
-  // }
-
   render () {
     console.log(this.props)
 

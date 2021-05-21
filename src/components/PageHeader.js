@@ -5,10 +5,6 @@ import React, { Component } from 'react'
 // const IconComponent = React.lazy(()=>import(importIcon));
 
 class PageHeader extends Component {
-  // constructor(props){
-  //     super(props);
-  // }
-
   render () {
     // const icon = this.props.icon;
     // const IconComponent = MaterialIcons[icon];

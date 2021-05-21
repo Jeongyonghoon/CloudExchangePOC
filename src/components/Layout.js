@@ -12,13 +12,7 @@ import IconButton from '@material-ui/core/IconButton'
 import MenuIcon from '@material-ui/icons/Menu'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
-// import ListItem from '@material-ui/core/ListItem';
-// import ListItemText from '@material-ui/core/ListItemText';
-// import Link from 'next/link';
-// import Menu from './Menu.js';
 import MenuContainer from '../containers/MenuContainer'
-
-// import * as MaterialIcons from '@material-ui/icons';
 
 const drawerWidth = 210
 
