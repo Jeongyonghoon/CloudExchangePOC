@@ -27,7 +27,7 @@ class PageHeader extends Component {
           verticalAlign: 'top',
           lineHeight: '28px',
           marginLeft: '12px'
-        }}>{this.props.primary}</div>
+        }}>{this.props.route}</div>
 
       </div>
     )

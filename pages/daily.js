@@ -3,11 +3,11 @@ import PageHeader from '../src/components/PageHeader'
 
 class DailyProductBillingList extends Component {
   render () {
-    console.log(this.props)
+    console.log(this.props.router.route)
 
     return (
       <>
-        <PageHeader icon={this.props.icon} primary={this.props.primary} />
+        <PageHeader route={this.props.router.route}  />
       </>
     )
   }
