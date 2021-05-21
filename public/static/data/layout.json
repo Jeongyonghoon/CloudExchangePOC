@@ -1,0 +1,53 @@
+{
+    "pages" : [
+        {
+            "id" : 0,
+            "page" : "dashboard",
+            "primary" : "대시보드",
+            "icon" : "Equalizer",
+            "route" : "/dashboard"
+        },
+        {
+            "id" : 1,
+            "page" : "invoice",
+            "primary" : "월별 청구서",
+            "icon" : "Description",
+            "route" : "/invoice"
+        },
+        {
+            "id" : 2,
+            "page" : "daily",
+            "primary" : "일별 클라우드 상품 요금",
+            "icon" : "Settings",
+            "route" : "/daily"
+        },
+        {
+            "id" : 3,
+            "page" : "account",
+            "primary" : "클라우드 계정별 요금",
+            "icon" : "Person",
+            "route" : "/account"
+        },
+        {
+            "id" : 4,
+            "page" : "product",
+            "primary" : "클라우드 상품 요금",
+            "icon" : "ViewStream",
+            "route" : "/product"
+        },
+        {
+            "id" : 5,
+            "page" : "detail",
+            "primary" : "클라우드 상세 요금",
+            "icon" : "ViewModule",
+            "route" : "/detail"
+        },
+        {
+            "id" : 6,
+            "page" : "market",
+            "primary" : "내 마켓 상품 목록",
+            "icon" : "ShoppingCart",
+            "route" : "/market"
+        }
+    ]
+}

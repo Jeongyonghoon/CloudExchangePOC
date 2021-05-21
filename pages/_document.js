@@ -1,16 +1,18 @@
 import Document, { Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
+import { ServerStyleSheets } from '@material-ui/styles'
 import { Helmet } from 'react-helmet'
 
 // from https://github.com/zeit/next.js/edit/canary/examples/with-react-helmet/pages/_document.js
 export default class extends Document {
   static async getInitialProps (ctx) {
     const sheet = new ServerStyleSheet()
+    const materialSheets = new ServerStyleSheets()
     const originalRenderPage = ctx.renderPage
     try {
       ctx.renderPage = () =>
         originalRenderPage({
-          enhanceApp: App => props => sheet.collectStyles(<App {...props} />)
+          enhanceApp: App => props => sheet.collectStyles(materialSheets.collect(<App {...props} />))
         })
 
       const documentProps = await Document.getInitialProps(ctx)
@@ -21,6 +23,7 @@ export default class extends Document {
           <>
             {documentProps.styles}
             {sheet.getStyleElement()}
+            {materialSheets.getStyleElement()}
           </>
         )
       }

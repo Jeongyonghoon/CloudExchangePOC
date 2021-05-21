@@ -5,7 +5,6 @@ import { Provider } from 'react-redux'
 import styledNormalize from 'styled-normalize'
 import { withRouter } from 'next/router'
 import App from 'next/app'
-
 import createStore from 'store/createStore'
 import Layout from 'components/Layout'
 import theme from 'theme'
@@ -16,8 +15,11 @@ const GlobalStyle = createGlobalStyle`
 
 class MyApp extends App {
   render () {
+    // Component는 요청한 페이지 ( 예 : get / 요청을 보냈다면)
+    // pageProps는 getInitialProps를 통해 내려받은 props
+
     const { Component, pageProps, router, store } = this.props
-    const title = 'Hello next.js Real World!'
+    const title = 'Cloud Exchange'
     return (
       <>
         <Helmet>
@@ -28,7 +30,8 @@ class MyApp extends App {
         <ThemeProvider theme={theme}>
           <Provider store={store}>
             <GlobalStyle />
-            <Layout>
+            <Layout pages={this.props.pages}>
+              {/* <Component router={router} {...pageProps} icon={page.icon} primary={page.primary}/> */}
               <Component router={router} {...pageProps} />
             </Layout>
           </Provider>
