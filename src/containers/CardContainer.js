@@ -1,8 +1,17 @@
 import React, {useState, useEffect} from 'react'
 
+import Card from '../components/Card'
+
 const CardContainer = () =>{
   return(
-    <div>This is Card!</div>
+    <div style={{display:'flex'}}>
+      <Card></Card>
+      <Card></Card>
+      <Card></Card>
+      <Card></Card>
+      <Card></Card>
+      <Card></Card>
+    </div>
   )
 }
 export default CardContainer;

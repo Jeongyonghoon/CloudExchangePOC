@@ -26,13 +26,14 @@ const Bottom = Styled.div`
     margin: 0 15px 10px;
     align-items: center;
     padding-top: 10px; 
+    font-size: 13px;
 `
 
 const Card = props => {
   const Flag = Styled.div`
       left:20px;
       top:-10px;
-      height:30px;
+      height:40px;
       
       border-top-right-radius: 4px;
       border-top-left-radius: 4px;
