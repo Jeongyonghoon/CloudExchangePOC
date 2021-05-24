@@ -11,7 +11,11 @@ const Box = Styled.div`
     border-radius: 6px;
     flex-direction: column;
     margin: 30px 10px 30px 10px;
-    //top right bottom left    
+    //top right bottom left
+    
+    @media (max-width: 992px){
+      width: 250px;
+    }
 `
 
 const Top = Styled.div`
@@ -46,23 +50,27 @@ const Card = props => {
       position: absolute;
 `
 
+  const title = props.title;
+  const subtitle = props.subTitle;
+  const price = props.price;
+
   return (
 
     <Box>
       <Flag/>
 
       <Top>
-        <p>납부 금액</p>
+        <p>{title}</p>
 
         <h3>
-          ₩ 1,343,716
+          ₩ {price}
           <small> 원</small>
         </h3>
 
       </Top>
 
       <Bottom>
-        <div>2021년 4월 총 납부금액</div>
+        <div>{subtitle}</div>
       </Bottom>
     </Box>
   )

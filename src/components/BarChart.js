@@ -30,9 +30,7 @@ const BarChart = props => {
   }
 
   return (
-    <div style={{ width: '50%', height: '100%', margin: 'auto' }}>
-      <Bar data={chartData}/>
-    </div>
+    <Bar data={chartData}/>
   )
 }
 
