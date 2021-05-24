@@ -23,7 +23,8 @@ const useStyles = makeStyles((theme) => ({
     '& a': {
       textDecoration: 'none',
       color: 'inherit'
-    }
+    },
+    padding : '0 20px 0 20px'
   },
   
   appBar: {

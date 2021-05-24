@@ -21,7 +21,9 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
     "styled-components": "^5.0.0",
-    "styled-normalize": "^8.0.6"
+    "styled-normalize": "^8.0.6",
+    "chart.js" : "3.2.1",
+    "react-chartjs-2": "3.0.3"
   },
   "name": "nextjs-redux-starter",
   "version": "1.0.0",
@@ -81,9 +83,23 @@
       "@testing-library/jest-dom/extend-expect"
     ]
   },
-  "repository": "CodementorIO/nextjs-redux-starter",
+  "browserslist": {
+    "production": [
+      "ie 11",
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "ie 11",
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "repository": "Jeongyonghoon/CloudExchangePOC",
   "bugs": "https://github.com/CodementorIO/nextjs-redux-starter/issues",
-  "author": "Ian Wang <gogoenwon@gmail.com> (https://github.com/IanWang)",
+  "author": "Kwanghun Lee <lkh14011424@gmail.com> (https://github.com/lkhoony)",
   "license": "ISC",
-  "description": "Opinionated Next.js starter with Express, Redux, styled-components, and Jest."
+  "description": "CloudExchangePOC Project Opinionated Next.js starter with Express, Redux, styled-components, and Jest."
 }

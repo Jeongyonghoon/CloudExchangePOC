@@ -1,0 +1,24 @@
+{
+    "labels" : ["2017-10", "2017-11", "2017-12", "2018-01", "2018-02", "2018-03"],
+
+    "datasets" : [
+        {   
+          "type" : "line",
+          "label": "EC2",
+          "data" : [12, 19, 3, 5, 2, 3],
+          "fill" : true,
+          "backgroundColor" : "rgba(255, 99, 132,0.5)",
+          "borderColor": "rgba(255, 99, 132, 0.5)"
+        },
+
+        {   
+          "type" : "line",
+          "label": "CloudFront",
+          "data" : [1, 2, 1, 1, 2, 2],
+          "fill" : true,
+          "backgroundColor" : "rgba(54, 162, 235,0.5)",
+          "borderColor": "rgba(54, 162, 235, 0.5)"
+        }
+
+    ]
+}
