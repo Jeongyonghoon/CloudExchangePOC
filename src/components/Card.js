@@ -1,5 +1,6 @@
 import React from 'react'
 import Styled from 'styled-components'
+import CardNumber from './CardNumber'
 
 const Box = Styled.div`
     color: rgba(0, 0, 0, 0.87);
@@ -63,7 +64,8 @@ const Card = props => {
         <p>{title}</p>
 
         <h3>
-          ₩ {price}
+          ₩
+          <CardNumber number={price}/>
           <small> 원</small>
         </h3>
 
