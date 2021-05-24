@@ -19,7 +19,6 @@ class Dashboard extends Component {
                 sliderDisplay={false}
               ></ChartContainer>}
             width={'35%'}
-            height={'400px'}
           ></ComponentBox>
 
           <ComponentBox
@@ -30,7 +29,6 @@ class Dashboard extends Component {
                 sliderDisplay={true}
               ></ChartContainer>}
             width={'65%'}
-            height={'400px'}
           ></ComponentBox>
         </div>
       </>
