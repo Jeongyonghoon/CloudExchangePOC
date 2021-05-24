@@ -2,7 +2,6 @@
 # yarn lockfile v1
 
 
-    "@ampproject/toolbox-script-csp" "^2.2.0"
 "@ampproject/toolbox-core@2.7.4", "@ampproject/toolbox-core@^2.6.0":
   version "2.7.4"
   resolved "https://registry.yarnpkg.com/@ampproject/toolbox-core/-/toolbox-core-2.7.4.tgz#8355136f16301458ce942acf6c55952c9a415627"
