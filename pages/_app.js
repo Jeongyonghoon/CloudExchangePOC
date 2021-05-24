@@ -15,25 +15,11 @@ const GlobalStyle = createGlobalStyle`
 
 class MyApp extends App {
 
-  static async getInitialProps({ Component, ctx }) {
-		let pageProps = {};
-    
-    // 실행하고자 하는 component에 getInitialprops가 있으면 실행하여 props를 받아올 수 있다.
-		if (Component.getInitialProps) {
-			pageProps = await Component.getInitialProps(ctx);
-		}
-
-		return {
-			pageProps
-		};
-	}
-
   render () {
     // Component는 요청한 페이지 ( 예 : get / 요청을 보냈다면)
     // pageProps는 getInitialProps를 통해 내려받은 props
 
     const { Component, pageProps, router, store } = this.props
-    console.log(Component, pageProps, router, store);
     const title = 'Cloud Exchange'
     return (
       <>
@@ -46,7 +32,6 @@ class MyApp extends App {
           <Provider store={store}>
             <GlobalStyle />
             <Layout pages={this.props.pages}>
-              {/* <Component router={router} {...pageProps} icon={page.icon} primary={page.primary}/> */}
               <Component router={router} {...pageProps} />
             </Layout>
           </Provider>

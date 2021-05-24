@@ -1,33 +1,26 @@
 import React, { Component } from 'react'
-// import * as MaterialIcons from '@material-ui/icons';
 
-// const importIcon = '@material-ui/icons/' + this.props.icon;
-// const IconComponent = React.lazy(()=>import(importIcon));
-
+/*
+- props 
+  - title : show title of page
+*/
 class PageHeader extends Component {
+
   render () {
-    // const icon = this.props.icon;
-    // const IconComponent = MaterialIcons[icon];
-    // const importIcon = this.props.icon;
-    // const IconComponent = lazy(()=>import(/* webpackMode: "eager" */ `@material-ui/icons/${importIcon}`));
 
     return (
       <div style={{
-        backgroundColor: 'gray',
-        color: 'white',
-        padding: '10px 0 10px 24px'
+        // backgroundColor: 'gray',
+        color: '#555555',
+        padding: '20px 0 20px 24px'
       }}>
 
-        {/* <Suspense fallback="X"> */}
-        {/* <IconComponent></IconComponent> */}
-        {/* </Suspense> */}
         <div style={{
           display: 'inline-block',
-          fontSize: '14px',
+          fontSize: '1.3em',
           verticalAlign: 'top',
           lineHeight: '28px',
-          marginLeft: '12px'
-        }}>{this.props.route}</div>
+        }}>{this.props.title}</div>
 
       </div>
     )

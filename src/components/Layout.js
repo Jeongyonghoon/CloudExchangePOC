@@ -12,6 +12,7 @@ import MenuIcon from '@material-ui/icons/Menu'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 import MenuContainer from '../containers/MenuContainer'
+import PageHeaderContainer from '../containers/PageHeaderContainer'
 
 const drawerWidth = 210
 
@@ -24,12 +25,7 @@ const useStyles = makeStyles((theme) => ({
       color: 'inherit'
     }
   },
-
-  listItemText: {
-    fontSize: '0.9em',
-    paddingLeft: '0.5em'
-  },
-
+  
   appBar: {
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.sharp,
@@ -137,7 +133,7 @@ export default function Layout (props) {
           </IconButton>
         </div>
         <Divider />
-        <MenuContainer classes={{ primary: classes.listItemText }} />
+        <MenuContainer></MenuContainer>
       </Drawer>
       <main
         className={clsx(classes.content, {
@@ -145,7 +141,7 @@ export default function Layout (props) {
         })}
       >
         <div className={classes.drawerHeader} />
-
+        <PageHeaderContainer></PageHeaderContainer>
         {/* page component */}
         {props.children}
 

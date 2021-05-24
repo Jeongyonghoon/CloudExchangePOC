@@ -30,7 +30,7 @@ class MenuContainer extends Component {
 
     return (
       <>
-        <Menu classes={this.props.classes} pages={this.state.data.pages} />
+        <Menu pages={this.state.data.pages} />
       </>
     )
   }
