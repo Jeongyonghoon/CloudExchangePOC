@@ -2,6 +2,7 @@ import React from 'react';
 import {Bar} from 'react-chartjs-2';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
 
 // const data = {
 
@@ -49,7 +50,17 @@ import { makeStyles } from '@material-ui/core/styles';
 //     },
 //   };
 
-const options = {
+/**
+ * 
+ * @param {*} props
+ * - height(number) : chart height (default 80, number)
+ * - data(object) : chart data (default { 'labels' : [], 'datasets' : []}, object )
+ * @returns 
+ */
+
+const AriaChart = (props) => {
+    
+  const options = {
     responsive: true,
     interaction: {
       mode: 'index',
@@ -59,37 +70,27 @@ const options = {
     plugins: {
       title: {
         display: true,
-        text: '주요 상품별 사용 요금 이력 [EC2, RDS, S3, CloudFront]'
+        text: props.data.title
       }
     }
+  }
+
+  return(
+    <>
+      <Bar data={props.data} options={options} height={props.height}></Bar>
+    </>
+  )
 }
 
-const AriaChart = (props) => {
-    
-    console.log(props);
-    return(
-        <>
-           
-            <Grid item xs={11}>
-                <Bar data={props.data} options={options} height={80}></Bar>
-            </Grid>
-            
-        </>
-    )
-}
+AriaChart.propTypes = {
+  title: PropTypes.string,
+  height: PropTypes.number,
+  data: PropTypes.object
+};
 
-// function AriaChart(props) {
-    
-//     console.log(props);
-//     return(
-//         <>
-           
-//             <Grid item xs={11}>
-//                 <Bar data={props.data} options={options} height={80}></Bar>
-//             </Grid>
-            
-//         </>
-//     )
-// }
+AriaChart.defaultProps = {
+  height: 80,
+  data: {"title" : "chart title" , "labels" : [], "datasets" : []}
+};
 
 export default AriaChart;

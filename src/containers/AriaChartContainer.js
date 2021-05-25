@@ -1,7 +1,13 @@
 import React, {Component} from 'react';
 import Grid from '@material-ui/core/Grid';
 import AriaChart from '../components/AriaChart';
+import {Row, Col} from '../components';
 import axios from 'axios';
+
+/**
+ * props 
+ * - url : api url 
+ */
 
 class AriaChartContainer extends Component{
 
@@ -10,11 +16,9 @@ class AriaChartContainer extends Component{
         this.state = ({data: null})
     }
 
-    async initialize() {
+    async initialize(url) {
         try {
-            const response = await axios.get(
-                'http://localhost:3100/static/data/ariaChart.json'
-            )
+            const response = await axios.get(url)
             this.setState({data: response.data})
             console.log(this.state.data);
         } catch (e) {
@@ -23,7 +27,7 @@ class AriaChartContainer extends Component{
     }
 
     componentDidMount() {
-        this.initialize()
+        this.initialize(this.props.url)
     }
 
     render(){
@@ -31,9 +35,17 @@ class AriaChartContainer extends Component{
         if(!this.state.data) return null
         
         return(
-            <Grid container spacing={3}>
-                <AriaChart data={this.state.data}></AriaChart>
-            </Grid>
+            <>
+                {/* <Grid container spacing={3}>
+                    <AriaChart data={this.state.data}></AriaChart>
+                    <AriaChart data={this.state.data}></AriaChart>
+                </Grid> */}
+                <Row>
+                    <Col colNum={11}>
+                        <AriaChart data={this.state.data} height={80}></AriaChart>
+                    </Col>
+                </Row>
+            </>
         )
     }
 

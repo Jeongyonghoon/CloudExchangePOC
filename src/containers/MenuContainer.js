@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import Menu from '../components/Menu'
 import axios from 'axios'
 
+/**
+ * props 
+ * - url : api url 
+ */
 class MenuContainer extends Component {
   constructor (props) {
     super(props)
@@ -10,9 +14,9 @@ class MenuContainer extends Component {
     })
   }
 
-  async initialize () {
+  async initialize(url) {
     try {
-      const response = await axios.get('http://localhost:3100/static/data/layout.json')
+      const response = await axios.get(url)
       this.setState({
         data: response.data
       })
@@ -21,8 +25,8 @@ class MenuContainer extends Component {
     }
   }
 
-  componentDidMount () {
-    this.initialize()
+  componentDidMount() {
+    this.initialize(this.props.url)
   }
 
   render () {

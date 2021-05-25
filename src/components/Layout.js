@@ -134,7 +134,7 @@ export default function Layout (props) {
           </IconButton>
         </div>
         <Divider />
-        <MenuContainer></MenuContainer>
+        <MenuContainer url={'http://localhost:3100/static/data/layout.json'}></MenuContainer>
       </Drawer>
       <main
         className={clsx(classes.content, {
