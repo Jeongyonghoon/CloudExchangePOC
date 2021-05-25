@@ -1,24 +1,29 @@
-import React, { useState, useEffect } from 'react'
-
-import Card from '../components/Card'
+import React, { useEffect, useState } from 'react'
+import { Card } from '../components'
 
 const axios = require('axios')
 
-const CardColor = ['red','blue','yellow','black','green','grey'];
+const CardColor = ['red', 'blue', 'yellow', 'black', 'green', 'grey']
 
 const CardContainer = props => {
-  const [cardData, setCardData] = useState([]);
-  const [viewData, setViewData] = useState([]);
+  const [cardData, setCardData] = useState([])
+  const [viewData, setViewData] = useState([])
+
+  const dataURL = props.dataURL
 
   const getData = async () => {
-    const result = await axios.get('http://172.18.10.136:8000/CardData')
-    setCardData(result.data)
-    setData(result.data)
+    try {
+      const result = await axios.get(dataURL)
+      setCardData(result.data)
+      setData(result.data)
+    } catch (e) {
+      console.log(e)
+    }
   }
 
   const setData = dataList => {
-    const cardList=[];
-    dataList.forEach(function (item,index) {
+    const cardList = []
+    dataList.forEach(function (item, index) {
       cardList.push(
         <Card
           title={item['title']}
@@ -28,7 +33,7 @@ const CardContainer = props => {
         ></Card>
       )
     })
-    setViewData(cardList);
+    setViewData(cardList)
   }
 
   useEffect(() => {
@@ -39,11 +44,10 @@ const CardContainer = props => {
   //   setData(cardData)
   // }, [cardData])
 
-  console.log(viewData)
   return (
-    <div style={{ display: 'flex'}}>
+    <div style={{ display: 'flex' }}>
       {viewData}
     </div>
   )
 }
-export default CardContainer;
+export default CardContainer
