@@ -7,10 +7,12 @@ class Invoice extends Component {
 
     return (
       <>  
-        <AriaChartContainer url={'http://localhost:3100/static/data/ariaChart.json'}></AriaChartContainer>
         <Row>
-          <Col colNum={12}>
-            <div style={{backgroundColor : 'red'}}> test</div>
+          <Col colNum={6}>
+            <AriaChartContainer dataURL={'http://localhost:3100/static/data/ariaChart.json'}></AriaChartContainer>
+          </Col>
+          <Col colNum={6}>
+            <AriaChartContainer dataURL={'http://localhost:3100/static/data/ariaChart.json'}></AriaChartContainer>
           </Col>
         </Row>
       </>

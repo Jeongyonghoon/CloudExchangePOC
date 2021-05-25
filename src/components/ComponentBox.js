@@ -15,10 +15,16 @@ const ComponentBox = props => {
     margin: 30px 10px 30px 10px;
 `
 
-  return (
-    <Box>
-      {props.component}
-    </Box>
-  )
+  // return (
+  //   <Box>
+  //     {props.component}
+  //   </Box>
+  // )
+
+    return (
+      <Box>
+        {props.children}
+      </Box>
+    )
 }
 export default ComponentBox

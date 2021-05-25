@@ -1,3 +1,8 @@
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
+import 'react-app-polyfill/ie11'
+import 'react-app-polyfill/stable'
+
 import { ThemeProvider, createGlobalStyle } from 'styled-components'
 import { Helmet } from 'react-helmet'
 import withRedux from 'next-redux-wrapper'

@@ -11,7 +11,7 @@ const CardContainer = props => {
   const [viewData, setViewData] = useState([]);
 
   const getData = async () => {
-    const result = await axios.get('http://localhost:8000/CardData')
+    const result = await axios.get('http://172.18.10.136:8000/CardData')
     setCardData(result.data)
     setData(result.data)
   }

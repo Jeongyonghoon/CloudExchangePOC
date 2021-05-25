@@ -31,7 +31,8 @@ const useStyles = makeStyles((theme) => ({
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
-    })
+    }),
+    backgroundColor : '#1976d2'
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
@@ -52,7 +53,8 @@ const useStyles = makeStyles((theme) => ({
     flexShrink: 0
   },
   drawerPaper: {
-    width: drawerWidth
+    width: drawerWidth,
+    backgroundColor : '#232f3e'
   },
   drawerHeader: {
     display: 'flex',
@@ -60,8 +62,16 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(0, 1),
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
-    justifyContent: 'flex-end'
+    justifyContent: 'flex-end',
   },
+  drawerHeaderIcon : {
+    color : 'rgba(255, 255, 255, 0.9)'
+  },
+
+  // divider : {
+  //   backgroundColor : 'rgba(255, 255, 255, 0.9)'
+  // },
+
   content: {
     flexGrow: 1,
     // padding: theme.spacing(3),
@@ -99,6 +109,7 @@ export default function Layout (props) {
     <div className={classes.root}>
       <CssBaseline />
       <AppBar
+        // color="primary"
         position='fixed'
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open
@@ -114,7 +125,7 @@ export default function Layout (props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant='h6' noWrap>
+          <Typography variant='h5' noWrap>
             Cloud Exchange
           </Typography>
         </Toolbar>
@@ -129,11 +140,11 @@ export default function Layout (props) {
         }}
       >
         <div className={classes.drawerHeader}>
-          <IconButton onClick={handleDrawerClose}>
+          <IconButton onClick={handleDrawerClose} className={classes.drawerHeaderIcon}>
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
         </div>
-        <Divider />
+        <Divider className={classes.divider}/>
         <MenuContainer url={'http://localhost:3100/static/data/layout.json'}></MenuContainer>
       </Drawer>
       <main

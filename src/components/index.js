@@ -8,3 +8,5 @@ export { default as Menu } from './Menu.js';
 export { default as PageHeader } from './PageHeader.js';
 export { default as Row } from './Row.js';
 export { default as Col } from './Col.js';
+export { default as ComponentBox } from './ComponentBox.js';
+export { default as ComponentRow } from './ComponentRow.js';
