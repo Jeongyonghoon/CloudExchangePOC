@@ -21,15 +21,13 @@ const DoughnutChart = props => {
         data:valueData,
         backgroundColor:chartColor,
         borderWidth: 1,
-        },
+      },
     ],
     borderWidth:1,
   }
 
   return(
-    <div style={{ width: '50%', height: '100%', margin: 'auto' }}>
-      <Doughnut data={chartData}/>
-    </div>
+    <Doughnut data={chartData}/>
   );
 }
 

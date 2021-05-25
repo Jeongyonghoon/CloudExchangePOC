@@ -14,34 +14,34 @@ const axios = require('axios')
 }
 
 - Props -
-API URL       : String
-SliderDisplay : boolean
-Type          : 'pie' or 'bar' or 'line'
+API URL (dataURL)             : String
+SliderDisplay (sliderDisplay) : boolean
+Type (chartType)              : 'pie' or 'bar' or 'line'
 
 */
 
-let labelData = [];
-let valueData = [];
-
 const ChartContainer = props => {
-  const chartType = props.chartType;
-  const sliderDisplay = props.sliderDisplay;
-  const dataURL = props.dataURL;
+  const [labelData] = useState([])
+  const [valueData] = useState([])
+
+  const chartType = props.chartType
+  const sliderDisplay = props.sliderDisplay
+  const dataURL = props.dataURL
 
   /* Chart data */
-  const [chartValueData, setChartValueData] = useState([]);
-  const [chartLabelData, setChartLabelData] = useState([]);
+  const [chartValueData, setChartValueData] = useState([])
+  const [chartLabelData, setChartLabelData] = useState([])
 
   /* Slider data */
-  const [dataCount, setDataCount] = useState(0);
+  const [dataCount, setDataCount] = useState(0)
 
   /* Chart & Slider data */
-  const [viewCount, setViewCount] = useState([]);
+  const [viewCount, setViewCount] = useState([])
 
   /* ----------- componentDidMount ----------- */
   const setChartData = chartData => {
-    labelData = []; // --> 다른 API 호출 대비 초기화
-    valueData = [];
+    // labelData = []; // --> 다른 API 호출 대비 초기화
+    // valueData = [];
 
     chartData.forEach(function (item) {
       valueData.push(item['price'])
@@ -52,9 +52,8 @@ const ChartContainer = props => {
   }
 
   const getData = async () => {
-    const result = await axios.get(
-      dataURL
-    )
+    const result = await axios.get(dataURL)
+
     /* props data setting */
     setChartData(result.data)
     setViewCount([0, result.data.length])
@@ -63,7 +62,7 @@ const ChartContainer = props => {
 
   useEffect(() => {
     getData()
-  }, []);
+  }, [])
   /* ----------- componentDidMount ----------- */
 
   /* ------------------------------------------------------------------------------------------------------------------ */
@@ -73,21 +72,22 @@ const ChartContainer = props => {
     e.preventDefault() // 애는 뭐하는 애인지 찾아봐
     setViewCount(newValue)
   }
+  //preventDefault, stopPropagation
 
-  useEffect(()=>{
-    setChartLabelData(labelData.slice(viewCount[0],viewCount[1]));
-    setChartValueData(valueData.slice(viewCount[0],viewCount[1]));
-  },[viewCount]);
+  useEffect(() => {
+    setChartLabelData(labelData.slice(viewCount[0], viewCount[1]))
+    setChartValueData(valueData.slice(viewCount[0], viewCount[1]))
+  }, [viewCount])
   /* ----------- componentDidUpdate ----------- */
 
   return (
-    <div style={{ width: '100%', height: '100%', margin: 'auto' }}>
-      {chartType==='bar' && <BarChart labelData={chartLabelData} valueData={chartValueData}/>}
-      {chartType==='doughnut' && <DoughnutChart labelData={chartLabelData} valueData={chartValueData}/>}
-      <div style={{ width: '50%', margin: 'auto' }}>
-        <ChartSlider dataCount={dataCount} viewCount={viewCount} handleChange={handleChange}/>
+    <div style={{ width: '80%', margin: 'auto' }}>
+      {chartType === 'bar' && <BarChart labelData={chartLabelData} valueData={chartValueData}/>}
+      {chartType === 'doughnut' && <DoughnutChart labelData={chartLabelData} valueData={chartValueData}/>}
+      <div style={{ width: '100%', margin: 'auto' }}>
+        {sliderDisplay && <ChartSlider dataCount={dataCount} viewCount={viewCount} handleChange={handleChange}/>}
       </div>
     </div>
   )
 }
-export default ChartContainer;
+export default ChartContainer
