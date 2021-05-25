@@ -21,9 +21,7 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
     "styled-components": "^5.0.0",
-    "styled-normalize": "^8.0.6",
-    "chart.js" : "3.2.1",
-    "react-chartjs-2": "3.0.3"
+    "styled-normalize": "^8.0.6"
   },
   "name": "nextjs-redux-starter",
   "version": "1.0.0",
