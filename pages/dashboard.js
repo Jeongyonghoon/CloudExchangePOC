@@ -1,36 +1,41 @@
 import React, { Component } from 'react'
 
-import CardContainer from '../src/containers/CardContainer'
-import ChartContainer from '../src/containers/ChartContainer'
-import ComponentBox from '../src/components/ComponentBox'
+import { AriaChartContainer, CardContainer, ChartContainer, CloudTableContainer } from '../src/containers'
+import { CloudTable, ComponentBox } from '../src/components'
 
 class Dashboard extends Component {
   render () {
     return (
       <>
-        <CardContainer></CardContainer>
+        <CardContainer
+          dataURL={'http://localhost:8000/CardData'}
+        ></CardContainer>
 
-        <div style={{display:'flex'}}>
-          <ComponentBox
-            component={
-              <ChartContainer
-                dataURL={'http://localhost:8000/DoughnutChartData'}
-                chartType={'doughnut'}
-                sliderDisplay={false}
-              ></ChartContainer>}
+        <div style={{ display: 'flex' }}>
+          <ChartContainer
+            dataURL={'http://localhost:8000/DoughnutChartData'}
+            chartType={'doughnut'}
+            sliderDisplay={false}
             width={'35%'}
-          ></ComponentBox>
+          ></ChartContainer>
 
-          <ComponentBox
-            component={
-              <ChartContainer
-                dataURL={'http://localhost:8000/BarChartData'}
-                chartType={'bar'}
-                sliderDisplay={true}
-              ></ChartContainer>}
+          <ChartContainer
+            dataURL={'http://localhost:8000/BarChartData'}
+            chartType={'bar'}
+            sliderDisplay={true}
             width={'65%'}
-          ></ComponentBox>
+          ></ChartContainer>
         </div>
+
+        <ComponentBox width={'98.6%'}>
+          <AriaChartContainer url={'http://localhost:3100/static/data/ariaChart.json'}></AriaChartContainer>
+        </ComponentBox>
+
+        <CloudTableContainer
+          dataURL={'http://localhost:8000/TableData'}
+          width={'98.6%'}
+        ></CloudTableContainer>
+
       </>
     )
   }

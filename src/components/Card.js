@@ -4,7 +4,7 @@ import CardNumber from './CardNumber'
 
 const Box = Styled.div`
     color: rgba(0, 0, 0, 0.87);
-    width: 15%;
+    width: 16%;
     position: relative;
     font-size: .875rem;
     background: #FFF;
@@ -76,5 +76,11 @@ const Card = props => {
       </Bottom>
     </Box>
   )
+}
+
+Card.defaultProps={
+  title: 'default',
+  price: 0,
+  subTitle: 'default'
 }
 export default Card
