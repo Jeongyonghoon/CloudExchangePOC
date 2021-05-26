@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { CloudTable, ComponentBox } from '../components'
-
+import { BoxHeader, CloudTable, ComponentBox } from '../components'
 const axios = require('axios')
 
 const CloudTableContainer = props => {
@@ -26,12 +25,13 @@ const CloudTableContainer = props => {
   }, [])
 
   return (
-    <ComponentBox width={width}>
+    <>
+      <BoxHeader></BoxHeader>
       <CloudTable
         colList={colList}
         rawList={rawList}
       ></CloudTable>
-    </ComponentBox>
+    </>
   )
 }
 export default CloudTableContainer

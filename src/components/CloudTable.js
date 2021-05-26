@@ -6,6 +6,23 @@ import TableContainer from '@material-ui/core/TableContainer'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Paper from '@material-ui/core/Paper'
+import CardNumber from './CardNumber'
+
+const getRaw = dataList => {
+  const getData=[]
+  for (let raw in dataList){
+    if(typeof dataList[raw]==='number'){
+      getData.push(
+        <TableCell><CardNumber number={dataList[raw]}/></TableCell>
+      )
+    }else{
+      getData.push(
+        <TableCell>{dataList[raw]}</TableCell>
+      )
+    }
+  }
+  return getData
+}
 
 const CloudTable = props => {
 
@@ -21,16 +38,6 @@ const CloudTable = props => {
     )
   }
 
-  const getRaw = dataList => {
-    const getData=[]
-    for (let raw in dataList){
-      getData.push(
-        <TableCell>{dataList[raw]}</TableCell>
-      )
-    }
-    return getData
-  }
-
   rawData.forEach(function (item) {
     viewRawData.push(
       <TableRow>
@@ -38,7 +45,6 @@ const CloudTable = props => {
       </TableRow>
     )
   })
-
 
   return (
     <TableContainer component={Paper}>

@@ -11,31 +11,39 @@ class Dashboard extends Component {
           dataURL={'http://localhost:8000/CardData'}
         ></CardContainer>
 
-        <div style={{ display: 'flex' }}>
-          <ChartContainer
-            dataURL={'http://localhost:8000/DoughnutChartData'}
-            chartType={'doughnut'}
-            sliderDisplay={false}
-            width={'35%'}
-          ></ChartContainer>
 
-          <ChartContainer
-            dataURL={'http://localhost:8000/BarChartData'}
-            chartType={'bar'}
-            sliderDisplay={true}
-            width={'65%'}
-          ></ChartContainer>
+        <div style={{ display: 'flex' }}>
+          <ComponentBox width={'35%'}>
+            <ChartContainer
+              dataURL={'http://localhost:8000/DoughnutChartData'}
+              chartType={'doughnut'}
+              sliderDisplay={false}
+              width={'35%'}
+            ></ChartContainer>
+          </ComponentBox>
+
+
+          <ComponentBox width={'65%'}>
+            <ChartContainer
+              dataURL={'http://localhost:8000/BarChartData'}
+              chartType={'bar'}
+              sliderDisplay={true}
+              width={'65%'}
+            ></ChartContainer>
+          </ComponentBox>
+
         </div>
 
         <ComponentBox width={'98.6%'}>
           <AriaChartContainer url={'http://localhost:3100/static/data/ariaChart.json'}></AriaChartContainer>
         </ComponentBox>
 
-        <CloudTableContainer
-          dataURL={'http://localhost:8000/TableData'}
-          width={'98.6%'}
-        ></CloudTableContainer>
-
+        <ComponentBox width={'98.6%'}>
+          <CloudTableContainer
+            dataURL={'http://localhost:8000/TableData'}
+            width={'98.6%'}
+          ></CloudTableContainer>
+        </ComponentBox>
       </>
     )
   }
