@@ -14,20 +14,10 @@ const ComponentBox = props => {
     flex-direction: column;
     margin: 30px 10px 30px 10px;
   `
-  const Header = Styled.div`
-    padding: 10px 0 10px 10px;
-    background: #E6E6E6;
-  `
-
   return (
     <Box>
-      <Header>{props.title}</Header>
       {props.children}
     </Box>
   )
 }
-ComponentBox.defaultProps={
-  title:'default',
-}
-
 export default ComponentBox

@@ -4,7 +4,7 @@ import CardNumber from './CardNumber'
 
 const Box = Styled.div`
     color: rgba(0, 0, 0, 0.87);
-    width: 16%;
+    width: 16.5%;
     position: relative;
     font-size: .875rem;
     background: #FFF;
