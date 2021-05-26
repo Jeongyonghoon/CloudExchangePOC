@@ -86,9 +86,9 @@ const ChartContainer = props => {
   return (
     <>
       <BoxHeader></BoxHeader>
-      <div style={{ width: '80%', margin: 'auto' }}>
+      <div style={{width: '80%', margin: 'auto'}}>
         {chartType === 'bar' && <BarChart labelData={chartLabelData} valueData={chartValueData}/>}
-        {chartType === 'doughnut' && <DoughnutChart labelData={chartLabelData} valueData={chartValueData}/>}
+        {chartType === 'doughnut' && <DoughnutChart height={'275%'} labelData={chartLabelData} valueData={chartValueData}/>}
         <div style={{ width: '100%', margin: 'auto' }}>
           {sliderDisplay && <ChartSlider dataCount={dataCount} viewCount={viewCount} handleChange={handleChange}/>}
         </div>
