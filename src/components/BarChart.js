@@ -1,7 +1,7 @@
 import React from 'react'
 import { Bar, Chart } from 'react-chartjs-2'
 
-Chart.defaults.plugins.legend.display = true
+// Chart.defaults.plugins.legend.display = true
 
 /*
 

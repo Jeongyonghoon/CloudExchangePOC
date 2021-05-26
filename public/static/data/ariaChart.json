@@ -5,7 +5,6 @@
 
     "datasets" : [
         {   
-          "type" : "line",
           "label": "EC2",
           "data" : [12, 19, 3, 5, 2, 3],
           "fill" : true,
@@ -14,7 +13,6 @@
         },
 
         {   
-          "type" : "line",
           "label": "CloudFront",
           "data" : [1, 2, 1, 1, 2, 2],
           "fill" : true,

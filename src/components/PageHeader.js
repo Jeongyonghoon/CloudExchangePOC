@@ -12,12 +12,12 @@ class PageHeader extends Component {
       <div style={{
         // backgroundColor: 'gray',
         color: '#555555',
-        padding: '20px 0 20px 24px'
+        padding: '25px 0 25px 24px'
       }}>
 
         <div style={{
           display: 'inline-block',
-          fontSize: '1.3em',
+          fontSize: '1.6em',
           verticalAlign: 'top',
           lineHeight: '28px',
         }}>{this.props.title}</div>

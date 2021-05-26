@@ -17,9 +17,20 @@ const useStyles = makeStyles((theme)=>({
 
   listItemText: {
     fontSize: '0.9em',
-    paddingLeft: '0.5em'
+    paddingLeft: '0.5em',
+    // color : 'white',
   },
 
+  listItem : {
+    color : 'rgba(255, 255, 255, 0.8)',
+    '&:hover' : {
+      color : '#4fc3f7',
+      backgroundColor: 'rgba(255, 255, 255, 0.08)',
+      listItemText : {
+        color : '#4fc3f7',
+      }
+    }
+  }
 })) ;
 
 function Menu(props){
@@ -40,7 +51,7 @@ function Menu(props){
                 pathname : '/' + page.page
               }}>
               <a>
-                <ListItem button>
+                <ListItem button className={classes.listItem} >
                   <Component />
                   <ListItemText classes={{ primary: classes.listItemText }} primary={page.primary} />
                 </ListItem>
