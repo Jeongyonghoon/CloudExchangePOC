@@ -18,7 +18,6 @@ class Dashboard extends Component {
               dataURL={'http://localhost:8000/DoughnutChartData'}
               chartType={'doughnut'}
               sliderDisplay={false}
-              width={'35%'}
             ></ChartContainer>
           </ComponentBox>
 
@@ -28,7 +27,6 @@ class Dashboard extends Component {
               dataURL={'http://localhost:8000/BarChartData'}
               chartType={'bar'}
               sliderDisplay={true}
-              width={'65%'}
             ></ChartContainer>
           </ComponentBox>
 
