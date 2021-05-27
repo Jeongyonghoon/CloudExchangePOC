@@ -13,6 +13,7 @@ const DoughnutChart = props => {
 
   const labelData = props.labelData
   const valueData = props.valueData
+  const chartHeight = props.height
 
   const chartData = {
     labels: labelData,
@@ -27,8 +28,11 @@ const DoughnutChart = props => {
   }
 
   return(
-    <Doughnut data={chartData} />
+    <Doughnut data={chartData} height={chartHeight}/>
   );
 }
+DoughnutChart.defaultProps={
+  height:'100%'
+}
 
-export default DoughnutChart;
+export default DoughnutChart
