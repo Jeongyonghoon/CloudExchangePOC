@@ -8,7 +8,7 @@ const Box = Styled.div`
     position: relative;
     font-size: .875rem;
     background: #FFF;
-    box-shadow: 0 1px 4px 0 rgb(0 0 0 / 35%);
+    box-shadow: 0 1px 4px 0 rgb(0, 0, 0, 0.35);
     border-radius: 6px;
     flex-direction: column;
     margin: 30px 10px 30px 10px;

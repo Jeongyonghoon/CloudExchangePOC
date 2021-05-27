@@ -12,7 +12,11 @@ const ComponentBox = props => {
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.35);
     border-radius: 6px;
     flex-direction: column;
-    margin: 30px 10px 30px 10px;
+    
+    margin-top: ${props.marginTop || '0px'};
+    margin-bottom: ${props.marginBottom || '0px'};
+    margin-left: ${props.marginLeft || '0px'};
+    margin-right: ${props.marginRight || '0px'};
   `
   return (
     <Box>
