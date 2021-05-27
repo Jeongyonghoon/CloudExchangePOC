@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import { AriaChartContainer, CardContainer, ChartContainer, CloudTableContainer } from '../src/containers'
-import { CloudTable, ComponentBox } from '../src/components'
+import { CloudTable, ComponentBox, ComponentRow } from '../src/components'
 
 class Dashboard extends Component {
   render () {
@@ -12,15 +12,14 @@ class Dashboard extends Component {
         ></CardContainer>
 
 
-        <div style={{ display: 'flex' }}>
-          <ComponentBox width={'35%'}>
+        <ComponentRow>
+          <ComponentBox width={'35%'} marginRight={'20px'}>
             <ChartContainer
               dataURL={'http://localhost:8000/DoughnutChartData'}
               chartType={'doughnut'}
               sliderDisplay={false}
             ></ChartContainer>
           </ComponentBox>
-
 
           <ComponentBox width={'65%'}>
             <ChartContainer
@@ -29,19 +28,22 @@ class Dashboard extends Component {
               sliderDisplay={true}
             ></ChartContainer>
           </ComponentBox>
+        </ComponentRow>
 
-        </div>
+        <ComponentRow>
+          <ComponentBox width={'100%'}>
+            <AriaChartContainer data={'http://localhost:3100/static/data/ariaChart.json'}></AriaChartContainer>
+          </ComponentBox>
+        </ComponentRow>
 
-        <ComponentBox width={'98.6%'}>
-          <AriaChartContainer url={'http://localhost:3100/static/data/ariaChart.json'}></AriaChartContainer>
-        </ComponentBox>
-
-        <ComponentBox width={'98.6%'}>
-          <CloudTableContainer
-            dataURL={'http://localhost:8000/TableData'}
-            width={'98.6%'}
-          ></CloudTableContainer>
-        </ComponentBox>
+        <ComponentRow>
+          <ComponentBox width={'100%'} marginTop={'30px'} marginBottom={'20px'}>
+            <CloudTableContainer
+              dataURL={'http://localhost:8000/TableData'}
+              width={'100%'}
+            ></CloudTableContainer>
+          </ComponentBox>
+        </ComponentRow>
       </>
     )
   }
