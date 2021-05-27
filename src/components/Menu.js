@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme)=>({
       color : '#4fc3f7',
       backgroundColor: 'rgba(255, 255, 255, 0.08)',
       listItemText : {
-        color : '#4fc3f7',
+        color : '#4fc3f7'
       }
     }
   }

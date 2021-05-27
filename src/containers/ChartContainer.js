@@ -83,15 +83,22 @@ const ChartContainer = props => {
   /* ----------- componentDidUpdate ----------- */
 
   return (
-    <ComponentBox width={width}>
-      <div style={{ width: '80%', margin: 'auto' }}>
-        {chartType === 'bar' && <BarChart labelData={chartLabelData} valueData={chartValueData}/>}
-        {chartType === 'doughnut' && <DoughnutChart labelData={chartLabelData} valueData={chartValueData}/>}
-        <div style={{ width: '100%', margin: 'auto' }}>
-          {sliderDisplay && <ChartSlider dataCount={dataCount} viewCount={viewCount} handleChange={handleChange}/>}
-        </div>
+    // <ComponentBox width={width}>
+    //   <div style={{ width: '80%', margin: 'auto' }}>
+    //     {chartType === 'bar' && <BarChart labelData={chartLabelData} valueData={chartValueData}/>}
+    //     {chartType === 'doughnut' && <DoughnutChart labelData={chartLabelData} valueData={chartValueData}/>}
+    //     <div style={{ width: '100%', margin: 'auto' }}>
+    //       {sliderDisplay && <ChartSlider dataCount={dataCount} viewCount={viewCount} handleChange={handleChange}/>}
+    //     </div>
+    //   </div>
+    // </ComponentBox>
+    <>
+      {chartType === 'bar' && <BarChart labelData={chartLabelData} valueData={chartValueData}/>}
+      {chartType === 'doughnut' && <DoughnutChart labelData={chartLabelData} valueData={chartValueData}/>}
+      <div style={{ width: '100%', margin: 'auto' }}>
+        {sliderDisplay && <ChartSlider dataCount={dataCount} viewCount={viewCount} handleChange={handleChange}/>}
       </div>
-    </ComponentBox>
+    </>
   )
 }
 export default ChartContainer

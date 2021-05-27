@@ -5,7 +5,6 @@ import axios from 'axios';
 /**
  * props 
  * - dataURL : api dataURL 
- * - height : AriaChart Height
  */
 
 class AriaChartContainer extends Component{
@@ -19,7 +18,6 @@ class AriaChartContainer extends Component{
         try {
             const response = await axios.get(dataURL)
             this.setState({data: response.data})
-            console.log(this.state.data);
         } catch (e) {
             console.log(e)
         }
@@ -27,6 +25,38 @@ class AriaChartContainer extends Component{
 
     componentDidMount() {
         this.initialize(this.props.dataURL)
+    }   
+
+    getAriaChartData = (data) => {
+
+        const ariaChartData = {}
+
+        ariaChartData['title'] = data['title']
+        ariaChartData['labels'] = data['labels']
+
+        const datasets = data['datasets'].map(
+            dataset => {
+
+                const r = this.getRand(0,255)
+                const g = this.getRand(0,255)
+                const b = this.getRand(0,255)
+
+                const newDataset = {
+                    ...dataset,
+                    backgroundColor : 'rgba(' + r + ',' + g + ',' + b + ',0.5)',
+                    borderColor : 'rgba(' + r + ',' + g + ',' + b + ',0.5)'
+                }
+                return newDataset
+            }
+        )
+        ariaChartData['datasets'] = datasets
+        return ariaChartData
+        
+    }
+
+    getRand = (min, max) => {
+        if (min >= max) return false;
+        return ~~(Math.random() * (max - min + 1)) + min;
     }
 
     render(){
@@ -35,7 +65,7 @@ class AriaChartContainer extends Component{
         
         return(
             <>
-                <AriaChart data={this.state.data} height={this.props.height}></AriaChart>
+                <AriaChart data={this.getAriaChartData(this.state.data)} height={80}></AriaChart>
             </>
         )
     }

@@ -19,7 +19,7 @@ class PageHeader extends Component {
           display: 'inline-block',
           fontSize: '1.6em',
           verticalAlign: 'top',
-          lineHeight: '28px',
+          lineHeight: '28px'
         }}>{this.props.title}</div>
 
       </div>

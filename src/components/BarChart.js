@@ -30,7 +30,7 @@ const BarChart = props => {
   }
 
   return (
-    <Bar data={chartData}/>
+    <Bar data={chartData} />
   )
 }
 

@@ -42,7 +42,7 @@ const APP_ROUTES = [
     page: 'market',
     pattern: '/market',
     name : 'market'
-  },
+  }
 ]
 
 APP_ROUTES.forEach(route => routes.add(route))

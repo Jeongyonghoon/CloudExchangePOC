@@ -8,17 +8,21 @@ import PropTypes from 'prop-types';
  * @param {*} props
  * - height(number) : chart height (default 150, number)
  * - data(object) : chart data (default { 'labels' : [], 'datasets' : []}, object )
+ * 
  * @returns 
  */
 
 const AriaChart = (props) => {
-    
+  
+  // # version 3 options
+
   // const options = {
   //   responsive: true,
   //   interaction: {
   //     mode: 'index',
-  //     intersect: false,
+  //     intersect: false
   //   },
+  //   fill : true,
   //   stacked: true,
   //   plugins: {
   //     title: {
