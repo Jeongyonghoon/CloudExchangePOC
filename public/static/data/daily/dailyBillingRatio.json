@@ -1,0 +1,26 @@
+[
+    {
+        "price": 1,
+        "date": "Elastic Load Balancing"
+    },
+    {
+        "price": 2,
+        "date": "AWS Transfer Family"
+    },
+    {
+        "price": 7,
+        "date": "AWS Config"
+    },
+    {
+        "price": 20,
+        "date": "AmazonCloudWatch"
+    },
+    {
+        "price": 20,
+        "date": "Virtual Private Cloud"
+    },
+    {
+        "price": 50,
+        "date": "Simple Storage Service"
+    }
+]

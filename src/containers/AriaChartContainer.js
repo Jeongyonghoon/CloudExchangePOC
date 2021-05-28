@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {AriaChart} from '../components';
+import {AriaChart, BoxHeader} from '../components';
 import axios from 'axios';
 
 /**
@@ -64,7 +64,8 @@ class AriaChartContainer extends Component{
         if(!this.state.data) return null
         
         return(
-            <>
+            <>  
+                <BoxHeader title={this.state.data.title}></BoxHeader>
                 <AriaChart data={this.getAriaChartData(this.state.data)} height={80}></AriaChart>
             </>
         )

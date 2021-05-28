@@ -1,0 +1,50 @@
+{
+    "colList": {
+        "date": "기간",
+        "account": "계정ID",
+        "name": "계정명",
+        "provider": "제공자",
+        "currency": "제공자 통화",
+        "charge": "제공자 요금",
+        "billing" : "비용(원)"
+    },
+
+    "rawList": [
+        {   
+            "date": "2021-11-28",
+            "account": "420075278419D",
+            "name": "frlkit",
+            "provider": "AWS",
+            "currency": "USD",
+            "charge": "5255.45",
+            "billing" : "5,882,426"
+        },
+        {   
+            "date": "2021-11-28",
+            "account": "420075278419D",
+            "name": "frlkit",
+            "provider": "AWS",
+            "currency": "USD",
+            "charge": "5255.45",
+            "billing" : "5,882,426"
+        },
+        {   
+            "date": "2021-11-28",
+            "account": "420075278419D",
+            "name": "frlkit",
+            "provider": "AWS",
+            "currency": "USD",
+            "charge": "5255.45",
+            "billing" : "5,882,426"
+        },
+        {   
+            "date": "2021-11-28",
+            "account": "420075278419D",
+            "name": "frlkit",
+            "provider": "AWS",
+            "currency": "USD",
+            "charge": "5255.45",
+            "billing" : "5,882,426"
+        }
+    ]
+}

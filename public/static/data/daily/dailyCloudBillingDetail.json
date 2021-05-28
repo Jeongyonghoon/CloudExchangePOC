@@ -1,0 +1,21 @@
+{
+    "colList": {
+        "date": "날짜",
+        "name": "상품명",
+        "use": "사용량",
+        "discount": "제공자 요금",
+        "dataA": "환율",
+        "dataB": "요금"
+    },
+
+    "rawList": [
+        {
+            "date": "2021-11-28",
+            "name": "AWS Transfer Family",
+            "use": 8,
+            "discount": 2,
+            "dataA": 1105.8,
+            "dataB": 103885
+        }
+    ]
+}

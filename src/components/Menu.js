@@ -17,12 +17,13 @@ const useStyles = makeStyles((theme)=>({
 
   listItemText: {
     fontSize: '0.9em',
-    paddingLeft: '0.5em',
+    paddingLeft: '0.9em',
     // color : 'white',
   },
 
   listItem : {
-    color : 'rgba(255, 255, 255, 0.8)',
+    // color : 'rgba(255, 255, 255, 0.8)',
+    color : '#eeeeee',
     '&:hover' : {
       color : '#4fc3f7',
       backgroundColor: 'rgba(255, 255, 255, 0.08)',
