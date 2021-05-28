@@ -21,11 +21,14 @@ const ChartContainer = props => {
 
   const [labelData] = useState([])
   const [valueData] = useState([])
+  const [chartTitle, setChartTitle] = useState('default')
 
   const chartType = props.chartType
   const sliderDisplay = props.sliderDisplay
   const dataURL = props.dataURL
   const width = props.width
+  const chartColor = props.chartColor
+  const chartHeight = props.chartHeight
 
   /* Chart data */
   const [chartValueData, setChartValueData] = useState([])
@@ -39,9 +42,6 @@ const ChartContainer = props => {
 
   /* ----------- componentDidMount ----------- */
   const setChartData = chartData => {
-    // labelData = []; // --> 다른 API 호출 대비 초기화
-    // valueData = [];
-
     chartData.forEach(function (item) {
       valueData.push(item['price'])
       labelData.push(item['date'])
@@ -58,6 +58,7 @@ const ChartContainer = props => {
       setChartData(result.data)
       setViewCount([0, result.data.length])
       setDataCount(result.data.length)
+      setChartTitle(result.data.title)
     } catch (e) {
       console.log(e)
     }
@@ -82,20 +83,18 @@ const ChartContainer = props => {
     setChartValueData(valueData.slice(viewCount[0], viewCount[1]))
   }, [viewCount])
   /* ----------- componentDidUpdate ----------- */
-
   return (
     <>
       <BoxHeader></BoxHeader>
-      <div style={{width: '80%', margin: 'auto'}}>
-        {chartType === 'bar' && <BarChart labelData={chartLabelData} valueData={chartValueData}/>}
+      <div style={{width: '80%',margin: 'auto'}}>
+        {chartType === 'bar' && <BarChart chartHeight={chartHeight} chartColor={chartColor} labelData={chartLabelData} valueData={chartValueData}/>}
         {chartType === 'doughnut' && <DoughnutChart height={'275%'} labelData={chartLabelData} valueData={chartValueData}/>}
         <div style={{ width: '100%', margin: 'auto' }}>
-          {sliderDisplay && <ChartSlider dataCount={dataCount} viewCount={viewCount} handleChange={handleChange}/>}
+          {sliderDisplay && <ChartSlider labelData={labelData} dataCount={dataCount} viewCount={viewCount} handleChange={handleChange}/>}
         </div>
       </div>
     </>
   )
 }
-
 
 export default ChartContainer
