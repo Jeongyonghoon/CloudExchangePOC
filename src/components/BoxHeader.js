@@ -8,7 +8,7 @@ const BoxHeader = props => {
 
   const Header = Styled.div`
     padding: 10px 0 10px 10px;
-    background: #E6E6E6;
+    border-bottom: 2px solid #E6E6E6;
   `
 
   return(
