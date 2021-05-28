@@ -31,11 +31,7 @@ const BarChart = props => {
   }
 
   return (
-<<<<<<< HEAD
-    <Bar data={chartData} />
-=======
     <Bar data={chartData} height={chartHeight}/>
->>>>>>> main
   )
 }
 

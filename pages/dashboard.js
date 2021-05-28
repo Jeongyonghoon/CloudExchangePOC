@@ -32,7 +32,7 @@ class Dashboard extends Component {
         </ComponentRow>
 
         <ComponentRow>
-          <ComponentBox width={'100%'} >
+          <ComponentBox width={'100%'} marginTop={'30px'}>
             <AriaChartContainer dataURL={'/static/data/ariaChart.json'}></AriaChartContainer>
           </ComponentBox>
         </ComponentRow>

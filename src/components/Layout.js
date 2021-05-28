@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import clsx from 'clsx'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import { Selector } from '.'
@@ -42,7 +42,6 @@ const useStyles = makeStyles((theme) => ({
     // backgroundColor : '#233044',
     backgroundColor : '#ffffff',
     textAlign : 'center'
-    // top : 50
   },
   appBarHeader : {
     color : '#eeeeee',
@@ -120,7 +119,9 @@ const useStyles = makeStyles((theme) => ({
 export default function Layout (props) {
   const classes = useStyles()
   const theme = useTheme()
-  const [open, setOpen] = React.useState(true)
+
+  const [open, setOpen] = useState(true)
+  const [offset, setOffset] = useState(0)
 
   const handleDrawerOpen = () => {
     setOpen(true)
@@ -128,6 +129,25 @@ export default function Layout (props) {
 
   const handleDrawerClose = () => {
     setOpen(false)
+  }
+
+  useEffect(() => {
+    window.onscroll = () => {
+      setOffset(window.pageYOffset);
+    }
+  }, [])
+
+  // console.log(offset);
+
+  if(window!==undefined){
+    window.onscroll = () => {
+      console.log(window.pageYOffset);
+      if(window.pageYOffset>0){
+        handleDrawerOpen();
+      }else{
+        handleDrawerClose();
+      }
+    }
   }
 
   return (
@@ -146,7 +166,7 @@ export default function Layout (props) {
           // color="primary"
           // elevation={0} remove shadow
           position='fixed'
-          className={classes.appBar}
+          className={clsx(classes.menuButton, open && classes.hide)}
         >
           <Toolbar>
             {/* <IconButton
@@ -168,7 +188,7 @@ export default function Layout (props) {
           className={classes.drawer}
           variant='persistent'
           anchor='left'
-          open={open}
+          open={true}
           classes={{
             paper: classes.drawerPaper
           }}

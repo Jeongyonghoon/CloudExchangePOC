@@ -36,9 +36,14 @@ export default function Selector() {
   };
 
   return (
-    <div style={{marginLeft : '95em'}}>
-      <FormControl variant="outlined" className={classes.formControl}>
-        <InputLabel htmlFor="outlined-age-native-simple">Name</InputLabel>
+    <div style={{marginLeft : '75%'}}>
+      <FormControl variant="outlined" className={classes.formControl} size='small' style={{minWidth: 340}}>
+        <InputLabel 
+          htmlFor="outlined-age-native-simple"
+          style={{
+            fontSize : '12px',
+            lineHeight : '16px'
+        }}>Name</InputLabel>
         <Select
           native
           value={state.age}
@@ -47,11 +52,14 @@ export default function Selector() {
           inputProps={{
             name: 'age'
           }}
+          style={{
+              fontSize : '12px',
+              lineHeight : '16px'
+          }}
         >
           <option aria-label="None" value="" />
-          <option value={10}>User1</option>
-          <option value={20}>User2</option>
-          <option value={30}>User3</option>
+          <option value={10}>코오롱베니트 (이광훈)</option>
+          <option value={20}>코오롱베니트 (정용훈)</option>
         </Select>
       </FormControl>
     </div>
