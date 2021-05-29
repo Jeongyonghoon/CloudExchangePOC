@@ -17,7 +17,6 @@ import PageHeaderContainer from '../containers/PageHeaderContainer'
 const drawerWidth = 210
 
 const useStyles = makeStyles((theme) => ({
-
   root: {
     display: 'flex',
     '& a': {

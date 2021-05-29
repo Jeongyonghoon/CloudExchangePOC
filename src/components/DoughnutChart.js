@@ -1,7 +1,7 @@
-import React from 'react';
-import { Doughnut } from 'react-chartjs-2';
+import React from 'react'
+import { Doughnut } from 'react-chartjs-2'
 
-const chartColor=[
+const chartColor = [
   'rgba(255, 99, 132, 0.2)',
   'rgba(54, 162, 235, 0.2)',
   'rgba(255, 206, 86, 0.2)',
@@ -13,26 +13,26 @@ const DoughnutChart = props => {
 
   const labelData = props.labelData
   const valueData = props.valueData
-  const chartHeight = props.height
+  const chartHeight = props.chartHeight
 
   const chartData = {
     labels: labelData,
     datasets: [
       {
-        data:valueData,
-        backgroundColor:chartColor,
+        data: valueData,
+        backgroundColor: chartColor,
         borderWidth: 1,
       },
     ],
-    borderWidth:1,
+    borderWidth: 1,
   }
 
-  return(
+  return (
     <Doughnut data={chartData} height={chartHeight}/>
-  );
+  )
 }
-DoughnutChart.defaultProps={
-  height:'100%'
+DoughnutChart.defaultProps = {
+  height: '100%'
 }
 
 export default DoughnutChart

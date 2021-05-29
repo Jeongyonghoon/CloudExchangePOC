@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { BoxHeader, CloudTable, ComponentBox } from '../components'
+import { BoxHeader, CloudTable } from '../components'
+
 const axios = require('axios')
 
 const CloudTableContainer = props => {
