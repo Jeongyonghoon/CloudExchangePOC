@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { BarChart, ChartSlider, BoxHeader, DoughnutChart } from '../components'
+import { BarChart, BoxHeader, ChartSlider, DoughnutChart } from '../components'
+
 const axios = require('axios')
 
 /*
@@ -86,12 +87,18 @@ const ChartContainer = props => {
   return (
     <>
       <BoxHeader></BoxHeader>
-      <div style={{width: '80%',margin: 'auto'}}>
-        {chartType === 'bar' && <BarChart chartHeight={chartHeight} chartColor={chartColor} labelData={chartLabelData} valueData={chartValueData}/>}
-        {chartType === 'doughnut' && <DoughnutChart height={'275%'} labelData={chartLabelData} valueData={chartValueData}/>}
+
+      <div style={{ width: '80%', margin: 'auto', marginTop: '3%' }}>
+        {chartType === 'bar' && <BarChart chartHeight={chartHeight} chartColor={chartColor} labelData={chartLabelData}
+                                          valueData={chartValueData}/>}
+        {chartType === 'doughnut' &&
+        <DoughnutChart chartHeight={chartHeight} labelData={chartLabelData} valueData={chartValueData}/>}
+
         <div style={{ width: '100%', margin: 'auto' }}>
-          {sliderDisplay && <ChartSlider labelData={labelData} dataCount={dataCount} viewCount={viewCount} handleChange={handleChange}/>}
+          {sliderDisplay &&
+          <ChartSlider labelData={labelData} dataCount={dataCount} viewCount={viewCount} handleChange={handleChange}/>}
         </div>
+      
       </div>
     </>
   )

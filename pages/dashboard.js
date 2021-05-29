@@ -18,6 +18,7 @@ class Dashboard extends Component {
               dataURL={'http://localhost:8000/DoughnutChartData'}
               chartType={'doughnut'}
               sliderDisplay={false}
+              chartHeight={'275%'}
             ></ChartContainer>
           </ComponentBox>
 

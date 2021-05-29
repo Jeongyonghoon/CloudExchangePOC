@@ -7,17 +7,38 @@ import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Paper from '@material-ui/core/Paper'
 import CardNumber from './CardNumber'
+import Styled from 'styled-components'
+
+// https://smartdevpreneur.com/the-easiest-way-to-implement-material-ui-table-search/  -->  search table
+
+const HeadText = Styled.text`
+    color: black;
+    font-weight: 1000;
+    font-family: twayair;
+`
+
+const ContentText = Styled.text`
+    font-family: twayair;
+`
 
 const getRaw = dataList => {
-  const getData=[]
-  for (let raw in dataList){
-    if(typeof dataList[raw]==='number'){
+  const getData = []
+  for (let raw in dataList) {
+    if (typeof dataList[raw] === 'number') {
       getData.push(
-        <TableCell><CardNumber number={dataList[raw]}/></TableCell>
+        <TableCell>
+          <ContentText>
+            <CardNumber number={dataList[raw]}/>
+            </ContentText>
+        </TableCell>
       )
-    }else{
+    } else {
       getData.push(
-        <TableCell>{dataList[raw]}</TableCell>
+        <TableCell>
+          <ContentText>
+            {dataList[raw]}
+          </ContentText>
+        </TableCell>
       )
     }
   }
@@ -34,7 +55,7 @@ const CloudTable = props => {
 
   for (let col in colData) {
     viewColData.push(
-      <TableCell>{colData[col]}</TableCell>
+      <TableCell><HeadText>{colData[col]}</HeadText></TableCell>
     )
   }
 
