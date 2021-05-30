@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 /**
  * https://reactchartjs.github.io/react-chartjs-2
- * 
+ * - AriaChart Components
  * @param {*} props
  * - height(number) : chart height (default 150, number)
  * - data(object) : chart data (default { 'labels' : [], 'datasets' : []}, object )
