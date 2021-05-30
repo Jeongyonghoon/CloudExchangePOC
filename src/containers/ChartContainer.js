@@ -41,8 +41,23 @@ const ChartContainer = props => {
   /* Chart & Slider data */
   const [viewCount, setViewCount] = useState([])
 
+  /* ----------- default ----------- */
+  const defaultChart = () => {
+    return [
+      {
+        price: 100,
+        date:'default'
+      },
+      {
+        price: 200,
+        date:'default'
+      }]
+  }
+  /* ----------- default ----------- */
+
   /* ----------- componentDidMount ----------- */
   const setChartData = chartData => {
+    console.log(chartData + ' check ')
     chartData.forEach(function (item) {
       valueData.push(item['price'])
       labelData.push(item['date'])
@@ -61,6 +76,9 @@ const ChartContainer = props => {
       setDataCount(result.data.length)
       setChartTitle(result.data.title)
     } catch (e) {
+      setChartData(defaultChart())
+      setViewCount([0,2])
+      setDataCount(2)
       console.log(e)
     }
   }

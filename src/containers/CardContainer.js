@@ -11,12 +11,25 @@ const CardContainer = props => {
 
   const dataURL = props.dataURL
 
+  const defaultCard = () => {
+    const cardList=[]
+    CardColor.forEach(function (item){
+      cardList.push(
+        <Card
+          cardColor={item}
+        ></Card>
+      )
+    })
+    return cardList
+  }
+
   const getData = async () => {
     try {
       const result = await axios.get(dataURL)
       setCardData(result.data)
       setData(result.data)
     } catch (e) {
+      setViewData(defaultCard())
       console.log(e)
     }
   }
@@ -38,11 +51,7 @@ const CardContainer = props => {
 
   useEffect(() => {
     getData()
-  }, [])
-
-  // useEffect(() => {
-  //   setData(cardData)
-  // }, [cardData])
+  }, [cardData])
 
   return (
     <div style={{ display: 'flex' }}>
