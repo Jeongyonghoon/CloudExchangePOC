@@ -12,6 +12,7 @@ class AriaChartContainer extends Component{
     constructor(props) {
         super(props)
         this.state = ({data: null})
+        // this.state = ({data: {}})
     }
 
     async initialize(dataURL) {
@@ -67,6 +68,10 @@ class AriaChartContainer extends Component{
             <>  
                 <BoxHeader title={this.state.data.title}></BoxHeader>
                 <AriaChart data={this.getAriaChartData(this.state.data)} height={80}></AriaChart>
+                
+                {/* <BoxHeader ></BoxHeader>
+                <AriaChart height={80}></AriaChart> */}
+
             </>
         )
     }

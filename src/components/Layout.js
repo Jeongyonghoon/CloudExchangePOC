@@ -37,6 +37,12 @@ const useStyles = makeStyles((theme) => ({
     //   easing: theme.transitions.easing.sharp,
     //   duration: theme.transitions.duration.leavingScreen
     // }),
+    // height : '200px',
+    top : 0,
+    transition: theme.transitions.create(['all'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen
+    }),
     // backgroundColor : '#1976d2',
     // backgroundColor : '#232f3e',
     // backgroundColor : '#233044',
@@ -59,7 +65,10 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2)
   },
   hide: {
-    display: 'none'
+    top : -100
+    // opacity : 0,
+    // display: 'none'
+    // height : '0px'
   },
   drawer: {
     width: drawerWidth,
@@ -134,21 +143,27 @@ export default function Layout (props) {
   useEffect(() => {
     window.onscroll = () => {
       setOffset(window.pageYOffset);
-    }
-  }, [])
-
-  // console.log(offset);
-
-  if(window!==undefined){
-    window.onscroll = () => {
-      console.log(window.pageYOffset);
-      if(window.pageYOffset>0){
+      console.log(open);
+      if(window.pageYOffset==0){
         handleDrawerOpen();
       }else{
         handleDrawerClose();
       }
     }
-  }
+  }, [])
+
+  // console.log(offset);
+
+  // if(window!==undefined){
+  //   window.onscroll = () => {
+  //     console.log(window.pageYOffset);
+  //     if(window.pageYOffset>0){
+  //       handleDrawerOpen();
+  //     }else{
+  //       handleDrawerClose();
+  //     }
+  //   }
+  // }
 
   return (
     
@@ -166,7 +181,7 @@ export default function Layout (props) {
           // color="primary"
           // elevation={0} remove shadow
           position='fixed'
-          className={clsx(classes.menuButton, open && classes.hide)}
+          className={clsx(classes.appBar, !open && classes.hide)}
         >
           <Toolbar>
             {/* <IconButton
