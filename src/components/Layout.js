@@ -17,7 +17,6 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 const drawerWidth = 250
 
 const useStyles = makeStyles((theme) => ({
-
   root: {
     display: 'flex',
     '& a': {

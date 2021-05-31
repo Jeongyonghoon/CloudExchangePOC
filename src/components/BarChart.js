@@ -1,7 +1,7 @@
 import React from 'react'
-import { Bar, Chart } from 'react-chartjs-2'
+import { Bar } from 'react-chartjs-2'
 
-// Chart.defaults.plugins.legend.display = true
+// Chart.defaults.plugins.legend.display = false
 
 /*
 - Props -
@@ -21,7 +21,6 @@ const BarChart = props => {
     labels: labelData,
     datasets: [
       {
-        label:'납부금액', // --> API형태 확인하고 props로 받을지 결정
         data: valueData,
         backgroundColor: chartColor,
         borderColor: chartColor,
@@ -30,13 +29,28 @@ const BarChart = props => {
     ],
   }
 
+  const options = {
+    legend: {
+      display: false,
+    },
+    scales: {
+      yAxes: [
+        {
+          ticks: {
+            beginAtZero: true,
+          },
+        },
+      ],
+    },
+  }
+
   return (
-    <Bar data={chartData} height={chartHeight}/>
+    <Bar data={chartData} height={chartHeight} options={options}/>
   )
 }
 
-BarChart.defaultProps={
-  chartColor:'#58ACFA',
+BarChart.defaultProps = {
+  chartColor: '#58ACFA',
 
 }
 export default BarChart

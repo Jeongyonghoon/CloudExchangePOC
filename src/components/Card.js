@@ -4,7 +4,7 @@ import CardNumber from './CardNumber'
 
 const Box = Styled.div`
     color: rgba(0, 0, 0, 0.87);
-    width: 16.5%;
+    width: 100%;
     position: relative;
     font-size: .875rem;
     background: #FFF;
@@ -13,6 +13,8 @@ const Box = Styled.div`
     flex-direction: column;
     margin: 30px 10px 30px 10px;
     //top right bottom left
+    
+    font-family: twayair;
     
     @media (max-width: 992px){
       width: 250px;
