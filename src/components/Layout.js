@@ -69,6 +69,7 @@ const useStyles = makeStyles((theme) => ({
     // opacity : 0,
     // display: 'none'
     // height : '0px'
+    // elevation : 0
   },
   drawer: {
     width: drawerWidth,
@@ -132,12 +133,14 @@ export default function Layout (props) {
   const [open, setOpen] = useState(true)
   const [offset, setOffset] = useState(0)
 
-  const handleDrawerOpen = () => {
-    setOpen(true)
+  const [elevation, setElevation] = useState(0)
+
+  const handleGnbOpen = () => {
+    setElevation(3)
   }
 
-  const handleDrawerClose = () => {
-    setOpen(false)
+  const handleGnbClose = () => {
+    setElevation(0)
   }
 
   useEffect(() => {
@@ -145,9 +148,9 @@ export default function Layout (props) {
       setOffset(window.pageYOffset);
       console.log(open);
       if(window.pageYOffset==0){
-        handleDrawerOpen();
+        handleGnbClose();
       }else{
-        handleDrawerClose();
+        handleGnbOpen();
       }
     }
   }, [])
@@ -179,9 +182,10 @@ export default function Layout (props) {
         > */}
         <AppBar
           // color="primary"
-          // elevation={0} remove shadow
+          elevation={elevation} 
           position='fixed'
-          className={clsx(classes.appBar, !open && classes.hide)}
+          // className={clsx(classes.appBar, !open && classes.hide)}
+          className={clsx(classes.appBar)}
         >
           <Toolbar>
             {/* <IconButton
