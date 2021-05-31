@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme)=>({
 
   listItemText: {
     fontSize: '0.9em',
-    paddingLeft: '0.9em',
+    paddingLeft: '16px',
     // color : 'white',
   },
 

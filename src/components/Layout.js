@@ -8,6 +8,10 @@ import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import Divider from '@material-ui/core/Divider'
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { defaults } from 'react-chartjs-2'
 
 defaults.global.defaultFontFamily = '맑은고딕, Malgun Gothic, dotum, gulim, sans-serif'
@@ -24,34 +28,26 @@ const useStyles = makeStyles((theme) => ({
     },
     padding : '0 20px 0 20px',
     backgroundColor : '#f7f9fc'
-    // position : 'absolute',
-    // top : 50,
-    // left : 0,
-    // right : 0
   },
   
-  appBar: {
-    // transition: theme.transitions.create(['margin', 'width'], {
-    //   easing: theme.transitions.easing.sharp,
-    //   duration: theme.transitions.duration.leavingScreen
-    // }),
-    // height : '200px',
-    top : 0,
-    transition: theme.transitions.create(['all'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
-    }),
-    // backgroundColor : '#1976d2',
-    // backgroundColor : '#232f3e',
-    // backgroundColor : '#233044',
-    backgroundColor : '#ffffff',
-    marginLeft: drawerWidth
-  },
-
-  // appBarHeader : {
-  //   color : '#eeeeee',
-  //   marginLeft: drawerWidth,
+  // appBar: {
+  //   // transition: theme.transitions.create(['margin', 'width'], {
+  //   //   easing: theme.transitions.easing.sharp,
+  //   //   duration: theme.transitions.duration.leavingScreen
+  //   // }),
+  //   // height : '200px',
+  //   top : 0,
+  //   transition: theme.transitions.create(['all'], {
+  //     easing: theme.transitions.easing.sharp,
+  //     duration: theme.transitions.duration.leavingScreen
+  //   }),
+  //   // backgroundColor : '#1976d2',
+  //   // backgroundColor : '#232f3e',
+  //   // backgroundColor : '#233044',
+  //   backgroundColor : '#ffffff',
+  //   marginLeft: drawerWidth
   // },
+
   // appBarShift: {
   //   width: `calc(100% - ${drawerWidth}px)`,
   //   marginLeft: drawerWidth,
@@ -60,73 +56,195 @@ const useStyles = makeStyles((theme) => ({
   //     duration: theme.transitions.duration.enteringScreen
   //   })
   // },
-  menuButton: {
-    marginRight: theme.spacing(2)
+
+  // hide: {
+  //   display: 'none',
+  // },
+  // drawer: {
+  //   width: drawerWidth,
+  //   flexShrink: 0,
+  //   whiteSpace: 'nowrap',
+  // },
+  // drawerOpen: {
+  //   width: drawerWidth,
+  //   transition: theme.transitions.create('width', {
+  //     easing: theme.transitions.easing.sharp,
+  //     duration: theme.transitions.duration.enteringScreen,
+  //   }),
+  // },
+  // drawerClose: {
+  //   transition: theme.transitions.create('width', {
+  //     easing: theme.transitions.easing.sharp,
+  //     duration: theme.transitions.duration.leavingScreen,
+  //   }),
+  //   overflowX: 'hidden',
+  //   width: theme.spacing(7) + 1,
+  //   [theme.breakpoints.up('sm')]: {
+  //     width: theme.spacing(9) + 1,
+  //   },
+  // },
+  // toolbar: {
+  //   display: 'flex',
+  //   alignItems: 'center',
+  //   justifyContent: 'flex-end',
+  //   padding: theme.spacing(0, 1),
+  //   // necessary for content to be below app bar
+  //   ...theme.mixins.toolbar,
+  // },
+  // content: {
+  //   flexGrow: 1,
+  //   padding: theme.spacing(3),
+  // },
+
+  // menuButton: {
+  //   marginRight: theme.spacing(2)
+  // },
+  // hide: {
+  //   top : -100
+  //   // opacity : 0,
+  //   // display: 'none'
+  //   // height : '0px'
+  //   // elevation : 0
+  // },
+  // drawer: {
+  //   width: drawerWidth,
+  //   flexShrink: 0,
+  // },
+  // drawerPaper: {
+  //   width: drawerWidth,
+  //   // backgroundColor : '#232f3e',
+  //   backgroundColor : '#233044',
+  //   // top : 50
+  // },
+
+  // drawerHeader: {
+  //   display: 'flex',
+  //   alignItems: 'center',
+  //   padding: theme.spacing(0, 2),
+  //   // necessary for content to be below app bar
+  //   ...theme.mixins.toolbar,
+  //   justifyContent: 'flex-start',
+  //   minHeight : 50
+  // },
+
+  // drawerHeaderTitle : {
+  //   color : '#eeeeee',
+  //   padding : '0.6em',
+  //   fontSize : '1.2rem'
+  // },
+
+  // drawerHeaderIcon : {
+  //   color : 'rgba(255, 255, 255, 0.9)'
+  // },
+
+  // // divider : {
+  // //   backgroundColor : 'rgba(255, 255, 255, 0.9)'
+  // // },
+
+  // content: {
+  //   flexGrow: 1,
+  //   // padding: theme.spacing(3),
+  //   // transition: theme.transitions.create('margin', {
+  //   //   easing: theme.transitions.easing.sharp,
+  //   //   duration: theme.transitions.duration.leavingScreen
+  //   // }),
+  //   // marginLeft: -drawerWidth
+  //   padding : '0px 20px 0px 20px',
+  //   padding : '20px'
+  // },
+  // contentShift: {
+  //   // transition: theme.transitions.create('margin', {
+  //   //   easing: theme.transitions.easing.easeOut,
+  //   //   duration: theme.transitions.duration.enteringScreen
+  //   // }),
+  //   marginLeft: 0
+  // },
+
+  // selector : {
+  //   marginLeft : '80%'
+  // }
+
+  appBar: {
+    zIndex: theme.zIndex.drawer + 1,
+    transition: theme.transitions.create(['width', 'margin'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    top : 0,
+    // backgroundColor : '#1976d2',
+    // backgroundColor : '#232f3e',
+    // backgroundColor : '#233044',
+    backgroundColor : '#ffffff'
   },
+  appBarShift: {
+    marginLeft: drawerWidth,
+    width: `calc(100% - ${drawerWidth}px)`,
+    transition: theme.transitions.create(['width', 'margin'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  },
+  selector : {
+    marginLeft : '40%'
+  },
+  menuButton: {
+    marginRight: 36,
+    color : '#233044'
+  },
+
+  openButton: {
+    color : '#eeeeee'
+  },
+
   hide: {
-    top : -100
-    // opacity : 0,
-    // display: 'none'
-    // height : '0px'
-    // elevation : 0
+    display: 'none',
   },
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
+    whiteSpace: 'nowrap'
   },
+
   drawerPaper: {
+    backgroundColor : '#233044'
+  },
+
+  drawerOpen: {
     width: drawerWidth,
-    // backgroundColor : '#232f3e',
-    backgroundColor : '#233044',
-    // top : 50
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
   },
-
-  drawerHeader: {
-    display: 'flex',
-    alignItems: 'center',
-    padding: theme.spacing(0, 2),
-    // necessary for content to be below app bar
-    ...theme.mixins.toolbar,
-    justifyContent: 'flex-start',
+  drawerClose: {
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    overflowX: 'hidden',
+    // width: theme.spacing(7) + 1,
+    // [theme.breakpoints.up('sm')]: {
+    //   width: theme.spacing(9) + 1,
+    // },
+    width : 56
   },
-
   drawerHeaderTitle : {
-    color : '#eeeeee',
+    color : '#000000',
     padding : '0.6em',
     fontSize : '1.2rem'
   },
-
-  drawerHeaderIcon : {
-    color : 'rgba(255, 255, 255, 0.9)'
+  toolbar: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    padding: theme.spacing(0, 1),
+    // necessary for content to be below app bar
+    ...theme.mixins.toolbar,
   },
-
-  // divider : {
-  //   backgroundColor : 'rgba(255, 255, 255, 0.9)'
-  // },
-
   content: {
     flexGrow: 1,
-    // padding: theme.spacing(3),
-    // transition: theme.transitions.create('margin', {
-    //   easing: theme.transitions.easing.sharp,
-    //   duration: theme.transitions.duration.leavingScreen
-    // }),
-    // marginLeft: -drawerWidth
-    padding : '0px 20px 0px 20px',
-    padding : '20px'
-  },
-  contentShift: {
-    // transition: theme.transitions.create('margin', {
-    //   easing: theme.transitions.easing.easeOut,
-    //   duration: theme.transitions.duration.enteringScreen
-    // }),
-    marginLeft: 0
-  },
-
-  selector : {
-    marginLeft : '80%'
+    padding: theme.spacing(3),
   }
-
 }))
 
 export default function Layout (props) {
@@ -144,8 +262,15 @@ export default function Layout (props) {
 
   const handleGnbClose = () => {
     setElevation(0)
-  }
+  } 
 
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
+
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
   useEffect(() => {
     window.onscroll = () => {
       if(window.pageYOffset==0){
@@ -171,75 +296,133 @@ export default function Layout (props) {
 
   return (
     
+      // <div className={classes.root}>
+      //   <CssBaseline />
+      //   {/* <AppBar
+      //     // color="primary"
+      //     // elevation={0} remove shadow
+      //     position='fixed'
+      //     className={clsx(classes.appBar, {
+      //       [classes.appBarShift]: open
+      //     })}
+      //   > */}
+      //   <AppBar
+      //     // color="primary"
+      //     elevation={elevation} 
+      //     position='fixed'
+      //     // className={clsx(classes.appBar, !open && classes.hide)}
+      //     // className={clsx(classes.appBar)}
+      //     className={classes.appBar}
+      //   >
+      //     <Toolbar>
+      //       {/* <IconButton
+      //         color='inherit'
+      //         aria-label='open drawer'
+      //         onClick={handleDrawerOpen}
+      //         edge='start'
+      //         className={clsx(classes.menuButton, open && classes.hide)}
+      //       >
+      //         <MenuIcon />
+      //       </IconButton> */}
+      //       <Typography noWrap className={classes.selector}>
+      //         {/* <Selector></Selector> */}
+      //         <SelectorContainer dataURL='static/data/selector/userOptions.json'></SelectorContainer>
+      //       </Typography>
+      //       {/* <Selector className={classes.selector}></Selector> */}
+      //     </Toolbar>
+      //   </AppBar>
+      //   <Drawer
+      //     className={classes.drawer}
+      //     variant='persistent'
+      //     anchor='left'
+      //     open={true}
+      //     classes={{
+      //       paper: classes.drawerPaper
+      //     }}
+      //   >
+      //     <div className={classes.drawerHeader}>
+      //       {/* <IconButton onClick={handleDrawerClose} className={classes.drawerHeaderIcon}>
+      //         {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+      //       </IconButton> */}
+      //       {/* <Avatar alt='logo' src="/static/header_logo.png" variant="square"></Avatar> */}
+      //       <img alt='logo' src="/static/header_logo.png" width="50px"></img>
+      //       <Typography variant='h6' noWrap className={classes.drawerHeaderTitle}>
+      //         Cloud Exchange
+      //       </Typography>
+      //     </div>
+      //     <Divider className={classes.divider}/>
+      //     <MenuContainer url={'/static/data/layout.json'}></MenuContainer>
+      //   </Drawer>
+      //   <main
+      //     className={clsx(classes.content, {
+      //       [classes.contentShift]: open
+      //     })}
+      //   >
+      //     <div className={classes.drawerHeader} />
+      //     <PageHeaderContainer></PageHeaderContainer>
+      //     {/* page component */}
+      //     {props.children}
+
+      //   </main>
+      // </div>
       <div className={classes.root}>
-        <CssBaseline />
-        {/* <AppBar
-          // color="primary"
-          // elevation={0} remove shadow
-          position='fixed'
-          className={clsx(classes.appBar, {
-            [classes.appBarShift]: open
-          })}
-        > */}
-        <AppBar
-          // color="primary"
-          elevation={elevation} 
-          position='fixed'
-          // className={clsx(classes.appBar, !open && classes.hide)}
-          // className={clsx(classes.appBar)}
-          className={classes.appBar}
-        >
-          <Toolbar>
-            {/* <IconButton
-              color='inherit'
-              aria-label='open drawer'
-              onClick={handleDrawerOpen}
-              edge='start'
-              className={clsx(classes.menuButton, open && classes.hide)}
-            >
-              <MenuIcon />
-            </IconButton> */}
-            <Typography noWrap className={classes.selector}>
-              {/* <Selector></Selector> */}
-              <SelectorContainer dataURL='static/data/selector/userOptions.json'></SelectorContainer>
-            </Typography>
-            {/* <Selector className={classes.selector}></Selector> */}
-          </Toolbar>
-        </AppBar>
-        <Drawer
-          className={classes.drawer}
-          variant='persistent'
-          anchor='left'
-          open={true}
-          classes={{
-            paper: classes.drawerPaper
-          }}
-        >
-          <div className={classes.drawerHeader}>
-            {/* <IconButton onClick={handleDrawerClose} className={classes.drawerHeaderIcon}>
-              {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-            </IconButton> */}
-            {/* <Avatar alt='logo' src="/static/header_logo.png" variant="square"></Avatar> */}
+      <CssBaseline />
+      <AppBar
+        elevation={elevation}
+        position="fixed"
+        className={clsx(classes.appBar, {
+          [classes.appBarShift]: open,
+        })}
+      >
+        <Toolbar>
+          <IconButton
+            // color="inherit"
+            aria-label="open drawer"
+            onClick={handleDrawerOpen}
+            edge="start"
+            className={clsx(classes.menuButton, {
+              [classes.hide]: open,
+            })}
+          >
+            <MenuIcon />
+          </IconButton>
             <img alt='logo' src="/static/header_logo.png" width="50px"></img>
-            <Typography variant='h6' noWrap className={classes.drawerHeaderTitle}>
+            <Typography variant='h6' className={classes.drawerHeaderTitle}>
               Cloud Exchange
             </Typography>
-          </div>
-          <Divider className={classes.divider}/>
-          <MenuContainer url={'/static/data/layout.json'}></MenuContainer>
-        </Drawer>
-        <main
-          className={clsx(classes.content, {
-            [classes.contentShift]: open
-          })}
-        >
-          <div className={classes.drawerHeader} />
-          <PageHeaderContainer></PageHeaderContainer>
-          {/* page component */}
-          {props.children}
-
-        </main>
-      </div>
-    
+                   <Typography noWrap className={classes.selector}>
+               {/* <Selector></Selector> */}
+               <SelectorContainer dataURL='static/data/selector/userOptions.json'></SelectorContainer>
+            </Typography>
+        </Toolbar>
+      </AppBar>
+      <Drawer
+        variant="permanent"
+        className={clsx(classes.drawer, {
+          [classes.drawerOpen]: open,
+          [classes.drawerClose]: !open,
+        })}
+        classes={{
+          paper: clsx(classes.drawerPaper,{
+            [classes.drawerOpen]: open,
+            [classes.drawerClose]: !open,
+          }),
+        }}
+      >
+        <div className={classes.toolbar}>
+          <IconButton onClick={handleDrawerClose} className={classes.openButton}>
+            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+          </IconButton>
+        </div>
+        <Divider />
+        <MenuContainer url={'/static/data/layout.json'}></MenuContainer>
+      </Drawer>
+      <main className={classes.content}>
+        <div className={classes.toolbar} />
+        <PageHeaderContainer></PageHeaderContainer>
+           {/* page component */}
+           {props.children}
+      </main>
+    </div>
   )
 }
