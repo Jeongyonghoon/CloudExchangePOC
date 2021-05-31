@@ -145,7 +145,6 @@ export default function Layout (props) {
   useEffect(() => {
     window.onscroll = () => {
       setOffset(window.pageYOffset);
-      console.log(open);
       if(window.pageYOffset==0){
         handleGnbClose();
       }else{
