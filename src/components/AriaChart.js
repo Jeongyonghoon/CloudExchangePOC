@@ -36,14 +36,16 @@ const AriaChart = (props) => {
 
     type : 'line',
 
-    title : {
-      display : true,
-      text : props.data.title
-    },
+    // title : {
+    //   display : true,
+    //   text : props.data.title
+    // },
     responsive: true,
     tooltips: {
       mode: 'index',
       intersect: false,
+      // titleFontFamily : '맑은고딕, Malgun Gothic, dotum, gulim, sans-serif',
+      // bodyFontFamily : '맑은고딕, Malgun Gothic, dotum, gulim, sans-serif'
     },
 
     elements: {
@@ -58,6 +60,12 @@ const AriaChart = (props) => {
           beginAtZero: true
         }
       }]
+    },
+
+    legend : {
+      labels : {
+        // fontFamily : "맑은고딕, Malgun Gothic, dotum, gulim, sans-serif"
+      }
     }
   }
 

@@ -1,18 +1,17 @@
 import React, {useEffect, useState} from 'react'
 import clsx from 'clsx'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
-import { Selector } from '.'
-import {MenuContainer, PageHeaderContainer} from '../containers'
+import {MenuContainer, PageHeaderContainer, SelectorContainer} from '../containers'
 import Drawer from '@material-ui/core/Drawer'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import Divider from '@material-ui/core/Divider'
-import IconButton from '@material-ui/core/IconButton'
-import MenuIcon from '@material-ui/icons/Menu'
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
-import ChevronRightIcon from '@material-ui/icons/ChevronRight'
+import { defaults } from 'react-chartjs-2'
+
+defaults.global.defaultFontFamily = '맑은고딕, Malgun Gothic, dotum, gulim, sans-serif'
+defaults.global.defaultFontSize = 12
 
 const drawerWidth = 250
 
@@ -46,12 +45,13 @@ const useStyles = makeStyles((theme) => ({
     // backgroundColor : '#232f3e',
     // backgroundColor : '#233044',
     backgroundColor : '#ffffff',
-    textAlign : 'center'
+    marginLeft: drawerWidth
   },
-  appBarHeader : {
-    color : '#eeeeee',
-    // marginLeft: drawerWidth,
-  },
+
+  // appBarHeader : {
+  //   color : '#eeeeee',
+  //   marginLeft: drawerWidth,
+  // },
   // appBarShift: {
   //   width: `calc(100% - ${drawerWidth}px)`,
   //   marginLeft: drawerWidth,
@@ -121,6 +121,10 @@ const useStyles = makeStyles((theme) => ({
     //   duration: theme.transitions.duration.enteringScreen
     // }),
     marginLeft: 0
+  },
+
+  selector : {
+    marginLeft : '80%'
   }
 
 }))
@@ -144,7 +148,6 @@ export default function Layout (props) {
 
   useEffect(() => {
     window.onscroll = () => {
-      setOffset(window.pageYOffset);
       if(window.pageYOffset==0){
         handleGnbClose();
       }else{
@@ -183,7 +186,8 @@ export default function Layout (props) {
           elevation={elevation} 
           position='fixed'
           // className={clsx(classes.appBar, !open && classes.hide)}
-          className={clsx(classes.appBar)}
+          // className={clsx(classes.appBar)}
+          className={classes.appBar}
         >
           <Toolbar>
             {/* <IconButton
@@ -195,10 +199,11 @@ export default function Layout (props) {
             >
               <MenuIcon />
             </IconButton> */}
-            {/* <Typography variant='h1' noWrap className={classes.appBarHeader}>
-              <Selector></Selector>
-            </Typography> */}
-            <Selector></Selector>
+            <Typography noWrap className={classes.selector}>
+              {/* <Selector></Selector> */}
+              <SelectorContainer dataURL='static/data/selector/userOptions.json'></SelectorContainer>
+            </Typography>
+            {/* <Selector className={classes.selector}></Selector> */}
           </Toolbar>
         </AppBar>
         <Drawer

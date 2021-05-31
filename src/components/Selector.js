@@ -1,10 +1,10 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import NativeSelect from '@material-ui/core/NativeSelect';
+import FormHelperText from '@material-ui/core/FormHelperText';
 
 const useStyles = makeStyles((theme) => ({
 
@@ -14,53 +14,77 @@ const useStyles = makeStyles((theme) => ({
     },
 
     selectEmpty: {
-        marginTop: theme.spacing(2),
+        // marginTop: theme.spacing(2),
     },
 
 }));
 
 
-export default function Selector() {
+export default function Selector(props) {
 
   const classes = useStyles();
   const [state, setState] = React.useState({
-    name: '',
+    user: '',
   });
 
+  const {label, options} = props
   const handleChange = (event) => {
-    const name = event.target.name;
+    const user = event.target.name;
     setState({
       ...state,
-      [name]: event.target.value,
+      [user]: event.target.value,
     });
   };
 
+  const mapSelectOptions = (options) => (
+    options.map(
+      (option) => <option value={option.id}>{option.username}</option>
+    )
+  )
+  
+
   return (
-    <div style={{marginLeft : '75%'}}>
-      <FormControl variant="outlined" className={classes.formControl} size='small' style={{minWidth: 340}}>
+    <div>
+      {/* <FormControl variant="outlined" className={classes.formControl} size='small' style={{minWidth: 250}}>
         <InputLabel 
           htmlFor="outlined-age-native-simple"
           style={{
             fontSize : '12px',
-            lineHeight : '16px'
-        }}>Name</InputLabel>
+            lineHeight : '14px'
+        }}>{label}</InputLabel>
         <Select
           native
-          value={state.age}
+          value={state.user}
           onChange={handleChange}
-          label="Name"
+          label="User"
           inputProps={{
-            name: 'age'
+            name: 'user',
+            id: 'user-native-simple',
           }}
           style={{
               fontSize : '12px',
-              lineHeight : '16px'
+              lineHeight : '14px'
           }}
         >
           <option aria-label="None" value="" />
-          <option value={10}>코오롱베니트 (이광훈)</option>
-          <option value={20}>코오롱베니트 (정용훈)</option>
+          {mapSelectOptions(options)}
         </Select>
+      </FormControl> */}
+      <FormControl className={classes.formControl} size='small' style={{minWidth: 250}}>
+        <NativeSelect
+          value={state.user}
+          onChange={handleChange}
+          name="user"
+          className={classes.selectEmpty}
+          inputProps={{ 'aria-label': 'user' }}
+          style={{
+            fontSize : '12px',
+            lineHeight : '14px'
+          }}
+        >
+          {mapSelectOptions(options)}
+        </NativeSelect>
+        {/* <FormHelperText>With visually hidden label</FormHelperText> */}
       </FormControl>
     </div>
   )

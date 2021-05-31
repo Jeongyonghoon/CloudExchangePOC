@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {AriaChart, BoxHeader} from '../components';
+import {AriaChart, BoxHeader, Progress} from '../components';
 import axios from 'axios';
 
 /**
@@ -11,7 +11,10 @@ class AriaChartContainer extends Component{
 
     constructor(props) {
         super(props)
-        this.state = ({data: null})
+        this.state = ({
+            data: null,
+            completed : 0
+        })
         // this.state = ({data: {}})
     }
 
@@ -25,7 +28,7 @@ class AriaChartContainer extends Component{
     }
 
     componentDidMount() {
-        this.initialize(this.props.dataURL)
+        setTimeout(()=>this.initialize(this.props.dataURL), 5000)
     }   
 
     getAriaChartData = (data) => {
@@ -62,16 +65,18 @@ class AriaChartContainer extends Component{
 
     render(){
 
-        if(!this.state.data) return null
-        
+        if(!this.state.data) {
+            return (
+                <>
+                    <Progress></Progress>
+                </>
+            ) 
+        }
+
         return(
             <>  
                 <BoxHeader title={this.state.data.title}></BoxHeader>
                 <AriaChart data={this.getAriaChartData(this.state.data)} height={80}></AriaChart>
-                
-                {/* <BoxHeader ></BoxHeader>
-                <AriaChart height={80}></AriaChart> */}
-
             </>
         )
     }

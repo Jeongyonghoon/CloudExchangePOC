@@ -13,6 +13,7 @@ class DailyProductBillingList extends Component {
               dataURL={'http://localhost:3100/static/data/daily/dailyBillingRatio.json'}
               chartType={'doughnut'}
               sliderDisplay={false}
+              chartHeight={'275%'}
             ></ChartContainer>
           </ComponentBox>
 
