@@ -1,10 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { BarChart, BoxHeader, ChartSlider, DoughnutChart } from '../components'
-<<<<<<< HEAD
 import { ThemeContext } from "styled-components";
-=======
 import {useDispatch, useSelector} from 'react-redux'
->>>>>>> 9c451f7d99e162319f1975f6a0265a509a5a8086
 
 const axios = require('axios')
 /*
