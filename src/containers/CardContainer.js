@@ -87,17 +87,9 @@ const CardContainer = props => {
   }, [cardData])
 
   return (
-
-    <>
-      <div style={{ display: 'flex' }}>
-        {viewData}
-      </div>
-
-      <div>
-        <button onClick={onClickTest}>++</button>
-        <button onClick={onClickTest2}>--</button>
-      </div>
-    </>
+    <div style={{ display: 'flex' }}>
+      {viewData}
+    </div>
   )
 }
 export default CardContainer

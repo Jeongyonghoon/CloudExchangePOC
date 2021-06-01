@@ -1,12 +1,11 @@
+export const GET_USER_LIST = 'GET_USER_LIST'
+export const SET_USER_KEY = 'SET_USER_KEY'
 const axios = require('axios')
 
 export const initialState = {
   userList: [],
-  key:0,
+  urlKey:0,
 }
-
-export const GET_USER_LIST = 'GET_USER_LIST'
-export const SET_USER_KEY = 'SET_USER_KEY'
 
 export const userListAction = () => {
   return async function (dispatch, getState) {
@@ -15,18 +14,9 @@ export const userListAction = () => {
   }
 }
 
-export const userKeyAction = state => {
-  if(0==0){
-    return{
-      type:SET_USER_KEY,
-      payload:1,
-    }
-  }
-  else{
-    return{
-      type:SET_USER_KEY,
-      payload:0,
-    }
+export const userKeyAction = urlKey => {
+  return function (dispatch, getState){
+    dispatch({type:SET_USER_KEY, payload:urlKey})
   }
 }
 
@@ -40,7 +30,7 @@ const reducer = (state = initialState, action) => {
     case SET_USER_KEY:
       return {
         ...state,
-        key: action.payload,
+        urlKey: action.payload,
       }
     default:
       return state
