@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import {ComponentRow, ComponentBox} from '../src/components'
+import {ComponentRow, ComponentBox, PageHeader} from '../src/components'
 import { AriaChartContainer, CloudTableContainer} from '../src/containers'
 
 class AccountBillingList extends Component {
   render () {
     return (
       <>
+        <PageHeader title={'클라우드 계정별 요금'}></PageHeader>
         <ComponentRow>
           <ComponentBox width={'100%'}>
             <AriaChartContainer dataURL={'http://localhost:3100/static/data/account/accountBilling.json'}></AriaChartContainer>

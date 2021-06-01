@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
-import { ComponentRow, ComponentBox, CloudTable } from '../src/components'
+import { ComponentRow, ComponentBox, CloudTable, PageHeader } from '../src/components'
 import {ChartContainer, CloudTableContainer} from '../src/containers'
 
-class CloudBillingList extends Component {
+class Product extends Component {
   render () {
 
     return (
       <>
+        <PageHeader title={'클라우드 상품 요금'}></PageHeader>
         <ComponentRow>
           <ComponentBox height={'50%'}>
             <ChartContainer
@@ -31,4 +32,4 @@ class CloudBillingList extends Component {
   }
 }
 
-export default CloudBillingList
+export default Product

@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 
 import { AriaChartContainer, CardContainer, ChartContainer, CloudTableContainer } from '../src/containers'
-import { CloudTable, ComponentBox, ComponentRow } from '../src/components'
+import { CloudTable, ComponentBox, ComponentRow, PageHeader } from '../src/components'
 
 class Dashboard extends Component {
   render () {
     return (
       <>
+        <PageHeader title={'대시보드'}></PageHeader>
         <CardContainer
           // dataURL={'http://localhost:8000/CardData'}
           dataURL={'http://172.18.10.136:8000/CardData'}

@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
-import {ComponentRow, ComponentBox} from '../src/components'
+import {ComponentRow, ComponentBox, PageHeader} from '../src/components'
 import {ChartContainer, AriaChartContainer, CloudTableContainer} from '../src/containers'
 
-class DailyProductBillingList extends Component {
+class Daily extends Component {
   
   render () {
     return (
       <>
-        <ComponentRow>
-          <ComponentBox width={'35%'} marginRight={'20px'}>
+        <PageHeader title={'일별 클라우드 상품 요금'}></PageHeader>
+        <ComponentRow spacing={2}>
+          <ComponentBox width={'35%'} spacing={2}>
             <ChartContainer
               dataURL={'http://localhost:3100/static/data/daily/dailyBillingRatio.json'}
               chartType={'doughnut'}
@@ -17,7 +18,7 @@ class DailyProductBillingList extends Component {
             ></ChartContainer>
           </ComponentBox>
 
-          <ComponentBox width={'65%'}>
+          <ComponentBox width={'65%'} spacing={2}>
             <ChartContainer
               dataURL={'http://localhost:3100/static/data/daily/dailyBillingSummary.json'}
               chartType={'bar'}
@@ -26,14 +27,14 @@ class DailyProductBillingList extends Component {
           </ComponentBox>
         </ComponentRow>
 
-        <ComponentRow>
-          <ComponentBox width={'100%'} marginTop={'30px'} >
+        <ComponentRow spacing={2}>
+          <ComponentBox width={'100%'}  spacing={2}>
             <AriaChartContainer dataURL={'http://localhost:3100/static/data/daily/dailyCloudBilling.json'}></AriaChartContainer>
           </ComponentBox>
         </ComponentRow>
 
-        <ComponentRow>
-          <ComponentBox width={'100%'} marginTop={'30px'} marginBottom={'20px'}>
+        <ComponentRow spacing={2}>
+          <ComponentBox width={'100%'} spacing={2}>
             <CloudTableContainer
               dataURL={'http://localhost:3100/static/data/daily/dailyCloudBillingDetail.json'}
               width={'100%'}
@@ -45,4 +46,4 @@ class DailyProductBillingList extends Component {
   }
 }
 
-export default DailyProductBillingList
+export default Daily
