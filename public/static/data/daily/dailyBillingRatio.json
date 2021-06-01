@@ -1,6 +1,6 @@
 [
     {
-        "price": 1,
+        "price": 50,
         "date": "Elastic Load Balancing"
     },
     {
@@ -20,7 +20,7 @@
         "date": "Virtual Private Cloud"
     },
     {
-        "price": 50,
+        "price": 1,
         "date": "Simple Storage Service"
     }
 ]

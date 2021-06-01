@@ -166,6 +166,8 @@ const useStyles = makeStyles((theme) => ({
   // }
 
   appBar: {
+    marginLeft: 56,
+    width: `calc(100% - ${56}px)`,
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
@@ -189,12 +191,14 @@ const useStyles = makeStyles((theme) => ({
     marginLeft : '40%'
   },
   menuButton: {
-    marginRight: 36,
-    color : '#233044'
+    // marginRight: 36,
+    color : '#eeeeee',
+    padding : 8
   },
 
   openButton: {
-    color : '#eeeeee'
+    color : '#eeeeee',
+    padding : 8
   },
 
   hide: {
@@ -203,7 +207,8 @@ const useStyles = makeStyles((theme) => ({
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
-    whiteSpace: 'nowrap'
+    whiteSpace: 'nowrap',
+    zIndex : 5000
   },
 
   drawerPaper: {
@@ -251,6 +256,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export default function Layout (props) {
+
   const classes = useStyles()
   const theme = useTheme()
 
@@ -274,6 +280,7 @@ export default function Layout (props) {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
   useEffect(() => {
     window.onscroll = () => {
       if(window.pageYOffset==0){
@@ -378,17 +385,6 @@ export default function Layout (props) {
         })}
       >
         <Toolbar>
-          <IconButton
-            // color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            className={clsx(classes.menuButton, {
-              [classes.hide]: open,
-            })}
-          >
-            <MenuIcon />
-          </IconButton>
             <img alt='logo' src="/static/header_logo.png" width="50px"></img>
             <Typography variant='h5' noWrap className={classes.drawerHeaderTitle}>
               Cloud Exchange
@@ -412,9 +408,23 @@ export default function Layout (props) {
         }}
       >
         <div className={classes.toolbar}>
-          <IconButton onClick={handleDrawerClose} className={classes.openButton}>
+          {
+            open ? <IconButton onClick={handleDrawerClose} className={classes.openButton}>
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-          </IconButton>
+          </IconButton> : 
+          <IconButton
+          // color="inherit"
+          aria-label="open drawer"
+          onClick={handleDrawerOpen}
+          edge="start"
+          className={clsx(classes.menuButton, {
+            [classes.hide]: open,
+          })}
+        >
+          <MenuIcon />
+        </IconButton>
+          }
+
         </div>
         <Divider />
         <MenuContainer url={'/static/data/layout.json'}></MenuContainer>

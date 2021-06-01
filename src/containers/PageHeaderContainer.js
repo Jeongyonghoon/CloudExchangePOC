@@ -10,7 +10,6 @@ class PageHeaderContainer extends Component{
     }
     
     render(){
-
         return(
             <PageHeader title={this.getTitle(this.props.router.pathname)}></PageHeader>
         );

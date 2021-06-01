@@ -7,7 +7,7 @@ import { withRouter } from 'next/router'
 import App from 'next/app'
 import createStore from 'store/createStore'
 import Layout from 'components/Layout'
-import theme from '../src/theme'
+import theme from 'theme'
 import {MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles'
 import '../src/index.css'
 

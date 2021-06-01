@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { BarChart, BoxHeader, ChartSlider, DoughnutChart } from '../components'
+import { ThemeContext } from "styled-components";
 
 const axios = require('axios')
 
@@ -30,6 +31,15 @@ const ChartContainer = props => {
   const width = props.width
   const chartColor = props.chartColor
   const chartHeight = props.chartHeight
+  
+  // global color
+  const themeContext = useContext(ThemeContext)
+  const paletteKeys = Object.keys(themeContext.palette)
+  const colors = paletteKeys.map(
+    key => (themeContext.palette[key])
+  )
+
+
 
   /* Chart data */
   const [chartValueData, setChartValueData] = useState([])
@@ -106,11 +116,23 @@ const ChartContainer = props => {
     <>
       <BoxHeader></BoxHeader>
 
-      <div style={{ width: '80%', margin: 'auto', marginTop: '3%' }}>
+      {/* <div style={{ width: '80%', margin: 'auto', marginTop: '3%' }}>
         {chartType === 'bar' && <BarChart chartHeight={chartHeight} chartColor={chartColor} labelData={chartLabelData}
                                           valueData={chartValueData}/>}
         {chartType === 'doughnut' &&
         <DoughnutChart chartHeight={chartHeight} labelData={chartLabelData} valueData={chartValueData}/>}
+
+        <div style={{ width: '100%', margin: 'auto' }}>
+          {sliderDisplay &&
+          <ChartSlider labelData={labelData} dataCount={dataCount} viewCount={viewCount} handleChange={handleChange}/>}
+        </div>
+      
+      </div> */}
+      <div style={{ width: '80%', margin: 'auto', marginTop: '3%' }}>
+        {chartType === 'bar' && <BarChart chartHeight={chartHeight} chartColor={colors[0]} labelData={chartLabelData}
+                                          valueData={chartValueData}/>}
+        {chartType === 'doughnut' &&
+        <DoughnutChart chartHeight={chartHeight} labelData={chartLabelData} valueData={chartValueData} chartColor={colors}/>}
 
         <div style={{ width: '100%', margin: 'auto' }}>
           {sliderDisplay &&

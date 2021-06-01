@@ -14,11 +14,6 @@ import Styled from 'styled-components'
 const HeadText = Styled.text`
     color: black;
     font-weight: 1000;
-    font-family: twayair;
-`
-
-const ContentText = Styled.text`
-    font-family: twayair;
 `
 
 const getRaw = dataList => {
@@ -27,17 +22,13 @@ const getRaw = dataList => {
     if (typeof dataList[raw] === 'number') {
       getData.push(
         <TableCell>
-          <ContentText>
             <CardNumber number={dataList[raw]}/>
-            </ContentText>
         </TableCell>
       )
     } else {
       getData.push(
         <TableCell>
-          <ContentText>
             {dataList[raw]}
-          </ContentText>
         </TableCell>
       )
     }
