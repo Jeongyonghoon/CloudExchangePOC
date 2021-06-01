@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import {AriaChartContainer} from '../src/containers';
-import {ComponentRow, ComponentBox} from '../src/components';
+import {ComponentRow, ComponentBox, PageHeader} from '../src/components';
 
 class Invoice extends Component {
   render () {
 
     return (
       <>
+        <PageHeader title={'월별 청구서'}></PageHeader>
+
       </>
     )
   }

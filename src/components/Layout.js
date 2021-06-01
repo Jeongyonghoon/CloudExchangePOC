@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
       textDecoration: 'none',
       color: 'inherit'
     },
-    padding : '0 20px 0 20px',
+    // padding : '0 20px 0 20px',
     backgroundColor : '#f7f9fc',
     flexGrow : 1
   },
@@ -431,7 +431,7 @@ export default function Layout (props) {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <PageHeaderContainer></PageHeaderContainer>
+        {/* <PageHeaderContainer></PageHeaderContainer> */}
            {/* page component */}
            {props.children}
       </main>
