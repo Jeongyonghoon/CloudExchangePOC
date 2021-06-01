@@ -3,8 +3,7 @@ const axios = require('axios')
 export const initialState = {
   userList: [],
   key:0,
-} // 처음 state값으로 count 0을 주었다. state값은 객체, 배열로도 사용할 수 있다.
-
+}
 
 export const GET_USER_LIST = 'GET_USER_LIST'
 export const SET_USER_KEY = 'SET_USER_KEY'

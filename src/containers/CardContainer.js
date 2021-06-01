@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback } from 'react'
 import { Card } from '../components'
 
 import { useDispatch, useSelector } from 'react-redux';
-import { userListAction, userKeyAction } from '../reducers/count'
+import { userListAction, userKeyAction } from '../reducers/user'
 
 
 const axios = require('axios')
@@ -11,7 +11,7 @@ const CardColor = ['#FF6666', '#3366CC', '#FFFF66', '#555555', '#33CC33', '#FF99
 
 const CardContainer = props => {
   const dispatch = useDispatch();
-  const userList = useSelector(state => state.count.userList);
+  const userList = useSelector(state => state.user.userList);
 
   const [cardData, setCardData] = useState([])
   const [viewData, setViewData] = useState([])
