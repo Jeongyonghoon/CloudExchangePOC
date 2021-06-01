@@ -1,11 +1,13 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { BarChart, BoxHeader, ChartSlider, DoughnutChart } from '../components'
+<<<<<<< HEAD
 import { ThemeContext } from "styled-components";
+=======
+import {useDispatch, useSelector} from 'react-redux'
+>>>>>>> 9c451f7d99e162319f1975f6a0265a509a5a8086
 
 const axios = require('axios')
-
 /*
-
 - Data 형식 -
 {
   "Date"  : String
@@ -16,14 +18,16 @@ const axios = require('axios')
 API URL (dataURL)             : String
 SliderDisplay (sliderDisplay) : boolean
 Type (chartType)              : 'pie' or 'bar' or 'line'
-
 */
 
 const ChartContainer = props => {
+  const dispatch = useDispatch()
+  const urlKey = useSelector(state => state.user.urlKey)
 
   const [labelData] = useState([])
   const [valueData] = useState([])
   const [chartTitle, setChartTitle] = useState('default')
+  const [userKey, setUserKey] = useState(0)
 
   const chartType = props.chartType
   const sliderDisplay = props.sliderDisplay
@@ -67,7 +71,6 @@ const ChartContainer = props => {
 
   /* ----------- componentDidMount ----------- */
   const setChartData = chartData => {
-    console.log(chartData + ' check ')
     chartData.forEach(function (item) {
       valueData.push(item['price'])
       labelData.push(item['date'])
@@ -76,9 +79,10 @@ const ChartContainer = props => {
     setChartLabelData(labelData)
   }
 
-  const getData = async () => {
+  const getData = async (apiKey) => {
     try {
-      const result = await axios.get(dataURL)
+      if(apiKey===undefined) apiKey=0;
+      const result = await axios.get(dataURL+ `/${apiKey}`)
 
       /* props data setting */
       setChartData(result.data)
@@ -94,8 +98,9 @@ const ChartContainer = props => {
   }
 
   useEffect(() => {
-    getData()
+    getData(0)
   }, [])
+
   /* ----------- componentDidMount ----------- */
 
   /* ------------------------------------------------------------------------------------------------------------------ */
@@ -105,6 +110,14 @@ const ChartContainer = props => {
     e.preventDefault() // 애는 뭐하는 애인지 찾아봐
     setViewCount(newValue)
   }
+
+  useEffect(()=>{
+    setUserKey(urlKey)
+  },[urlKey])
+
+  useEffect(()=>{
+    getData(userKey)
+  },[userKey])
   //preventDefault, stopPropagation
 
   useEffect(() => {
