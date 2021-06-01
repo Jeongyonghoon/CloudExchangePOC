@@ -27,7 +27,8 @@ const useStyles = makeStyles((theme) => ({
       color: 'inherit'
     },
     padding : '0 20px 0 20px',
-    backgroundColor : '#f7f9fc'
+    backgroundColor : '#f7f9fc',
+    flexGrow : 1
   },
   
   // appBar: {
@@ -231,7 +232,9 @@ const useStyles = makeStyles((theme) => ({
   drawerHeaderTitle : {
     color : '#000000',
     padding : '0.6em',
-    fontSize : '1.2rem'
+    // fontSize : '1.2rem'
+    fontWeight : 'bold',
+    flexGrow : 1
   },
   toolbar: {
     display: 'flex',
@@ -387,12 +390,11 @@ export default function Layout (props) {
             <MenuIcon />
           </IconButton>
             <img alt='logo' src="/static/header_logo.png" width="50px"></img>
-            <Typography variant='h6' className={classes.drawerHeaderTitle}>
+            <Typography variant='h5' noWrap className={classes.drawerHeaderTitle}>
               Cloud Exchange
             </Typography>
-                   <Typography noWrap className={classes.selector}>
-               {/* <Selector></Selector> */}
-               <SelectorContainer dataURL='static/data/selector/userOptions.json'></SelectorContainer>
+            <Typography className={classes.selector}>
+              <SelectorContainer dataURL='static/data/selector/userOptions.json'></SelectorContainer>
             </Typography>
         </Toolbar>
       </AppBar>

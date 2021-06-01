@@ -37,12 +37,13 @@ class PageHeader extends Component {
       //     <div>test</div>
       // </div>
       <>
-        <Typography variant="h5" component="h2">
+        <Typography variant="h5" style={{fontSize : '1.1rem'}}>
           {this.props.title}
         </Typography>
         <Divider 
           style={{
-            marginTop : '20px'
+            marginTop : '20px',
+            marginBottom : '20px'
           }}></Divider>
       </>
     )
