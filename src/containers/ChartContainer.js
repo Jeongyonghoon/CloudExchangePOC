@@ -57,7 +57,6 @@ const ChartContainer = props => {
 
   /* ----------- componentDidMount ----------- */
   const setChartData = chartData => {
-    console.log(chartData + ' check ')
     chartData.forEach(function (item) {
       valueData.push(item['price'])
       labelData.push(item['date'])
