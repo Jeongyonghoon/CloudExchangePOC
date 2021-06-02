@@ -1,17 +1,17 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import clsx from 'clsx'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
-import {MenuContainer, PageHeaderContainer, SelectorContainer} from '../containers'
+import { MenuContainer, PageHeaderContainer, SelectorContainer } from '../containers'
 import Drawer from '@material-ui/core/Drawer'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import Divider from '@material-ui/core/Divider'
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import IconButton from '@material-ui/core/IconButton'
+import MenuIcon from '@material-ui/icons/Menu'
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
+import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 import { defaults } from 'react-chartjs-2'
 
 defaults.global.defaultFontFamily = '맑은고딕, Malgun Gothic, dotum, gulim, sans-serif'
@@ -26,11 +26,11 @@ const useStyles = makeStyles((theme) => ({
       textDecoration: 'none',
       color: 'inherit'
     },
-    padding : '0 20px 0 20px',
-    backgroundColor : '#f7f9fc',
-    flexGrow : 1
+    padding: '0 20px 0 20px',
+    backgroundColor: '#f7f9fc',
+    flexGrow: 1
   },
-  
+
   // appBar: {
   //   // transition: theme.transitions.create(['margin', 'width'], {
   //   //   easing: theme.transitions.easing.sharp,
@@ -173,11 +173,11 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    top : 0,
+    top: 0,
     // backgroundColor : '#1976d2',
     // backgroundColor : '#232f3e',
     // backgroundColor : '#233044',
-    backgroundColor : '#ffffff'
+    backgroundColor: '#ffffff'
   },
   appBarShift: {
     marginLeft: drawerWidth,
@@ -187,18 +187,18 @@ const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.enteringScreen,
     }),
   },
-  selector : {
-    marginLeft : '40%'
+  selector: {
+    marginLeft: '40%'
   },
   menuButton: {
     // marginRight: 36,
-    color : '#eeeeee',
-    padding : 8
+    color: '#eeeeee',
+    padding: 8
   },
 
   openButton: {
-    color : '#eeeeee',
-    padding : 8
+    color: '#eeeeee',
+    padding: 8
   },
 
   hide: {
@@ -208,11 +208,11 @@ const useStyles = makeStyles((theme) => ({
     width: drawerWidth,
     flexShrink: 0,
     whiteSpace: 'nowrap',
-    zIndex : 5000
+    zIndex: 5000
   },
 
   drawerPaper: {
-    backgroundColor : '#233044'
+    backgroundColor: '#233044'
   },
 
   drawerOpen: {
@@ -232,14 +232,14 @@ const useStyles = makeStyles((theme) => ({
     // [theme.breakpoints.up('sm')]: {
     //   width: theme.spacing(9) + 1,
     // },
-    width : 56
+    width: 56
   },
-  drawerHeaderTitle : {
-    color : '#000000',
-    padding : '0.6em',
+  drawerHeaderTitle: {
+    color: '#000000',
+    padding: '0.6em',
     // fontSize : '1.2rem'
-    fontWeight : 'bold',
-    flexGrow : 1
+    fontWeight: 'bold',
+    flexGrow: 1
   },
   toolbar: {
     display: 'flex',
@@ -255,7 +255,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-export default function Layout (props) {
+const Layout = props => {
 
   const classes = useStyles()
   const theme = useTheme()
@@ -271,22 +271,22 @@ export default function Layout (props) {
 
   const handleGnbClose = () => {
     setElevation(0)
-  } 
+  }
 
   const handleDrawerOpen = () => {
-    setOpen(true);
-  };
+    setOpen(true)
+  }
 
   const handleDrawerClose = () => {
-    setOpen(false);
-  };
+    setOpen(false)
+  }
 
   useEffect(() => {
     window.onscroll = () => {
-      if(window.pageYOffset==0){
-        handleGnbClose();
-      }else{
-        handleGnbOpen();
+      if (window.pageYOffset == 0) {
+        handleGnbClose()
+      } else {
+        handleGnbOpen()
       }
     }
   }, [])
@@ -305,78 +305,78 @@ export default function Layout (props) {
   // }
 
   return (
-    
-      // <div className={classes.root}>
-      //   <CssBaseline />
-      //   {/* <AppBar
-      //     // color="primary"
-      //     // elevation={0} remove shadow
-      //     position='fixed'
-      //     className={clsx(classes.appBar, {
-      //       [classes.appBarShift]: open
-      //     })}
-      //   > */}
-      //   <AppBar
-      //     // color="primary"
-      //     elevation={elevation} 
-      //     position='fixed'
-      //     // className={clsx(classes.appBar, !open && classes.hide)}
-      //     // className={clsx(classes.appBar)}
-      //     className={classes.appBar}
-      //   >
-      //     <Toolbar>
-      //       {/* <IconButton
-      //         color='inherit'
-      //         aria-label='open drawer'
-      //         onClick={handleDrawerOpen}
-      //         edge='start'
-      //         className={clsx(classes.menuButton, open && classes.hide)}
-      //       >
-      //         <MenuIcon />
-      //       </IconButton> */}
-      //       <Typography noWrap className={classes.selector}>
-      //         {/* <Selector></Selector> */}
-      //         <SelectorContainer dataURL='static/data/selector/userOptions.json'></SelectorContainer>
-      //       </Typography>
-      //       {/* <Selector className={classes.selector}></Selector> */}
-      //     </Toolbar>
-      //   </AppBar>
-      //   <Drawer
-      //     className={classes.drawer}
-      //     variant='persistent'
-      //     anchor='left'
-      //     open={true}
-      //     classes={{
-      //       paper: classes.drawerPaper
-      //     }}
-      //   >
-      //     <div className={classes.drawerHeader}>
-      //       {/* <IconButton onClick={handleDrawerClose} className={classes.drawerHeaderIcon}>
-      //         {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-      //       </IconButton> */}
-      //       {/* <Avatar alt='logo' src="/static/header_logo.png" variant="square"></Avatar> */}
-      //       <img alt='logo' src="/static/header_logo.png" width="50px"></img>
-      //       <Typography variant='h6' noWrap className={classes.drawerHeaderTitle}>
-      //         Cloud Exchange
-      //       </Typography>
-      //     </div>
-      //     <Divider className={classes.divider}/>
-      //     <MenuContainer url={'/static/data/layout.json'}></MenuContainer>
-      //   </Drawer>
-      //   <main
-      //     className={clsx(classes.content, {
-      //       [classes.contentShift]: open
-      //     })}
-      //   >
-      //     <div className={classes.drawerHeader} />
-      //     <PageHeaderContainer></PageHeaderContainer>
-      //     {/* page component */}
-      //     {props.children}
 
-      //   </main>
-      // </div>
-      <div className={classes.root}>
-      <CssBaseline />
+    // <div className={classes.root}>
+    //   <CssBaseline />
+    //   {/* <AppBar
+    //     // color="primary"
+    //     // elevation={0} remove shadow
+    //     position='fixed'
+    //     className={clsx(classes.appBar, {
+    //       [classes.appBarShift]: open
+    //     })}
+    //   > */}
+    //   <AppBar
+    //     // color="primary"
+    //     elevation={elevation}
+    //     position='fixed'
+    //     // className={clsx(classes.appBar, !open && classes.hide)}
+    //     // className={clsx(classes.appBar)}
+    //     className={classes.appBar}
+    //   >
+    //     <Toolbar>
+    //       {/* <IconButton
+    //         color='inherit'
+    //         aria-label='open drawer'
+    //         onClick={handleDrawerOpen}
+    //         edge='start'
+    //         className={clsx(classes.menuButton, open && classes.hide)}
+    //       >
+    //         <MenuIcon />
+    //       </IconButton> */}
+    //       <Typography noWrap className={classes.selector}>
+    //         {/* <Selector></Selector> */}
+    //         <SelectorContainer dataURL='static/data/selector/userOptions.json'></SelectorContainer>
+    //       </Typography>
+    //       {/* <Selector className={classes.selector}></Selector> */}
+    //     </Toolbar>
+    //   </AppBar>
+    //   <Drawer
+    //     className={classes.drawer}
+    //     variant='persistent'
+    //     anchor='left'
+    //     open={true}
+    //     classes={{
+    //       paper: classes.drawerPaper
+    //     }}
+    //   >
+    //     <div className={classes.drawerHeader}>
+    //       {/* <IconButton onClick={handleDrawerClose} className={classes.drawerHeaderIcon}>
+    //         {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+    //       </IconButton> */}
+    //       {/* <Avatar alt='logo' src="/static/header_logo.png" variant="square"></Avatar> */}
+    //       <img alt='logo' src="/static/header_logo.png" width="50px"></img>
+    //       <Typography variant='h6' noWrap className={classes.drawerHeaderTitle}>
+    //         Cloud Exchange
+    //       </Typography>
+    //     </div>
+    //     <Divider className={classes.divider}/>
+    //     <MenuContainer url={'/static/data/layout.json'}></MenuContainer>
+    //   </Drawer>
+    //   <main
+    //     className={clsx(classes.content, {
+    //       [classes.contentShift]: open
+    //     })}
+    //   >
+    //     <div className={classes.drawerHeader} />
+    //     <PageHeaderContainer></PageHeaderContainer>
+    //     {/* page component */}
+    //     {props.children}
+
+    //   </main>
+    // </div>
+    <div className={classes.root}>
+      <CssBaseline/>
       <AppBar
         elevation={elevation}
         position="fixed"
@@ -385,13 +385,13 @@ export default function Layout (props) {
         })}
       >
         <Toolbar>
-            <img alt='logo' src="/static/header_logo.png" width="50px"></img>
-            <Typography variant='h5' noWrap className={classes.drawerHeaderTitle}>
-              Cloud Exchange
-            </Typography>
-            <Typography className={classes.selector}>
-              <SelectorContainer dataURL='static/data/selector/userOptions.json'></SelectorContainer>
-            </Typography>
+          <img alt="logo" src="/static/header_logo.png" width="50px"></img>
+          <Typography variant="h5" noWrap className={classes.drawerHeaderTitle}>
+            Cloud Exchange
+          </Typography>
+          <Typography className={classes.selector}>
+            <SelectorContainer dataURL="static/data/selector/userOptions.json"></SelectorContainer>
+          </Typography>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -401,7 +401,7 @@ export default function Layout (props) {
           [classes.drawerClose]: !open,
         })}
         classes={{
-          paper: clsx(classes.drawerPaper,{
+          paper: clsx(classes.drawerPaper, {
             [classes.drawerOpen]: open,
             [classes.drawerClose]: !open,
           }),
@@ -410,31 +410,33 @@ export default function Layout (props) {
         <div className={classes.toolbar}>
           {
             open ? <IconButton onClick={handleDrawerClose} className={classes.openButton}>
-            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-          </IconButton> : 
-          <IconButton
-          // color="inherit"
-          aria-label="open drawer"
-          onClick={handleDrawerOpen}
-          edge="start"
-          className={clsx(classes.menuButton, {
-            [classes.hide]: open,
-          })}
-        >
-          <MenuIcon />
-        </IconButton>
+                {theme.direction === 'rtl' ? <ChevronRightIcon/> : <ChevronLeftIcon/>}
+              </IconButton> :
+              <IconButton
+                // color="inherit"
+                aria-label="open drawer"
+                onClick={handleDrawerOpen}
+                edge="start"
+                className={clsx(classes.menuButton, {
+                  [classes.hide]: open,
+                })}
+              >
+                <MenuIcon/>
+              </IconButton>
           }
 
         </div>
-        <Divider />
+        <Divider/>
         <MenuContainer url={'/static/data/layout.json'}></MenuContainer>
       </Drawer>
       <main className={classes.content}>
-        <div className={classes.toolbar} />
+        <div className={classes.toolbar}/>
         <PageHeaderContainer></PageHeaderContainer>
-           {/* page component */}
-           {props.children}
+        {/* page component */}
+        {props.children}
       </main>
     </div>
   )
 }
+
+export default Layout

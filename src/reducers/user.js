@@ -4,19 +4,19 @@ const axios = require('axios')
 
 export const initialState = {
   userList: [],
-  urlKey:0,
+  urlKey: 0,
 }
 
 export const userListAction = () => {
   return async function (dispatch, getState) {
     const result = await axios.get(`http://localhost:8000/UserList`)
-    dispatch({type:GET_USER_LIST, payload:result.data})
+    dispatch({ type: GET_USER_LIST, payload: result.data })
   }
 }
 
 export const userKeyAction = urlKey => {
-  return function (dispatch, getState){
-    dispatch({type:SET_USER_KEY, payload:urlKey})
+  return function (dispatch, getState) {
+    dispatch({ type: SET_USER_KEY, payload: urlKey })
   }
 }
 
