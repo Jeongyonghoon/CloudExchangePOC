@@ -19,9 +19,9 @@ const ComponentBox = props => {
     // margin-bottom: ${props.marginBottom || '0px'};
     // margin-left: ${props.marginLeft || '0px'};
     // margin-right: ${props.marginRight || '0px'};
-    margin-left: ${spacing || '0px'};
-    margin-right: ${spacing || '0px'};
-    // margin : ${spacing || '0px'};
+    // margin-left: ${spacing || '0px'};
+    // margin-right: ${spacing || '0px'};
+    margin : ${spacing || '0px'};
   `
   return (
     <Box>

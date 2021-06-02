@@ -128,7 +128,8 @@ const ChartContainer = props => {
         </div>
       
       </div> */}
-      <div style={{ width: '80%', margin: 'auto', marginTop: '3%' }}>
+      {/* <div style={{ width: '80%', margin: 'auto', marginTop: '3%' }}> */}
+      <div style={{ width: '90%', margin: 'auto' }}>
         {chartType === 'bar' && <BarChart chartHeight={chartHeight} chartColor={colors[0]} labelData={chartLabelData}
                                           valueData={chartValueData}/>}
         {chartType === 'doughnut' &&

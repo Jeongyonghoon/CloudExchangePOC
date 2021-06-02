@@ -1,20 +1,20 @@
-import React, { Component } from 'react'
+import React from 'react'
 import {ComponentRow, ComponentBox, PageHeader} from '../src/components'
 import { AriaChartContainer, CloudTableContainer} from '../src/containers'
 
-class AccountBillingList extends Component {
-  render () {
-    return (
-      <>
+const Account = () => {
+
+  return(
+    <>
         <PageHeader title={'클라우드 계정별 요금'}></PageHeader>
         <ComponentRow>
-          <ComponentBox width={'100%'}>
+          <ComponentBox width={'100%'} spacing={2}>
             <AriaChartContainer dataURL={'http://localhost:3100/static/data/account/accountBilling.json'}></AriaChartContainer>
           </ComponentBox>
         </ComponentRow>
 
         <ComponentRow>
-          <ComponentBox width={'100%'} marginTop={'30px'} marginBottom={'20px'}>
+          <ComponentBox width={'100%'} spacing={2}>
             <CloudTableContainer
               dataURL={'http://localhost:3100/static/data/account/accountBillingDetail.json'}
               width={'100%'}
@@ -22,8 +22,7 @@ class AccountBillingList extends Component {
           </ComponentBox>
         </ComponentRow>
       </>
-    )
-  }
+  )
 }
 
-export default AccountBillingList
+export default Account

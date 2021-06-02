@@ -78,8 +78,8 @@ export default function Selector(props) {
           className={classes.selectEmpty}
           inputProps={{ 'aria-label': 'user' }}
           style={{
-            fontSize : '12px',
-            lineHeight : '14px'
+            fontSize : '14px',
+            lineHeight : '18px'
           }}
         >
           {mapSelectOptions(options)}
