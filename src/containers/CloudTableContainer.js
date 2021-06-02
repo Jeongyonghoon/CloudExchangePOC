@@ -5,22 +5,41 @@ const axios = require('axios')
 
 const CloudTableContainer = props => {
 
-  const [rawList, setRawList] = useState([])
-  const [colList, setColList] = useState([])
+  const [dataList, setDataList] = useState([])
+  const [headerList, setHeaderList] = useState([])
 
-  const dataURL = props.dataURL
-  const width = props.width
-
+  const headerDataURL = props.headerDataURL
+  const listDataURL = props.listDataURL
 
   const getData = async () => {
     try {
-      const result = (await axios.get(dataURL))
-      console.log(result.data + 'check')
-      setRawList(result.data['rawList'])
-      setColList(result.data['colList'])
+      const headResult = await axios.get(headerDataURL)
+      const dataResult = await axios.get(listDataURL)
+      setHeaderList(headResult.data)
+      setDataList(dataResult.data)
     } catch (e) {
-      console.log(e + 'check')
+      console.log(e + ' (CloudTableContainer.js Error!) ')
     }
+  }
+
+  const getTableHeader = data => {
+    const result = []
+    data.forEach(item => {
+      result.push(item['label'])
+    })
+    return result
+  }
+
+  const getTableData = data => {
+    const result = []
+    data.forEach(item => {
+      const row = []
+      headerList.forEach(name => {
+        row.push(item[name['value']])
+      })
+      result.push(row)
+    })
+    return result
   }
 
   useEffect(() => {
@@ -31,8 +50,8 @@ const CloudTableContainer = props => {
     <>
       <BoxHeader></BoxHeader>
       <CloudTable
-        colList={colList}
-        rawList={rawList}
+        headerList={getTableHeader(headerList)}
+        dataList={getTableData(dataList)}
       ></CloudTable>
     </>
   )

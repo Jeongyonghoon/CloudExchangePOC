@@ -36,10 +36,6 @@ const CardContainer = props => {
     setViewData(cardList)
   }
 
-  // useEffect(() => {
-  //   getData()
-  // }, [cardData])
-
   useEffect(() => {
     getData()
   }, [])

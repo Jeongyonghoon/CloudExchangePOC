@@ -16,33 +16,21 @@ const HeadText = Styled.text`
     font-weight: 1000;
 `
 
-const getRaw = dataList => {
-  const getData = []
-  for (let raw in dataList) {
-    if (typeof dataList[raw] === 'number') {
-      getData.push(
-        <TableCell>
-            <CardNumber number={dataList[raw]}/>
-        </TableCell>
-      )
-    } else {
-      getData.push(
-        <TableCell>
-            {dataList[raw]}
-        </TableCell>
-      )
-    }
-  }
-  return getData
-}
-
 const CloudTable = props => {
 
-  const colData = props.colList
-  const rawData = props.rawList
+  const colData = props.headerList
+  const rowData = props.dataList
 
   const viewColData = []
-  const viewRawData = []
+  const viewRowData = []
+
+  const getRowData = data => {
+    const result = []
+    for(let i in data){
+      result.push(<TableCell>{data[i]}</TableCell>)
+    }
+    return result
+  }
 
   for (let col in colData) {
     viewColData.push(
@@ -50,13 +38,11 @@ const CloudTable = props => {
     )
   }
 
-  rawData.forEach(function (item) {
-    viewRawData.push(
-      <TableRow>
-        {getRaw(item)}
-      </TableRow>
+  for (let i in rowData){
+    viewRowData.push(
+      <TableRow>{getRowData(rowData[i])}</TableRow>
     )
-  })
+  }
 
   return (
     <TableContainer component={Paper}>
@@ -68,9 +54,8 @@ const CloudTable = props => {
           </TableRow>
         </TableHead>
 
-
         <TableBody>
-          {viewRawData}
+          {viewRowData}
         </TableBody>
 
       </Table>
