@@ -2,6 +2,8 @@ import React, { useEffect, useState, useContext } from 'react';
 import {AriaChart, BoxHeader, Progress} from '../components';
 import axios from 'axios';
 import { ThemeContext } from "styled-components";
+axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
 
 /**
  * props 
@@ -17,6 +19,16 @@ const AriaChartContainer = (props) => {
         try {
             const response = await axios.get(dataURL)
             setData({data: response.data})
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
+    const test = async (dataURL)=>{
+        try {
+            const response = await axios.get(dataURL)
+            console.log(response.data)
+
         } catch (e) {
             console.log(e)
         }
@@ -49,6 +61,7 @@ const AriaChartContainer = (props) => {
 
     useEffect(()=>{
         getData(props.dataURL)
+        test('cloud/users')
     },[])
 
     // return 안에 작성 가능

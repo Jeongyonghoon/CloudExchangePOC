@@ -51,7 +51,7 @@ const CardContainer = props => {
 
   useEffect(() => {
     getData()
-  }, [cardData])
+  }, [])
 
   return (
     <div style={{ display: 'flex' }}>

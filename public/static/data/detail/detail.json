@@ -1,0 +1,135 @@
+{
+    [
+
+        {
+            "url" : "/billings/detail/yearmonth",
+            "parameter" : "?account_id=[account_id]",
+            "example" : [
+                {
+                    "value": "202012"
+                },
+                {
+                    "value": "202011"
+                }],
+            "description" : "클라우드 상세 요금 - 사용월 리스트"
+        },
+
+
+        {
+            "url" : "/billings/detail/header",
+            "parameter" : "?account_id=[account_id]",
+            "example" : [
+                {
+                 "label":"계정ID",
+                 "value":"account_id",
+                },
+                {
+                 "label":"계정명",
+                 "value":"account_name",
+                },
+                {
+                 "label":"상품",
+                 "value":"produnt_name",
+                },
+                {
+                 "label":"상품상세",
+                 "value":"usage_type",
+                },
+                {
+                 "label":"요금",
+                 "value":"cost",
+                },
+                {
+                 "label":"사용량",
+                 "value":"usage_quantity",
+                },
+                {
+                 "label":"상품별 사용량 단위",
+                 "value":"item_description",
+                }
+               ]
+
+            "description" : "클라우드 상세 요금 테이블 - 헤더"
+        },
+        
+        
+        {
+            "url" : "/billings/detail",
+            "parameter" : "?account_id=[account_id]&year_month=[year_month]",
+            "example" : [
+                {
+                    "account_id": "174285963101",
+                    "account_name": "KOLON Benit(cloud)",
+                    "product_name": "AWS Config",
+                    "usage_type": "APN1-ConfigurationItemRecorded",
+                    "cost": "303",
+                    "usage_quantity": 94,
+                    "item_description": "$0.003 per  Configuration Item recorded in Asia Pacific (Tokyo) region",
+                    "year_month": "202012"
+                }, ...
+            ],
+            "description" : "클라우드 상세 요금 테이블 - 데이터"
+        },
+
+        {
+            "url" : "/billings/detail/top",
+            "parameter" : "?account_id=[account_id]&year_month=[year_month]",
+            "example" : [
+                {
+                    "account_id": "174285963101",
+                    "account_name": "KOLON Benit(cloud)",
+                    "product_name": "Amazon Relational Database Service",
+                    "usage_type": "APN1-InstanceUsage:db.t2.micro",
+                    "cost": "20947",
+                    "usage_quantity": 744,
+                    "item_description": "USD 0.026 per db.t2.micro instance hour (or partial hour) running MySQL",
+                    "year_month": "202012"
+                },
+                {
+                    "account_id": "174285963101",
+                    "account_name": "KOLON Benit(cloud)",
+                    "product_name": "Amazon Elastic Compute Cloud",
+                    "usage_type": "APN2-EBS:SnapshotUsage",
+                    "cost": "19528",
+                    "usage_quantity": 360.62008166,
+                    "item_description": "$0.05 per GB-Month of snapshot data stored - Asia Pacific (Seoul)",
+                    "year_month": "202012"
+                },
+                {
+                    "account_id": "174285963101",
+                    "account_name": "KOLON Benit(cloud)",
+                    "product_name": "Amazon Elastic Compute Cloud",
+                    "usage_type": "USE2-ElasticIP:IdleAddress",
+                    "cost": "12087",
+                    "usage_quantity": 2231,
+                    "item_description": "$0.005 per Elastic IP address not attached to a running instance per hour (prorated)",
+                    "year_month": "202012"
+                },
+                {
+                    "account_id": "174285963101",
+                    "account_name": "KOLON Benit(cloud)",
+                    "product_name": "Amazon Elastic Compute Cloud",
+                    "usage_type": "APS1-BoxUsage:t2.micro",
+                    "cost": "11773",
+                    "usage_quantity": 744.435834,
+                    "item_description": "$0.0146 per On Demand Linux t2.micro Instance Hour",
+                    "year_month": "202012"
+                },
+                {
+                    "account_id": "174285963101",
+                    "account_name": "KOLON Benit(cloud)",
+                    "product_name": "Amazon Elastic Compute Cloud",
+                    "usage_type": "APN2-ElasticIP:IdleAddress",
+                    "cost": "8058",
+                    "usage_quantity": 1488,
+                    "item_description": "$0.005 per Elastic IP address not attached to a running instance per hour (prorated)",
+                    "year_month": "202012"
+                }
+            ],
+            "description" : "클라우드 상품 단위별 상위 요금 - usageType별 상위 (최대 5개) 항목 및 금액"
+        },
+
+    ]
+    
+    
+}

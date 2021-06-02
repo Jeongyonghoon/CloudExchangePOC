@@ -3,7 +3,7 @@ const express = require('express')
 const compression = require('compression')
 const next = require('next')
 const helmet = require('helmet')
-
+const {createProxyMiddleware} = require('http-proxy-middleware')
 const routes = require('../routes')
 
 const port = parseInt(process.env.PORT, 10) || 3100
@@ -14,6 +14,16 @@ const handler = routes.getRequestHandler(app)
 
 app.prepare().then(() => {
   const server = express()
+
+  
+  server.use('/cloud', createProxyMiddleware({
+    target : 'http://172.18.10.31:8070',
+    changeOrigin : true,
+    pathRewrite : {
+      '^/cloud' : ''
+    }
+  }))
+  
 
   server.use(helmet())
   server.use(compression())
