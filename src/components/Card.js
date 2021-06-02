@@ -35,21 +35,6 @@ const Bottom = Styled.div`
 `
 
 const Card = props => {
-  const Flag = Styled.div`
-      left:20px;
-      top:-10px;
-      height:40px;
-      
-      border-top-right-radius: 4px;
-      border-top-left-radius: 4px;
-      
-      border-left:20px solid ${props.cardColor || 'red'};
-      border-right:20px solid ${props.cardColor || 'red'};
-      border-bottom:15px solid transparent;
-     
-      box-shadow: 1px 0 0 0 rgb(0 0 0 / 30%);
-      position: absolute;
-`
 
   const title = props.title;
   const subtitle = props.subTitle;
@@ -58,8 +43,6 @@ const Card = props => {
   return (
 
     <Box>
-      {/* <Flag/> */}
-
       <Top>
         <p>{title}</p>
 

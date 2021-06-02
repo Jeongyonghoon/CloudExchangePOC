@@ -3,17 +3,17 @@ import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
 import Link from 'next/link'
-import {makeStyles} from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/core/styles'
 import * as MaterialIcons from '@material-ui/icons'
 
 /**
  * Menu Component
- * 
+ *
  * - props
  *  - pages : pages Array (Object array)
- * 
+ *
  */
-const useStyles = makeStyles((theme)=>({
+const useStyles = makeStyles((theme) => ({
 
   listItemText: {
     fontSize: '0.9em',
@@ -21,20 +21,20 @@ const useStyles = makeStyles((theme)=>({
     // color : 'white',
   },
 
-  listItem : {
+  listItem: {
     // color : 'rgba(255, 255, 255, 0.8)',
-    color : '#eeeeee',
-    '&:hover' : {
-      color : '#4fc3f7',
+    color: '#eeeeee',
+    '&:hover': {
+      color: '#4fc3f7',
       backgroundColor: 'rgba(255, 255, 255, 0.08)',
-      listItemText : {
-        color : '#4fc3f7'
+      listItemText: {
+        color: '#4fc3f7'
       }
     }
   }
-})) ;
+}))
 
-function Menu(props){
+const Menu = props => {
 
   const classes = useStyles()
 
@@ -46,15 +46,15 @@ function Menu(props){
           const icon = page.icon
           const Component = MaterialIcons[icon]
           return (
-            <Link 
-              key={page.id} 
+            <Link
+              key={page.id}
               href={{
-                pathname : '/' + page.page
+                pathname: '/' + page.page
               }}>
               <a>
-                <ListItem button className={classes.listItem} >
-                  <Component />
-                  <ListItemText classes={{ primary: classes.listItemText }} primary={page.primary} />
+                <ListItem button className={classes.listItem}>
+                  <Component/>
+                  <ListItemText classes={{ primary: classes.listItemText }} primary={page.primary}/>
                 </ListItem>
               </a>
             </Link>
@@ -73,5 +73,4 @@ function Menu(props){
   )
 
 }
-
 export default Menu

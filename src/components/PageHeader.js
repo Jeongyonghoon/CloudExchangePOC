@@ -5,49 +5,44 @@ import {Divider, Typography } from '@material-ui/core'
 - props 
   - title : show title of page
 */
-class PageHeader extends Component {
+const PageHeader = props => {
+  return (
+    // <div style={{
+    //   // backgroundColor: 'gray',
+    //   // color: '#555555',
+    //   // padding: '25px 0 25px 0'
+    // }}>
 
-  render () {
+    //   <div style={{
+    //     // display: 'inline-block',
+    //     fontSize: '1.5rem',
+    //     color : 'rgba(0,0,0,0.87)',
+    //     fontWeight : '600',
+    //     lineHeight : '1.25',
+    //     padding: '10px 0'
+    //     // verticalAlign: 'top',
+    //     // lineHeight: '28px'
+    //   }}>{this.props.title}</div>
 
-    return (
-      // <div style={{
-      //   // backgroundColor: 'gray',
-      //   // color: '#555555',
-      //   // padding: '25px 0 25px 0'
-      // }}>
+    //   <Divider
+    //     style={{
+    //       marginBottom : '25px',
+    //       marginTop : '25px'
+    //     }}
 
-      //   <div style={{
-      //     // display: 'inline-block',
-      //     fontSize: '1.5rem',
-      //     color : 'rgba(0,0,0,0.87)',
-      //     fontWeight : '600',
-      //     lineHeight : '1.25',
-      //     padding: '10px 0'
-      //     // verticalAlign: 'top',
-      //     // lineHeight: '28px'
-      //   }}>{this.props.title}</div>
-
-      //   <Divider 
-      //     style={{
-      //       marginBottom : '25px',
-      //       marginTop : '25px'
-      //     }}
-          
-      //     ></Divider>
-      //     <div>test</div>
-      // </div>
-      <>
-        <Typography variant="h5" style={{fontSize : '1.1rem'}}>
-          {this.props.title}
-        </Typography>
-        <Divider 
-          style={{
-            marginTop : '20px',
-            marginBottom : '20px'
-          }}></Divider>
-      </>
-    )
-  }
+    //     ></Divider>
+    //     <div>test</div>
+    // </div>
+    <>
+      <Typography variant="h5" style={{fontSize : '1.1rem'}}>
+        {props.title}
+      </Typography>
+      <Divider
+        style={{
+          marginTop : '20px',
+          marginBottom : '20px'
+        }}></Divider>
+    </>
+  )
 }
-
 export default PageHeader

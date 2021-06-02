@@ -9,7 +9,7 @@ export const initialState = {
 
 export const userListAction = () => {
   return async function (dispatch, getState) {
-    const result = await axios.get(`http://172.18.10.136:8000/UserList`)
+    const result = await axios.get(`http://localhost:8000/UserList`)
     dispatch({ type: GET_USER_LIST, payload: result.data })
   }
 }

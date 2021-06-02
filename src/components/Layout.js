@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import clsx from 'clsx'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import {MenuContainer, SelectorContainer} from '../containers'
@@ -8,10 +8,10 @@ import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import Divider from '@material-ui/core/Divider'
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import IconButton from '@material-ui/core/IconButton'
+import MenuIcon from '@material-ui/icons/Menu'
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
+import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 import { defaults } from 'react-chartjs-2'
 
 defaults.global.defaultFontFamily = '맑은고딕, Malgun Gothic, dotum, gulim, sans-serif'
@@ -50,18 +50,18 @@ const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.enteringScreen,
     }),
   },
-  selector : {
-    marginLeft : '40%'
+  selector: {
+    marginLeft: '40%'
   },
   menuButton: {
     // marginRight: 36,
-    color : '#eeeeee',
-    padding : 8
+    color: '#eeeeee',
+    padding: 8
   },
 
   openButton: {
-    color : '#eeeeee',
-    padding : 8
+    color: '#eeeeee',
+    padding: 8
   },
 
   hide: {
@@ -71,11 +71,11 @@ const useStyles = makeStyles((theme) => ({
     width: drawerWidth,
     flexShrink: 0,
     whiteSpace: 'nowrap',
-    zIndex : 5000
+    zIndex: 5000
   },
 
   drawerPaper: {
-    backgroundColor : '#233044'
+    backgroundColor: '#233044'
   },
 
   drawerOpen: {
@@ -112,7 +112,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-export default function Layout (props) {
+const Layout = props => {
 
   const classes = useStyles()
   const theme = useTheme()
@@ -126,22 +126,22 @@ export default function Layout (props) {
 
   const handleGnbClose = () => {
     setElevation(0)
-  } 
+  }
 
   const handleDrawerOpen = () => {
-    setOpen(true);
-  };
+    setOpen(true)
+  }
 
   const handleDrawerClose = () => {
-    setOpen(false);
-  };
+    setOpen(false)
+  }
 
   useEffect(() => {
     window.onscroll = () => {
-      if(window.pageYOffset==0){
-        handleGnbClose();
-      }else{
-        handleGnbOpen();
+      if (window.pageYOffset == 0) {
+        handleGnbClose()
+      } else {
+        handleGnbOpen()
       }
     }
   }, [])
@@ -157,13 +157,13 @@ export default function Layout (props) {
         })}
       >
         <Toolbar>
-            <img alt='logo' src="/static/header_logo.png" width="50px"></img>
-            <Typography variant='h5' noWrap className={classes.drawerHeaderTitle}>
-              Cloud Exchange
-            </Typography>
-            <Typography className={classes.selector}>
-              <SelectorContainer dataURL='static/data/selector/userOptions.json'></SelectorContainer>
-            </Typography>
+          <img alt="logo" src="/static/header_logo.png" width="50px"></img>
+          <Typography variant="h5" noWrap className={classes.drawerHeaderTitle}>
+            Cloud Exchange
+          </Typography>
+          <Typography className={classes.selector}>
+            <SelectorContainer dataURL="static/data/selector/userOptions.json"></SelectorContainer>
+          </Typography>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -173,7 +173,7 @@ export default function Layout (props) {
           [classes.drawerClose]: !open,
         })}
         classes={{
-          paper: clsx(classes.drawerPaper,{
+          paper: clsx(classes.drawerPaper, {
             [classes.drawerOpen]: open,
             [classes.drawerClose]: !open,
           }),
@@ -197,7 +197,7 @@ export default function Layout (props) {
           }
 
         </div>
-        <Divider />
+        <Divider/>
         <MenuContainer url={'/static/data/layout.json'}></MenuContainer>
       </Drawer>
       <main className={classes.content}>
@@ -209,3 +209,5 @@ export default function Layout (props) {
     </div>
   )
 }
+
+export default Layout
