@@ -6,7 +6,7 @@ const BoxHeader = props => {
   const title = props.title
 
   const Header = Styled.div`
-    padding: 20px 0 20px 20px;
+    padding: 7px 0 7px 10px; 
     border-bottom: 2px solid #E6E6E6;
   `
 

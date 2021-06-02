@@ -41,7 +41,8 @@ class Dashboard extends Component {
         <ComponentRow>
           <ComponentBox width={'100%'} marginTop={'30px'} marginBottom={'20px'}>
             <CloudTableContainer
-              dataURL={'http://localhost:8000/TableData'}
+              // dataURL={'/cloud/users'}
+              dataURL={'/static/data/dashboard/header.json'}
               width={'100%'}
             ></CloudTableContainer>
           </ComponentBox>

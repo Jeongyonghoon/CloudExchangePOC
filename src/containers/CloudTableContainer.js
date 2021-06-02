@@ -11,45 +11,15 @@ const CloudTableContainer = props => {
   const dataURL = props.dataURL
   const width = props.width
 
-  /* ----------- default ----------- */
-  const defaultColTable = () => {
-    return {
-      dataA: 'defaultA',
-      dataB: 'defaultB',
-      dataC: 'defaultC',
-    }
-  }
-
-  const defaultRawTable = () => {
-    return [
-      {
-        dataA: 100,
-        dataB: 200,
-        dataC: 300,
-      },
-      {
-        dataA: 100,
-        dataB: 200,
-        dataC: 300,
-      },
-      {
-        dataA: 100,
-        dataB: 200,
-        dataC: 300,
-      }
-    ]
-  }
-  /* ----------- default ----------- */
 
   const getData = async () => {
     try {
-      const result = await axios.get(dataURL)
+      const result = (await axios.get(dataURL))
+      console.log(result.data + 'check')
       setRawList(result.data['rawList'])
       setColList(result.data['colList'])
     } catch (e) {
-      setRawList(defaultRawTable())
-      setColList(defaultColTable())
-      console.log(e)
+      console.log(e + 'check')
     }
   }
 
