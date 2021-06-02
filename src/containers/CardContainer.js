@@ -7,7 +7,7 @@ import { userListAction, userKeyAction } from '../reducers/user'
 
 const axios = require('axios')
 
-const CardColor = ['#FF6666', '#3366CC', '#FFFF66', '#555555', '#33CC33', '#FF9900']
+// const CardColor = ['#FF6666', '#3366CC', '#FFFF66', '#555555', '#33CC33', '#FF9900']
 
 const CardContainer = props => {
   const dispatch = useDispatch();
@@ -24,17 +24,6 @@ const CardContainer = props => {
   useEffect(()=>{
     setTestData(userList)
   },[userList])
-
-  const onClickTest = () => {
-    console.log(userList)
-    console.log(testData)
-    mapTest(testData)
-  }
-  const onClickTest2 = () => {
-    console.log(userList)
-    console.log(testData)
-    mapTest(testData)
-  }
 
   const mapTest = listData => {
     listData.forEach((item)=>{
@@ -75,7 +64,7 @@ const CardContainer = props => {
           title={item['title']}
           subTitle={item['subTitle']}
           price={item['price']}
-          cardColor={CardColor[index]}
+          // cardColor={CardColor[index]}
         ></Card>
       )
     })
