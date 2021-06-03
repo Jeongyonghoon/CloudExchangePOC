@@ -22,25 +22,23 @@ const CloudTableContainer = props => {
     }
   }
 
-  const getTableHeader = data => {
-    const result = []
-    data.forEach(item => {
-      result.push(item['label'])
-    })
-    return result
-  }
-
-  const getTableData = data => {
-    const result = []
-    data.forEach(item => {
-      const row = []
-      headerList.forEach(name => {
-        row.push(item[name['value']])
-      })
-      result.push(row)
-    })
-    return result
-  }
+  // const getTableHeader = data => {
+  //   const result = []
+  //   data.forEach(item => {
+  //     result.push(item['label'])
+  //   })
+  //   return result
+  // }
+  //
+  // const getTableData = data => {
+  //   const result = []
+  //   data.forEach(item => {
+  //     const row = []
+  //     headerList.forEach(name => {row.push(item[name['value']])})
+  //     result.push(row)
+  //   })
+  //   return result
+  // }
 
   useEffect(() => {
     getData()
@@ -50,8 +48,8 @@ const CloudTableContainer = props => {
     <>
       <BoxHeader></BoxHeader>
       <CloudTable
-        headerList={getTableHeader(headerList)}
-        dataList={getTableData(dataList)}
+        headerList={headerList}
+        dataList={dataList}
       ></CloudTable>
     </>
   )
