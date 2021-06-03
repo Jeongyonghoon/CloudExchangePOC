@@ -37,11 +37,14 @@ const Selector = props => {
     })
   }
 
-  const mapSelectOptions = (options) =>(
+  const mapSelectOptions = (options) =>{
+    if(options==undefined){
+      return null;
+    }
     options.map(
       (option) => <option value={option.id}>{option.username}</option>
     )
-  )
+  }
 
   return (
     <div>

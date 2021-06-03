@@ -1,0 +1,46 @@
+[
+  {
+    "label":"기간",
+    "value":"year_month"
+  },
+  {
+    "label":"총납부금액",
+    "value":"total_cost"
+  },
+  {
+    "label":"사용요금",
+    "value":"usage_cost"
+  },
+  {
+    "label":"요금할인",
+    "value":"discount_cost"
+  },
+  {
+    "label":"미납 및 연체",
+    "value":"penalty_cost"
+  },
+  {
+    "label":"결제대행 수수료",
+    "value":"exchange_rate_charge"
+  },
+  {
+    "label":"기준환율",
+    "value":"usd"
+  },
+  {
+    "label":"10원미만할인",
+    "value":"floor_10"
+  },
+  {
+    "label":"부가세전금액",
+    "value":"before_vat"
+  },
+  {
+    "label":"부가세",
+    "value":"vat"
+  },
+  {
+    "label":"예치금사용",
+    "value":"used_deposit_cost"
+  }
+]
