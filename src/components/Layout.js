@@ -162,7 +162,7 @@ const Layout = props => {
             Cloud Exchange
           </Typography>
           <Typography className={classes.selector}>
-            <SelectorContainer dataURL="static/data/selector/userOptions.json"></SelectorContainer>
+            {/* <SelectorContainer dataURL="static/data/selector/userOptions.json"></SelectorContainer> */}
           </Typography>
         </Toolbar>
       </AppBar>

@@ -2,7 +2,7 @@ import Immutable from 'immutable'
 import thunkMiddleware from 'redux-thunk'
 import { createLogger } from 'redux-logger'
 import { createStore, applyMiddleware, compose } from 'redux'
-
+import { composeWithDevTools } from 'redux-devtools-extension'
 import config from 'config'
 import rootReducer from '../reducers'
 
@@ -50,6 +50,6 @@ export default (initialState = {}, context) => {
   return createStore(
     rootReducer,
     state,
-    compose(applyMiddleware(...middlewares))
+    composeWithDevTools(applyMiddleware(...middlewares))
   )
 }

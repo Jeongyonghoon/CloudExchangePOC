@@ -15,6 +15,8 @@ const axios = require('axios')
 API URL (dataURL)             : String
 SliderDisplay (sliderDisplay) : boolean
 Type (chartType)              : 'pie' or 'bar' or 'line'
+
+parsingFunc (fuction) : Function
 */
 
 const ChartContainer = props => {
@@ -32,7 +34,11 @@ const ChartContainer = props => {
   const width = props.width
   const chartColor = props.chartColor
   const chartHeight = props.chartHeight
-  
+
+
+  // parsingFunc
+  const parsingFunc = props.parsingFunc
+
   // global color
   const themeContext = useContext(ThemeContext)
   const paletteKeys = Object.keys(themeContext.palette)
@@ -81,6 +87,16 @@ const ChartContainer = props => {
       if(apiKey===undefined) apiKey=0;
       const result = await axios.get(dataURL+ `/${apiKey}`)
 
+
+      /* 추가 */
+      const parsingData = parsingFunc(result.data)
+      setChartData(result.data)
+      setViewCount([0, result.data.length])
+      setDataCount(result.data.length)
+      setChartTitle(result.data.title)
+      /* 추가 */
+
+      
       /* props data setting */
       setChartData(result.data)
       setViewCount([0, result.data.length])

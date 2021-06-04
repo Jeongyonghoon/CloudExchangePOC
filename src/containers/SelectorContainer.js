@@ -41,7 +41,8 @@ const SelectorContainer = props => {
   }, [userList])
   /* -- redux --- */
 
-  if (!data) return null
+  // if (!data) return null
+  if(!userData) return null
   return (
     <>
       <Selector label={data.label} options={userData}></Selector>

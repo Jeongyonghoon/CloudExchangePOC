@@ -3,8 +3,8 @@ import { makeStyles } from '@material-ui/core/styles'
 import FormControl from '@material-ui/core/FormControl'
 import NativeSelect from '@material-ui/core/NativeSelect'
 
-import { userKeyAction } from '../reducers/user'
-import { useDispatch } from 'react-redux'
+import { useDispatch , useSelector} from 'react-redux'
+import { yearMonthAction } from '../reducers/yearMonth'
 
 const useStyles = makeStyles((theme) => ({
 
@@ -28,32 +28,41 @@ const YearMonthSelector = props => {
     yearMonth: '',
   })
 
-  const urlKey = useSelector(state => state.user.urlKey)
+  // const urlKey = useSelector(state => state.user.urlKey)
 
-  const { yearMonths } = props
-  const accountId = dispatch()
+  // const { yearMonths } = props
+  // const accountId = dispatch()
   const handleChange = (event) => {
     const yearMonth = event.target.name
-    dispatch(userKeyAction(event.target.value))
+    console.log(event.target.name);
+    console.log(event.target.value);
+    dispatch(yearMonthAction(event.target.value))
     setState({
       ...state,
-      [user]: event.target.value,
+      [yearMonth]: event.target.value,
     })
   }
 
-  const mapSelectOptions = (options) =>(
-    options.map(
-      (option) => <option value={option.id}>{option.username}</option>
-    )
-  )
-
+  const mapSelectOptions = (options) =>{
+    if(!options){
+      return <option></option>
+    }else{
+      return(
+        options.map(
+          // (option) => <option value={option.value}>{option.value.slice(0,4) + '년 ' + option.value.slice(4)+'월'}</option>
+          (option) => <option value={option.value}>{option.value.replace(/(\w{4})(\w{2})/g, '$1년 $2월')}</option>
+        )
+      )
+    }
+  }
+  
   return (
     <div>
       <FormControl className={classes.formControl} size="small" style={{ minWidth: 250 }}>
         <NativeSelect
           value={state.user}
           onChange={handleChange}
-          name="user"
+          name="yearMonth"
           className={classes.selectEmpty}
           inputProps={{ 'aria-label': 'user' }}
           style={{
@@ -61,7 +70,7 @@ const YearMonthSelector = props => {
             lineHeight : '18px'
           }}
         >
-          {mapSelectOptions(options)}
+          {mapSelectOptions(props.options)}
         </NativeSelect>
       </FormControl>
     </div>

@@ -3,7 +3,6 @@ import { YearMonthSelector } from '../components'
 import axios from 'axios'
 
 import { useDispatch, useSelector } from 'react-redux'
-import { userListAction } from '../reducers/user'
 
 /**
  * props
@@ -11,10 +10,6 @@ import { userListAction } from '../reducers/user'
  */
 
 const YearMonthSelectorContainer = props => {
-  /* -- redux --- */
-  const dispatch = useDispatch()
-  const userKey = useSelector(state => state.user.userKey)
-  /* -- redux --- */
 
   // userkey가 default일 경우
 
@@ -29,35 +24,42 @@ const YearMonthSelectorContainer = props => {
   // chart container에서는 yearmonth를 보고있고 바뀔 때 마다 api 요청
   // data를 chart component에서 사용할 수 있게 파실
 
-  const [data, setData] = useState(null)
+  // const [data, setData] = useState(null)
   const [yearMonths, setYearMonths] = useState(null)
+  /* -- redux --- */
+  const dispatch = useDispatch()
+  const accountId = useSelector(state => state.user.userKey) // userKey accountId로 바꾸기
+  /* -- redux --- */
 
   const initialize = async (dataURL) => {
     try {
       const response = await axios.get(dataURL)
+      console.log(response.data);
       setYearMonths(response.data)
     } catch (e) {
       console.log(e)
     }
   }
 
+  // accountId 사용하여 api request
   useEffect(() => {
-    initialize(props.dataURL)
+    // initialize(props.dataURL)
+    // initialize('/cloud/billings/detail/yearmonth?accountId=' + 162371205491) //실제 url
+    initialize('/static/data/detail/yearmonth.json')
   }, [])
 
-  /* -- redux --- */
-  useEffect(() => {
-    dispatch(userListAction())
-  }, [dispatch])
-  useEffect(() => {
-    setUserData(userList)
-  }, [userList])
-  /* -- redux --- */
+  // /* -- redux --- */
+  // useEffect(() => {
+  //   dispatch(userListAction())
+  // }, [dispatch])
+  // useEffect(() => {
+  //   setUserData(userList)
+  // }, [userList])
+  // /* -- redux --- */
 
-  if (!data) return null
   return (
     <>
-      <YearMonthSelector label={data.label} options={userData}></YearMonthSelector>
+      <YearMonthSelector options={yearMonths}></YearMonthSelector>
     </>
   )
 }

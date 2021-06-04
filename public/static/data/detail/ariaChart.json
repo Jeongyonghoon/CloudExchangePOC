@@ -1,0 +1,30 @@
+[
+    {
+        "year_month": "201908",
+        "amazon_ec2_cost": 890823,
+        "amazon_rds_cost": 0,
+        "amazon_s3_cost": 0,
+        "amazon_cloudfront_cost": 1
+    }, 
+    {
+        "year_month": "201909",
+        "amazon_ec2_cost": 890823,
+        "amazon_rds_cost": 0,
+        "amazon_s3_cost": 0,
+        "amazon_cloudfront_cost": 2
+    },
+    {
+        "year_month": "201910",
+        "amazon_ec2_cost": 890823,
+        "amazon_rds_cost": 0,
+        "amazon_s3_cost": 0,
+        "amazon_cloudfront_cost": 3
+    },
+    {
+        "year_month": "201911",
+        "amazon_ec2_cost": 890823,
+        "amazon_rds_cost": 0,
+        "amazon_s3_cost": 0,
+        "amazon_cloudfront_cost": 4
+    }
+]
