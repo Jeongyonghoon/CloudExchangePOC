@@ -3,8 +3,6 @@ import { Card } from '../components'
 
 const axios = require('axios')
 
-// const CardColor = ['#FF6666', '#3366CC', '#FFFF66', '#555555', '#33CC33', '#FF9900']
-
 const CardContainer = props => {
   const dataURL = props.dataURL
 

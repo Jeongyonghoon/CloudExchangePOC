@@ -1,6 +1,6 @@
 import React from 'react'
 import Styled from 'styled-components'
-import CardNumber from './CardNumber'
+import { changeNumber } from './changeFormat'
 
 const Box = Styled.div`
     color: rgba(0, 0, 0, 0.87);
@@ -36,9 +36,9 @@ const Bottom = Styled.div`
 
 const Card = props => {
 
-  const title = props.title;
-  const subtitle = props.subTitle;
-  const price = props.price;
+  const title = props.title
+  const subtitle = props.subTitle
+  const price = props.price
 
   return (
 
@@ -48,7 +48,7 @@ const Card = props => {
 
         <h3>
           ₩
-          <CardNumber number={price}/>
+          {changeNumber(price)}
           <small> 원</small>
         </h3>
 
@@ -61,7 +61,7 @@ const Card = props => {
   )
 }
 
-Card.defaultProps={
+Card.defaultProps = {
   title: 'default',
   price: 0,
   subTitle: 'default'
