@@ -110,25 +110,7 @@ const ChartContainer = props => {
   return (
     <>
       <BoxHeader></BoxHeader>
-<<<<<<< HEAD
-
-      {/* <div style={{ width: '80%', margin: 'auto', marginTop: '3%' }}>
-        {chartType === 'bar' && <BarChart chartHeight={chartHeight} chartColor={chartColor} labelData={chartLabelData}
-                                          valueData={chartValueData}/>}
-        {chartType === 'doughnut' &&
-        <DoughnutChart chartHeight={chartHeight} labelData={chartLabelData} valueData={chartValueData}/>}
-
-        <div style={{ width: '100%', margin: 'auto' }}>
-          {sliderDisplay &&
-          <ChartSlider labelData={labelData} dataCount={dataCount} viewCount={viewCount} handleChange={handleChange}/>}
-        </div>
-      
-      </div> */}
-      {/* <div style={{ width: '80%', margin: 'auto', marginTop: '3%' }}> */}
-      <div style={{ width: '90%', margin: 'auto' }}>
-=======
       <div style={{ width: '80%', margin: 'auto', marginTop: '3%' }}>
->>>>>>> 427abb84285d3cfbbf4586ec21a2c976a3f0c036
         {chartType === 'bar' && <BarChart chartHeight={chartHeight} chartColor={colors[0]} labelData={chartLabelData}
                                           valueData={chartValueData}/>}
         {chartType === 'doughnut' &&
