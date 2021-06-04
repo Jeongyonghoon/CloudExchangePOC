@@ -39,13 +39,16 @@ const Dashboard = () => {
       </ComponentRow>
 
       <ComponentRow>
-        <ComponentBox width={'100%'} spacing={2}>
-          <CloudTableContainer
-            dataURL={'http://172.18.10.136:8000/TableData'}
-            width={'100%'}
-          ></CloudTableContainer>
-        </ComponentBox>
-      </ComponentRow>
+          <ComponentBox width={'100%'} marginTop={'30px'} marginBottom={'20px'}>
+            <CloudTableContainer
+              headerDataURL={'/cloud/billings/charge/header'}
+              // headerDataURL={'/static/data/dashboard/header.json'}
+              listDataURL={'/cloud/billings/charge?memberId='}
+              // listDataURL={'/static/data/dashboard/charge.json'}
+              width={'100%'}
+            ></CloudTableContainer>
+          </ComponentBox>
+        </ComponentRow>
     </>
   )
 }

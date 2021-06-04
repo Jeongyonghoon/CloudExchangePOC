@@ -1,0 +1,34 @@
+[
+  {
+    "member_id": 193,
+    "year_month": "202012",
+    "bill_date": "20210105",
+    "total_cost": "3164700",
+    "usage_cost": "3144261",
+    "discount_cost": "314424",
+    "penalty_cost": "0",
+    "exchange_rate_charge": "47164",
+    "usd": "1083.1",
+    "floor_10": "1",
+    "before_vat": "2877000",
+    "vat": "287700",
+    "aws_credit_cost": "0",
+    "used_deposit_cost": "0"
+  },
+  {
+    "member_id": 194,
+    "year_month": "202011",
+    "bill_date": "20210105",
+    "total_cost": "3164700",
+    "usage_cost": "3144261",
+    "discount_cost": "314424",
+    "penalty_cost": "1",
+    "exchange_rate_charge": "47164",
+    "usd": "1000.1",
+    "floor_10": "1",
+    "before_vat": "1010390",
+    "vat": "111222",
+    "aws_credit_cost": "0",
+    "used_deposit_cost": "0"
+  }
+]

@@ -12,6 +12,7 @@ const app = next({ dev })
 
 const handler = routes.getRequestHandler(app)
 
+
 app.prepare().then(() => {
   const server = express()
 
