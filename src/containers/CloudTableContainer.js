@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { BoxHeader, CloudTable } from '../components'
+import { useSelector } from 'react-redux'
 
 const axios = require('axios')
 
 const CloudTableContainer = props => {
+  const urlKey = useSelector(state => state.user.urlKey)
 
   const [dataList, setDataList] = useState([])
   const [headerList, setHeaderList] = useState([])
@@ -11,10 +13,12 @@ const CloudTableContainer = props => {
   const headerDataURL = props.headerDataURL
   const listDataURL = props.listDataURL
 
-  const getData = async () => {
+  const getData = async (apiKey) => {
     try {
       const headResult = await axios.get(headerDataURL)
-      const dataResult = await axios.get(listDataURL)
+      const dataResult = await axios.get(listDataURL + `${apiKey}`)
+      console.log(headResult.data)
+      console.log(dataResult.data)
       setHeaderList(headResult.data)
       setDataList(dataResult.data)
     } catch (e) {
@@ -41,7 +45,10 @@ const CloudTableContainer = props => {
   // }
 
   useEffect(() => {
-    getData()
+    getData(urlKey)
+  }, [urlKey])
+  useEffect(() => {
+    getData(urlKey)
   }, [])
 
   return (

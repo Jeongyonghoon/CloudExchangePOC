@@ -10,7 +10,8 @@ export const initialState = {
 export const userListAction = () => {
   return async (dispatch, getState) => {
     try{
-      const result = await axios.get(`http://localhost:8000/UserList`)
+      const result = await axios.get(`/cloud/users`)
+      console.log(result.data)
       dispatch({ type: GET_USER_LIST, payload: result.data })
     } catch(e) {
       console.log(e)
