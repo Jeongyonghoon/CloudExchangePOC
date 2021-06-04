@@ -1,30 +1,18 @@
-import React, { useEffect, useState, useContext } from 'react'
+/* http://172.18.10.31:8070/billings/product?member_id=193 */
+
+import React, { useContext, useEffect, useState } from 'react'
 import { BarChart, BoxHeader, ChartSlider, DoughnutChart } from '../components'
-import { ThemeContext } from "styled-components";
-import {useDispatch, useSelector} from 'react-redux'
+import { ThemeContext } from 'styled-components'
+import { useSelector } from 'react-redux'
 
 const axios = require('axios')
-/*
-- Data 형식 -
-{
-  "Date"  : String
-  "Price" : long
-}
-
-- Props -
-API URL (dataURL)             : String
-SliderDisplay (sliderDisplay) : boolean
-Type (chartType)              : 'pie' or 'bar' or 'line'
-*/
 
 const ChartContainer = props => {
-  const dispatch = useDispatch()
   const urlKey = useSelector(state => state.user.urlKey)
 
   const [labelData] = useState([])
   const [valueData] = useState([])
   const [chartTitle, setChartTitle] = useState('default')
-  const [userKey, setUserKey] = useState(0)
 
   const chartType = props.chartType
   const sliderDisplay = props.sliderDisplay
@@ -32,15 +20,13 @@ const ChartContainer = props => {
   const width = props.width
   const chartColor = props.chartColor
   const chartHeight = props.chartHeight
-  
+
   // global color
   const themeContext = useContext(ThemeContext)
   const paletteKeys = Object.keys(themeContext.palette)
   const colors = paletteKeys.map(
     key => (themeContext.palette[key])
   )
-
-
 
   /* Chart data */
   const [chartValueData, setChartValueData] = useState([])
@@ -57,11 +43,11 @@ const ChartContainer = props => {
     return [
       {
         price: 100,
-        date:'default'
+        date: 'default'
       },
       {
         price: 200,
-        date:'default'
+        date: 'default'
       }]
   }
   /* ----------- default ----------- */
@@ -78,8 +64,8 @@ const ChartContainer = props => {
 
   const getData = async (apiKey) => {
     try {
-      if(apiKey===undefined) apiKey=0;
-      const result = await axios.get(dataURL+ `/${apiKey}`)
+      if (apiKey === undefined) apiKey = 0
+      const result = await axios.get(dataURL + `/${apiKey}`)
 
       /* props data setting */
       setChartData(result.data)
@@ -87,9 +73,11 @@ const ChartContainer = props => {
       setDataCount(result.data.length)
       setChartTitle(result.data.title)
     } catch (e) {
+
       setChartData(defaultChart())
-      setViewCount([0,2])
+      setViewCount([0, 2])
       setDataCount(2)
+
       console.log(e)
     }
   }
@@ -108,13 +96,9 @@ const ChartContainer = props => {
     setViewCount(newValue)
   }
 
-  useEffect(()=>{
-    setUserKey(urlKey)
-  },[urlKey])
-
-  useEffect(()=>{
-    getData(userKey)
-  },[userKey])
+  useEffect(() => {
+    getData(urlKey)
+  }, [urlKey])
   //preventDefault, stopPropagation
 
   useEffect(() => {
@@ -122,9 +106,11 @@ const ChartContainer = props => {
     setChartValueData(valueData.slice(viewCount[0], viewCount[1]))
   }, [viewCount])
   /* ----------- componentDidUpdate ----------- */
+
   return (
     <>
       <BoxHeader></BoxHeader>
+<<<<<<< HEAD
 
       {/* <div style={{ width: '80%', margin: 'auto', marginTop: '3%' }}>
         {chartType === 'bar' && <BarChart chartHeight={chartHeight} chartColor={chartColor} labelData={chartLabelData}
@@ -140,16 +126,20 @@ const ChartContainer = props => {
       </div> */}
       {/* <div style={{ width: '80%', margin: 'auto', marginTop: '3%' }}> */}
       <div style={{ width: '90%', margin: 'auto' }}>
+=======
+      <div style={{ width: '80%', margin: 'auto', marginTop: '3%' }}>
+>>>>>>> 427abb84285d3cfbbf4586ec21a2c976a3f0c036
         {chartType === 'bar' && <BarChart chartHeight={chartHeight} chartColor={colors[0]} labelData={chartLabelData}
                                           valueData={chartValueData}/>}
         {chartType === 'doughnut' &&
-        <DoughnutChart chartHeight={chartHeight} labelData={chartLabelData} valueData={chartValueData} chartColor={colors}/>}
+        <DoughnutChart chartHeight={chartHeight} labelData={chartLabelData} valueData={chartValueData}
+                       chartColor={colors}/>}
 
         <div style={{ width: '100%', margin: 'auto' }}>
           {sliderDisplay &&
           <ChartSlider labelData={labelData} dataCount={dataCount} viewCount={viewCount} handleChange={handleChange}/>}
         </div>
-      
+
       </div>
     </>
   )

@@ -21,33 +21,33 @@ const useStyles = makeStyles((theme) => ({
 
 const Selector = props => {
   const dispatch = useDispatch()
-
   const classes = useStyles()
-  const [state, setState] = React.useState({
-    user: '',
-  })
+  // const [state, setState] = React.useState({
+  //   user: '',
+  // })
 
   const { label, options } = props
   const handleChange = (event) => {
-    const user = event.target.name
+    // const user = event.target.name
     dispatch(userKeyAction(event.target.value))
-    setState({
-      ...state,
-      [user]: event.target.value,
-    })
+    console.log(event.target.value)
   }
 
-  const mapSelectOptions = (options) =>(
-    options.map(
-      (option) => <option value={option.id}>{option.username}</option>
-    )
-  )
+  const mapSelectOptions = (options) => {
+    const result = []
+    if (!options) return null
+
+    options.data.forEach(item => {
+      result.push(<option value={item.memberId}>{item.companyName} ({item.name})</option>)
+    })
+    return result
+  }
 
   return (
     <div>
       <FormControl className={classes.formControl} size="small" style={{ minWidth: 250 }}>
         <NativeSelect
-          value={state.user}
+          // value={state.user}
           onChange={handleChange}
           name="user"
           className={classes.selectEmpty}

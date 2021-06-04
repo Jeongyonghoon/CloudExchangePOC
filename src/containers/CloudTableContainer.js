@@ -1,68 +1,62 @@
 import React, { useEffect, useState } from 'react'
 import { BoxHeader, CloudTable } from '../components'
+import { useSelector } from 'react-redux'
 
 const axios = require('axios')
 
 const CloudTableContainer = props => {
+  const urlKey = useSelector(state => state.user.urlKey)
 
-  const [rawList, setRawList] = useState([])
-  const [colList, setColList] = useState([])
+  const [dataList, setDataList] = useState([])
+  const [headerList, setHeaderList] = useState([])
 
-  const dataURL = props.dataURL
-  const width = props.width
+  const headerDataURL = props.headerDataURL
+  const listDataURL = props.listDataURL
 
-  /* ----------- default ----------- */
-  const defaultColTable = () => {
-    return {
-      dataA: 'defaultA',
-      dataB: 'defaultB',
-      dataC: 'defaultC',
-    }
-  }
-
-  const defaultRawTable = () => {
-    return [
-      {
-        dataA: 100,
-        dataB: 200,
-        dataC: 300,
-      },
-      {
-        dataA: 100,
-        dataB: 200,
-        dataC: 300,
-      },
-      {
-        dataA: 100,
-        dataB: 200,
-        dataC: 300,
-      }
-    ]
-  }
-  /* ----------- default ----------- */
-
-  const getData = async () => {
+  const getData = async (apiKey) => {
     try {
-      const result = await axios.get(dataURL)
-      setRawList(result.data['rawList'])
-      setColList(result.data['colList'])
+      const headResult = await axios.get(headerDataURL)
+      const dataResult = await axios.get(listDataURL + `${apiKey}`)
+      console.log(headResult.data)
+      console.log(dataResult.data)
+      setHeaderList(headResult.data)
+      setDataList(dataResult.data)
     } catch (e) {
-      setRawList(defaultRawTable())
-      setColList(defaultColTable())
-      console.log(e)
+      console.log(e + ' (CloudTableContainer.js Error!) ')
     }
   }
+
+  // const getTableHeader = data => {
+  //   const result = []
+  //   data.forEach(item => {
+  //     result.push(item['label'])
+  //   })
+  //   return result
+  // }
+  //
+  // const getTableData = data => {
+  //   const result = []
+  //   data.forEach(item => {
+  //     const row = []
+  //     headerList.forEach(name => {row.push(item[name['value']])})
+  //     result.push(row)
+  //   })
+  //   return result
+  // }
 
   useEffect(() => {
-    getData()
+    getData(urlKey)
+  }, [urlKey])
+  useEffect(() => {
+    getData(urlKey)
   }, [])
 
   return (
     <>
       <BoxHeader></BoxHeader>
       <CloudTable
-        colList={colList}
-        rawList={rawList}
+        headerList={headerList}
+        dataList={dataList}
       ></CloudTable>
     </>
   )
