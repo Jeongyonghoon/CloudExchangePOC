@@ -67,3 +67,7 @@ Card.defaultProps = {
   subTitle: 'default'
 }
 export default Card
+
+/*
+Card Component 명세 수정
+ */
