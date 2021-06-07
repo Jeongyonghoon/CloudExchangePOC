@@ -4,7 +4,7 @@ const axios = require('axios')
 
 export const initialState = {
   userList: [],
-  urlKey: 0,
+  memberId: 0,
 }
 
 export const userListAction = () => {
