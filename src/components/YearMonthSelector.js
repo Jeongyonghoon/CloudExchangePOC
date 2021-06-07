@@ -33,14 +33,14 @@ const YearMonthSelector = props => {
   // const { yearMonths } = props
   // const accountId = dispatch()
   const handleChange = (event) => {
-    const yearMonth = event.target.name
+    // const yearMonth = event.target.name
     console.log(event.target.name);
     console.log(event.target.value);
     dispatch(yearMonthAction(event.target.value))
-    setState({
-      ...state,
-      [yearMonth]: event.target.value,
-    })
+    // setState({
+    //   ...state,
+    //   [yearMonth]: event.target.value,
+    // })
   }
 
   const mapSelectOptions = (options) =>{
@@ -60,7 +60,7 @@ const YearMonthSelector = props => {
     <div>
       <FormControl className={classes.formControl} size="small" style={{ minWidth: 250 }}>
         <NativeSelect
-          value={state.user}
+          // value={state.user}
           onChange={handleChange}
           name="yearMonth"
           className={classes.selectEmpty}

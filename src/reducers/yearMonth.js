@@ -14,7 +14,7 @@ const yearMonthReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_YEARMONTH:
       return {
-        ...state,
+        // ...state,
         yearMonth: action.payload,
       }
     default:

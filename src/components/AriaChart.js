@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {Bar, Line} from 'react-chartjs-2';
-import PropTypes from 'prop-types';
+import PropTypes, { element } from 'prop-types';
+import { ThemeContext } from "styled-components";
 
 /**
  * https://reactchartjs.github.io/react-chartjs-2
@@ -31,11 +32,33 @@ const AriaChart = (props) => {
   //     }
   //   }
   // }
+  const themeContext = useContext(ThemeContext)
+
+  const getColors = (data) => {
+
+    const paletteKeys = Object.keys(themeContext.palette)
+
+    const colorData = {
+      labels : data.labels,
+      datasets : data.datasets.map(
+        (dataset,index) => {
+          const newDataset = {
+              ...dataset,
+              backgroundColor : themeContext.palette[paletteKeys[index%paletteKeys.length]],
+              borderColor : themeContext.palette[paletteKeys[index%paletteKeys.length]]
+          }
+          return newDataset
+        }
+      )
+    }
+
+    return colorData
+  }
 
   const options = {
 
     type : 'line',
-
+    
     // title : {
     //   display : true,
     //   text : props.data.title
@@ -69,9 +92,10 @@ const AriaChart = (props) => {
     }
   }
 
+  console.log(props.data);
   return(
     <>
-      <Line data={props.data} options={options} height={props.height}></Line>
+      <Line data={getColors(props.data)} options={options} height={props.height}></Line>
     </>
   )
 }

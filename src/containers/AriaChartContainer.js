@@ -3,6 +3,7 @@ import {AriaChart, BoxHeader, Progress} from '../components';
 import axios from 'axios';
 import { ThemeContext } from "styled-components";
 import {useDispatch, useSelector} from 'react-redux'
+import {getParsingData} from '../util/parsing'
 
 /**
  * props 
@@ -18,7 +19,7 @@ const AriaChartContainer = (props) => {
     const [data, setData] = useState(null)
 
     // parameters
-    const accountId = useSelector(state => state.user.urlKey)
+    const memberId = useSelector(state => state.user.urlKey)
     const yearMonth = useSelector(state => state.yearMonth.yearMonth)
 
     const getData = async (dataURL)=>{
@@ -28,6 +29,7 @@ const AriaChartContainer = (props) => {
             setData(response.data)
             console.log(data);
         } catch (e) {
+            setData(e.message)
             console.log(e)
         }
     }
@@ -130,28 +132,28 @@ const AriaChartContainer = (props) => {
         // test('cloud/users')
     },[])
 
-    console.log(accountId, yearMonth);
+    console.log(memberId, yearMonth);
     // return 안에 작성 가능
-    if(!data) {
 
-        return (
-            <>
-                <Progress></Progress>
-            </>
-        ) 
-    }else{
+    return(
+        <>  
+            <BoxHeader title={'title'}></BoxHeader>
+            <div style={{ width: '100%', margin: '0 auto' }}>
+                {
+                    data ? (
+                        typeof data === "string" ?
+                        <div style={{
+                            "textAlign" : "center"
+                        }}>{data}</div>
+                        : <AriaChart data={getParsingData(data)} height={80}></AriaChart>
+                    )
+                    : <Progress></Progress>
+                }
 
-        return(
-            <>  
-                <BoxHeader title={data.title}></BoxHeader>
-                {/* <BoxHeader title={'title'}></BoxHeader> */}
-                <div style={{ width: '100%', margin: '0 auto' }}>
-                    <AriaChart data={getAriaChartData(data)} height={80}></AriaChart>
-                    {/* <AriaChart data={getAriaChartData(data)} height={80}></AriaChart> */}
-                </div>
-            </>
-        )
-    }
+            </div>
+        </>
+    )
+    
 
 }
 

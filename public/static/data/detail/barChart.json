@@ -1,0 +1,35 @@
+[
+    {
+        "name" : "yearMonth",
+        "label" : "201908",
+        "datasets" : [
+            {   
+                "id" : "0",
+                "name" : "ec2",
+                "value" : "8"
+            }
+        ]
+    }, 
+    {
+        "name" : "yearMonth",
+        "label" : "201909",
+        "datasets" : [
+            {   
+                "id" : "0",
+                "name" : "ec2",
+                "value" : "2"
+            }
+        ]
+    },
+    {
+        "name" : "yearMonth",
+        "label" : "201910",
+        "datasets" : [
+            {   
+                "id" : "0",
+                "name" : "ec2",
+                "value" : "4"
+            }
+        ]
+    }
+]

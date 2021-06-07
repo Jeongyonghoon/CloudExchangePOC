@@ -4,28 +4,15 @@ import React, { useContext, useEffect, useState } from 'react'
 import { BarChart, BoxHeader, ChartSlider, DoughnutChart } from '../components'
 import { ThemeContext } from 'styled-components'
 import { useSelector } from 'react-redux'
+import {getParsingData} from '../util/parsing'
 
 const axios = require('axios')
-/*
-- Data 형식 -
-{
-  "Date"  : String
-  "Price" : long
-}
-
-- Props -
-API URL (dataURL)             : String
-SliderDisplay (sliderDisplay) : boolean
-Type (chartType)              : 'pie' or 'bar' or 'line'
-
-parsingFunc (fuction) : Function
-*/
 
 const ChartContainer = props => {
   const urlKey = useSelector(state => state.user.urlKey)
 
-  const [labelData] = useState([])
-  const [valueData] = useState([])
+  const [labelData,setLabelData] = useState([])
+  const [valueData,setValueData] = useState([])
   const [chartTitle, setChartTitle] = useState('default')
 
   const chartType = props.chartType
@@ -34,10 +21,6 @@ const ChartContainer = props => {
   const width = props.width
   const chartColor = props.chartColor
   const chartHeight = props.chartHeight
-
-
-  // parsingFunc
-  const parsingFunc = props.parsingFunc
 
   // global color
   const themeContext = useContext(ThemeContext)
@@ -71,11 +54,19 @@ const ChartContainer = props => {
   /* ----------- default ----------- */
 
   /* ----------- componentDidMount ----------- */
+  // const setChartData = chartData => {
+  //   chartData.forEach(function (item) {
+  //     valueData.push(item['price'])
+  //     labelData.push(item['date'])
+  //   })
+  //   setChartValueData(valueData)
+  //   setChartLabelData(labelData)
+  // }
+
   const setChartData = chartData => {
-    chartData.forEach(function (item) {
-      valueData.push(item['price'])
-      labelData.push(item['date'])
-    })
+    const parsedData = getParsingData(chartData)
+    setLabelData(parsedData.labels)
+    setValueData(parsedData.datasets[0].data)
     setChartValueData(valueData)
     setChartLabelData(labelData)
   }
@@ -83,18 +74,11 @@ const ChartContainer = props => {
   const getData = async (apiKey) => {
     try {
       if (apiKey === undefined) apiKey = 0
-      const result = await axios.get(dataURL + `/${apiKey}`)
 
+      // url을 page에서 받는게 좋을 것 같음
+      // const result = await axios.get(dataURL + `/${apiKey}`)
 
-      /* 추가 */
-      const parsingData = parsingFunc(result.data)
-      setChartData(result.data)
-      setViewCount([0, result.data.length])
-      setDataCount(result.data.length)
-      setChartTitle(result.data.title)
-      /* 추가 */
-
-      
+      const result = await axios.get(dataURL)
       /* props data setting */
       setChartData(result.data)
       setViewCount([0, result.data.length])

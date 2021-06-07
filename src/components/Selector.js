@@ -37,9 +37,11 @@ const Selector = props => {
     const result = []
     if (!options) return null
 
+    console.log(options);
     options.data.forEach(item => {
       result.push(<option value={item.memberId}>{item.companyName} ({item.name})</option>)
     })
+
     return result
   }
 

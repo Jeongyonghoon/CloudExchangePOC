@@ -3,7 +3,7 @@ import { YearMonthSelector } from '../components'
 import axios from 'axios'
 
 import { useDispatch, useSelector } from 'react-redux'
-
+import { yearMonthAction } from '../reducers/yearMonth'
 /**
  * props
  * - dataURL : api dataURL
@@ -28,14 +28,14 @@ const YearMonthSelectorContainer = props => {
   const [yearMonths, setYearMonths] = useState(null)
   /* -- redux --- */
   const dispatch = useDispatch()
-  const accountId = useSelector(state => state.user.userKey) // userKey accountId로 바꾸기
+  const memberId = useSelector(state => state.user.urlKey) // userKey accountId로 바꾸기
   /* -- redux --- */
 
   const initialize = async (dataURL) => {
     try {
       const response = await axios.get(dataURL)
-      console.log(response.data);
       setYearMonths(response.data)
+      dispatch(yearMonthAction(yearMonths[0].value))
     } catch (e) {
       console.log(e)
     }
@@ -44,9 +44,13 @@ const YearMonthSelectorContainer = props => {
   // accountId 사용하여 api request
   useEffect(() => {
     // initialize(props.dataURL)
-    // initialize('/cloud/billings/detail/yearmonth?accountId=' + 162371205491) //실제 url
-    initialize('/static/data/detail/yearmonth.json')
-  }, [])
+    console.log(memberId);
+    initialize('/cloud/billings/detail/yearmonth?memberId=' + memberId) //실제 url
+  }, [memberId])
+
+
+  // # useMemo
+
 
   // /* -- redux --- */
   // useEffect(() => {
@@ -56,7 +60,7 @@ const YearMonthSelectorContainer = props => {
   //   setUserData(userList)
   // }, [userList])
   // /* -- redux --- */
-
+  console.log(memberId )
   return (
     <>
       <YearMonthSelector options={yearMonths}></YearMonthSelector>

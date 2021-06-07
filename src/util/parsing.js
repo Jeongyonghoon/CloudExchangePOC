@@ -51,6 +51,7 @@ export const parsingDashboardAraiChart = (data) => {
 
 export const parsingDetailBarChart = (data) => {
 
+    // console.log(data);
     const barChartData = {}
     const datasets = []
 
@@ -64,34 +65,81 @@ export const parsingDetailBarChart = (data) => {
         const dataLen = data.length
         let labels = []
         let values = []
-        
-        const paletteKeys = Object.keys(themeContext.palette)
-        let colorIndex = 0
 
         for(let i=0; i<dataLen; i++){
-            labels.push(data[dataKeys[xIndex]])
-            values.push(data[dataKeys[yIndex]])
+            labels.push(data[i][dataKeys[xIndex]])
+            values.push(data[i][dataKeys[yIndex]])
         }
 
-        for(let i=0; i<row; i++){
-            if(i==yearMonthKey) continue
-            datasets.push({
-                label : dataKeys[i],
-                data : array[i],
-                backgroundColor : themeContext.palette[paletteKeys[colorIndex%paletteKeys.length]]+'80',
-                borderColor : themeContext.palette[paletteKeys[colorIndex%paletteKeys.length]]+'80'
-            });
-            colorIndex++
-        }
         // x axis 
-        ariaChartData['labels'] = labels
-        ariaChartData['values'] = values
+        barChartData['labels'] = labels
+        barChartData['values'] = values
 
     }else{
 
-        ariaChartData['labels'] = []
-        ariaChartData['values'] = []
+        barChartData['labels'] = []
+        barChartData['values'] = []
     }
 
+    // console.log(barChartData);
     return barChartData
+}
+
+// originData : 그대로 들어옴 
+
+/**
+ * 
+ * @param {*} originData 
+ * @returns 
+ * parsingData : Object
+ * 
+ * {
+ *   labels : [array]
+ *   datasets : [
+ *      {
+ *          label : string
+ *          data : array
+ *      }
+ *   ] 
+ * }
+ * 
+ */
+export const getParsingData = (originData) => {
+
+    const parsingData = {}
+    const datasets = []
+    const labels = []
+    const names = []
+    let array = null
+
+    if(originData.length>0){
+
+        if(originData[0].datasets.length>0){
+            originData[0].datasets.forEach(dataset => {
+                names.push(dataset.name)
+            })
+        }
+
+        array = Array.from(Array(names.length), ()=> new Array(originData.length))
+        
+        for(let i=0;i<originData.length;i++){
+            labels.push(originData[i].label)
+            for(let j=0;j<names.length;j++){
+                array[j][i]=originData[i].datasets[j].value
+            }
+        }
+
+        for(let i=0; i<names.length; i++){
+            datasets.push({
+                label : names[i],
+                data : array[i]
+            })
+        }
+    }
+
+    parsingData['labels'] = labels
+    parsingData['datasets'] = datasets
+
+    return parsingData
+
 }
