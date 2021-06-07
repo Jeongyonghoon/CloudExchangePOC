@@ -1,0 +1,54 @@
+[
+    {
+        "name" : "yearMonth",
+        "label" : "201908",
+        "datasets" : [
+            {   
+                "id" : "0",
+                "name" : "ec2",
+                "value" : "0"
+            },
+            {   
+                "id" : "1",
+                "name" : "rds",
+                "value" : "1"
+            },
+            {   
+                "id" : "2",
+                "name" : "s3",
+                "value" : "2"
+            },
+            {   
+                "id" : "3",
+                "name" : "cloudfront",
+                "value" : "3"
+            }
+        ]
+    }, 
+    {
+        "name" : "yearMonth",
+        "label" : "201909",
+        "datasets" : [
+            {   
+                "id" : "0",
+                "name" : "ec2",
+                "value" : "4"
+            },
+            {   
+                "id" : "1",
+                "name" : "rds",
+                "value" : "5"
+            },
+            {   
+                "id" : "2",
+                "name" : "s3",
+                "value" : "6"
+            },
+            {   
+                "id" : "3",
+                "name" : "cloudfront",
+                "value" : "7"
+            }
+        ]
+    }
+]

@@ -37,9 +37,11 @@ const Selector = props => {
     const result = []
     if (!options) return null
 
+    console.log(options);
     options.data.forEach(item => {
       result.push(<option value={item.memberId}>{item.companyName} ({item.name})</option>)
     })
+
     return result
   }
 
@@ -53,8 +55,8 @@ const Selector = props => {
           className={classes.selectEmpty}
           inputProps={{ 'aria-label': 'user' }}
           style={{
-            fontSize: '12px',
-            lineHeight: '14px'
+            fontSize : '14px',
+            lineHeight : '18px'
           }}
         >
           {mapSelectOptions(options)}

@@ -16,7 +16,11 @@ const CloudTableContainer = props => {
   const getData = async (apiKey) => {
     try {
       const headResult = await axios.get(headerDataURL)
-      const dataResult = await axios.get(listDataURL + `${apiKey}`)
+
+      // const dataResult = await axios.get(listDataURL + `${apiKey}`)
+      const dataResult = await axios.get(listDataURL)
+      console.log(headResult.data)
+      console.log(dataResult.data)
       setHeaderList(headResult.data)
       setDataList(dataResult.data)
     } catch (e) {

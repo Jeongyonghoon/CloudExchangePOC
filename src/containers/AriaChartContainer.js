@@ -2,166 +2,158 @@ import React, { useEffect, useState, useContext } from 'react';
 import {AriaChart, BoxHeader, Progress} from '../components';
 import axios from 'axios';
 import { ThemeContext } from "styled-components";
+import {useDispatch, useSelector} from 'react-redux'
+import {getParsingData} from '../util/parsing'
 
 /**
  * props 
  * - dataURL : api dataURL 
  */
 
-// const themeContext = useContext(ThemeContext)
-
-// class AriaChartContainer extends Component{
-
-//     constructor(props) {
-//         super(props)
-//         this.state = ({
-//             data: null,
-//             completed : 0
-//         })
-//         // this.state = ({data: {}})
-//     }
-
-//     async initialize(dataURL) {
-//         try {
-//             const response = await axios.get(dataURL)
-//             this.setState({data: response.data})
-//         } catch (e) {
-//             console.log(e)
-//         }
-//     }
-
-//     componentDidMount() {
-//         setTimeout(()=>this.initialize(this.props.dataURL), 5000)
-//     }   
-
-//     getAriaChartData = (data) => {
-
-//         const ariaChartData = {}
-
-//         ariaChartData['title'] = data['title']
-//         ariaChartData['labels'] = data['labels']
-
-//         const datasets = data['datasets'].map(
-//             dataset => {
-
-//                 const r = this.getRand(0,255)
-//                 const g = this.getRand(0,255)
-//                 const b = this.getRand(0,255)
-
-//                 const newDataset = {
-//                     ...dataset,
-//                     backgroundColor : 'rgba(' + r + ',' + g + ',' + b + ',0.5)',
-//                     borderColor : 'rgba(' + r + ',' + g + ',' + b + ',0.5)'
-//                 }
-//                 return newDataset
-//             }
-//         )
-//         ariaChartData['datasets'] = datasets
-//         return ariaChartData
-        
-//     }
-
-//     getRand = (min, max) => {
-//         if (min >= max) return false;
-//         return ~~(Math.random() * (max - min + 1)) + min;
-//     }
-
-//     render(){
-//         if(!this.state.data) {
-//             return (
-//                 <>
-//                     <Progress></Progress>
-//                 </>
-//             ) 
-//         }
-
-//         return(
-//             <>  
-//                 <BoxHeader title={this.state.data.title}></BoxHeader>
-//                 <AriaChart data={this.getAriaChartData(this.state.data)} height={80}></AriaChart>
-//             </>
-//         )
-//     }
-
-// }
-
-// export default AriaChartContainer;
-
 const AriaChartContainer = (props) => {
 
-    const [data, setData] = useState(null)
+    // redux
     const themeContext = useContext(ThemeContext)
+    const dispatch = useDispatch()
 
-    console.log(themeContext);
+    const [data, setData] = useState(null)
+
+    // parameters
+    const memberId = useSelector(state => state.user.urlKey)
+    const yearMonth = useSelector(state => state.yearMonth.yearMonth)
+
     const getData = async (dataURL)=>{
         try {
             const response = await axios.get(dataURL)
-            setData({data: response.data})
+            console.log(response.data);
+            setData(response.data)
             console.log(data);
+        } catch (e) {
+            setData(e.message)
+            console.log(e)
+        }
+    }
+
+    const test = async (dataURL)=>{
+        try {
+            const response = await axios.get(dataURL)
+            console.log(response.data)
+
         } catch (e) {
             console.log(e)
         }
     }
 
-    // const getRand = (min, max) => {
-    //     if (min >= max) return false;
-    //     return ~~(Math.random() * (max - min + 1)) + min;
+    // const getAriaChartData = (data) => {
+
+    //     const paletteKeys = Object.keys(themeContext.palette)
+
+    //     const ariaChartData = {}
+    
+    //     ariaChartData['title'] = data['title']
+    //     ariaChartData['labels'] = data['labels']
+        
+    //     const datasets = data['datasets'].map(
+    //         (dataset,index) => {
+    //             const newDataset = {
+    //                 ...dataset,
+    //                 backgroundColor : themeContext.palette[paletteKeys[index%paletteKeys.length]]+'80',
+    //                 borderColor : themeContext.palette[paletteKeys[index%paletteKeys.length]]+'80'
+    //             }
+    //             return newDataset
+    //         }
+    //     )
+    //     ariaChartData['datasets'] = datasets
+        
+    //     return ariaChartData
+        
     // }
 
+    // data(array)
     const getAriaChartData = (data) => {
 
-        console.log(themeContext.palette.aqua);
-        const paletteKeys = Object.keys(themeContext.palette)
-        console.log(paletteKeys);
+        if(data.length>0){
+            
+            // array[0] : label (날짜)
 
-        const ariaChartData = {}
-    
-        ariaChartData['title'] = data['title']
-        ariaChartData['labels'] = data['labels']
-        
-        const datasets = data['datasets'].map(
-            (dataset,index) => {
-    
-                // const r = getRand(0,255)
-                // const g = getRand(0,255)
-                // const b = getRand(0,255)
-    
-                const newDataset = {
-                    ...dataset,
-                    // backgroundColor : 'rgba(' + r + ',' + g + ',' + b + ',0.5)',
-                    // borderColor : 'rgba(' + r + ',' + g + ',' + b + ',0.5)'
-                    backgroundColor : themeContext.palette[paletteKeys[index%paletteKeys.length]]+'80',
-                    borderColor : themeContext.palette[paletteKeys[index%paletteKeys.length]]+'80'
+            const dataKeys = Object.keys(data[0])
+            const yearMonthKey = dataKeys.indexOf('yearMonth')
+            const row = dataKeys.length
+            const col = data.length
+            const array = Array.from(Array(row), ()=> new Array(col))
+
+            for(let i=0; i<col; i++){
+                for(let j=0;j<row;j++){
+                    if(j===0){
+                        array[j][i] = data[i][dataKeys[j]].replace(/(\w{4})(\w{2})/g, '$1년 $2월')
+                        continue
+                    }
+                    array[j][i] = data[i][dataKeys[j]]
                 }
-                return newDataset
             }
-        )
-        ariaChartData['datasets'] = datasets
-        
-        return ariaChartData
-        
+
+            const paletteKeys = Object.keys(themeContext.palette)
+
+            const ariaChartData = {}
+            const datasets = []
+            // chart title
+            ariaChartData['title'] = 'aria chart title' // props로 받기?
+
+            // x axis 
+            ariaChartData['labels'] = array[yearMonthKey]
+
+            let colorIndex = 0
+            for(let i=0; i<row; i++){
+                if(i==yearMonthKey) continue
+                datasets.push({
+                    label : dataKeys[i],
+                    data : array[i],
+                    backgroundColor : themeContext.palette[paletteKeys[colorIndex%paletteKeys.length]]+'80',
+                    borderColor : themeContext.palette[paletteKeys[colorIndex%paletteKeys.length]]+'80'
+                });
+                colorIndex++
+            }
+            
+            ariaChartData['datasets'] = datasets
+            return ariaChartData
+
+        }else{
+
+        }
+
     }
+
+    // if(data){
+    //     getAriaChartData(data)
+    // }
 
     useEffect(()=>{
         getData(props.dataURL)
+        // test('cloud/users')
     },[])
 
-    if(!data) {
+    console.log(memberId, yearMonth);
+    // return 안에 작성 가능
 
-        return (
-            <>
-                <Progress></Progress>
-            </>
-        ) 
-    }else{
+    return(
+        <>  
+            <BoxHeader title={'title'}></BoxHeader>
+            <div style={{ width: '100%', margin: '0 auto' }}>
+                {
+                    data ? (
+                        typeof data === "string" ?
+                        <div style={{
+                            "textAlign" : "center"
+                        }}>{data}</div>
+                        : <AriaChart data={getParsingData(data)} height={80}></AriaChart>
+                    )
+                    : <Progress></Progress>
+                }
 
-        return(
-            <>  
-                <BoxHeader title={data.data.title}></BoxHeader>
-                <AriaChart data={getAriaChartData(data.data)} height={80}></AriaChart>
-            </>
-        )
-    }
+            </div>
+        </>
+    )
+    
 
 }
 

@@ -17,7 +17,7 @@ const SelectorContainer = props => {
   /* -- redux --- */
 
   const [data, setData] = useState(null)
-  const [userData, setUserData] = useState([])
+  const [userData, setUserData] = useState(null)
 
   const initialize = async (dataURL) => {
     try {
@@ -41,10 +41,11 @@ const SelectorContainer = props => {
   }, [userList])
   /* -- redux --- */
 
-  if (!data) return null
+  // if (!data) return null
+  if(!userData) return null
   return (
     <>
-      <Selector label={data.label} options={userData}></Selector>
+      <Selector options={userData}></Selector>
     </>
   )
 }
