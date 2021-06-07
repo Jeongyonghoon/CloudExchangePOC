@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useMemo } from 'react'
 import { BoxHeader, CloudTable } from '../components'
 import { useSelector } from 'react-redux'
 
 const axios = require('axios')
 
 const CloudTableContainer = props => {
-  const urlKey = useSelector(state => state.user.urlKey)
+  const memberId = useSelector(state => state.user.memberId)
 
   const [dataList, setDataList] = useState([])
   const [headerList, setHeaderList] = useState([])
@@ -17,8 +17,6 @@ const CloudTableContainer = props => {
     try {
       const headResult = await axios.get(headerDataURL)
       const dataResult = await axios.get(listDataURL + `${apiKey}`)
-      console.log(headResult.data)
-      console.log(dataResult.data)
       setHeaderList(headResult.data)
       setDataList(dataResult.data)
     } catch (e) {
@@ -26,30 +24,9 @@ const CloudTableContainer = props => {
     }
   }
 
-  // const getTableHeader = data => {
-  //   const result = []
-  //   data.forEach(item => {
-  //     result.push(item['label'])
-  //   })
-  //   return result
-  // }
-  //
-  // const getTableData = data => {
-  //   const result = []
-  //   data.forEach(item => {
-  //     const row = []
-  //     headerList.forEach(name => {row.push(item[name['value']])})
-  //     result.push(row)
-  //   })
-  //   return result
-  // }
-
   useEffect(() => {
-    getData(urlKey)
-  }, [urlKey])
-  useEffect(() => {
-    getData(urlKey)
-  }, [])
+    getData(memberId)
+  }, [memberId])
 
   return (
     <>
