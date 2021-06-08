@@ -43,7 +43,6 @@ const Selector = props => {
     <div>
       <FormControl className={classes.formControl} size="small" style={{ minWidth: 250 }}>
         <NativeSelect
-          // value={state.user}
           onChange={handleChange}
           name="user"
           className={classes.selectEmpty}

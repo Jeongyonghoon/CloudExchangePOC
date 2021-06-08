@@ -25,6 +25,7 @@ const Detail = () => {
             chartHeight={100}
             sliderDisplay={false}
             isGetYearMonth={true}
+            bindComponent={'yearMonth'}
             title={'클라우드 상품 단위별 상위 요금'}
           ></ChartContainer>
         </ComponentBox>
@@ -48,20 +49,17 @@ const Detail = () => {
         </ComponentBox>
       </ComponentRow>
 
-      {/* <ComponentRow>
+      <ComponentRow>
         <ComponentBox width={'100%'} marginTop={'30px'} marginBottom={'20px'}>
           <CloudTableContainer
             headerDataURL={'/cloud/billings/detail/header'}
-            // headerDataURL={'/static/data/dashboard/header.json'}
-            listDataURL={'/cloud/billings/detail?memberId=' + urlKey + "&yearMonth=" + yearMonth}
-            // listDataURL={'/static/data/dashboard/charge.json'}
+            listDataURL={'/cloud/billings/detail?memberId='}
+            bindParam={'yearMonth'}
             width={'100%'}
           ></CloudTableContainer>
         </ComponentBox>
-      </ComponentRow> */}
-
+      </ComponentRow>
     </>
   )
 }
-
 export default Detail

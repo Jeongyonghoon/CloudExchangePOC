@@ -1,23 +1,19 @@
-/* http://172.18.10.31:8070/billings/product?member_id=193 */
-
 import React, { useContext, useEffect, useState } from 'react'
 import { BarChart, BoxHeader, ChartSlider, DoughnutChart } from '../components'
 import { ThemeContext } from 'styled-components'
 import { useSelector } from 'react-redux'
-import {getParsingData} from '../util/parsing'
+import { getParsingData } from '../util/parsing'
 
 const axios = require('axios')
 
 const ChartContainer = props => {
 
-
   const memberId = useSelector(state => state.user.memberId)
   const yearMonth = useSelector(state => state.yearMonth.yearMonth)
-  const {isGetYearMonth, title} = props
+  const { isGetYearMonth, title } = props
 
-
-  const [labelData,setLabelData] = useState([])
-  const [valueData,setValueData] = useState([])
+  const [labelData, setLabelData] = useState([])
+  const [valueData, setValueData] = useState([])
   const [chartTitle, setChartTitle] = useState('default')
 
   const chartType = props.chartType
@@ -44,30 +40,7 @@ const ChartContainer = props => {
   /* Chart & Slider data */
   const [viewCount, setViewCount] = useState([])
 
-  /* ----------- default ----------- */
-  const defaultChart = () => {
-    return [
-      {
-        price: 100,
-        date: 'default'
-      },
-      {
-        price: 200,
-        date: 'default'
-      }]
-  }
-  /* ----------- default ----------- */
-
   /* ----------- componentDidMount ----------- */
-  // const setChartData = chartData => {
-  //   chartData.forEach(function (item) {
-  //     valueData.push(item['price'])
-  //     labelData.push(item['date'])
-  //   })
-  //   setChartValueData(valueData)
-  //   setChartLabelData(labelData)
-  // }
-
   const setChartData = chartData => {
     const parsedData = getParsingData(chartData)
     setLabelData(parsedData.labels)
@@ -86,25 +59,20 @@ const ChartContainer = props => {
       const result = await axios.get(dataURL)
       /* props data setting */
 
-      console.log(result);
+      console.log(result)
       setChartData(result.data)
       setViewCount([0, result.data.length])
       setDataCount(result.data.length)
       setChartTitle(result.data.title)
     } catch (e) {
-
-      // setChartData(defaultChart())
-      // setViewCount([0, 2])
-      // setDataCount(2)
-
       console.log(e)
     }
   }
 
   useEffect(() => {
-    if(isGetYearMonth){
+    if (isGetYearMonth) {
       getData(props.dataURL + memberId + '&yearMonth=' + yearMonth)
-    }else{
+    } else {
       getData(props.dataURL + memberId)
     }
   }, [memberId, yearMonth])
@@ -115,14 +83,9 @@ const ChartContainer = props => {
 
   /* ----------- componentDidUpdate ----------- */
   const handleChange = (e, newValue) => {
-    e.preventDefault() // 애는 뭐하는 애인지 찾아봐
+    e.preventDefault()
     setViewCount(newValue)
   }
-
-  // useEffect(() => {
-  //   getData(urlKey)
-  // }, [urlKey])
-  //preventDefault, stopPropagation
 
   useEffect(() => {
     setChartLabelData(labelData.slice(viewCount[0], viewCount[1]))
@@ -134,13 +97,14 @@ const ChartContainer = props => {
     <>
       <BoxHeader title={title}></BoxHeader>
       <div style={{ width: '95%', margin: 'auto', marginTop: '3%' }}>
-        {chartType === 'bar' && <BarChart chartHeight={chartHeight} chartColor={colors[0]} labelData={chartLabelData}
+        {chartType === 'bar' &&
+        <BarChart chartHeight={chartHeight} chartColor={colors[0]} labelData={chartLabelData}
                                           valueData={chartValueData}/>}
         {chartType === 'doughnut' &&
         <DoughnutChart chartHeight={chartHeight} labelData={chartLabelData} valueData={chartValueData}
                        chartColor={colors}/>}
 
-        <div style={{ width: '100%', margin: 'auto' }}>
+        <div style={{ width: '95%', margin: 'auto' }}>
           {sliderDisplay &&
           <ChartSlider labelData={labelData} dataCount={dataCount} viewCount={viewCount} handleChange={handleChange}/>}
         </div>
