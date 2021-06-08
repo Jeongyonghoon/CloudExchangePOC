@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { changeDate } from './changeFormat'
 
 const checkType = ['accountId', 'accountName', 'productName', 'usageType', 'itemDescription']
+//환경변수를 사용한 타입 지정 찾아보기
 
 const CloudTable = props => {
   const headerList = props.headerList

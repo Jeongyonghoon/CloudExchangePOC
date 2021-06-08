@@ -38,7 +38,7 @@ const CloudTableContainer = props => {
 
   return (
     <>
-      <BoxHeader></BoxHeader>
+      <BoxHeader title={props.title}></BoxHeader>
       <CloudTable
         headerList={headerList}
         dataList={dataList}
