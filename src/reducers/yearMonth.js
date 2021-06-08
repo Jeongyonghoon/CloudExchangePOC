@@ -1,4 +1,5 @@
 export const SET_YEARMONTH = 'SET_YEARMONTH'
+export const GET_YEARMONTH = 'GET_YEARMONTH'
 
 export const initialState = {
   yearMonth: 0
@@ -10,6 +11,12 @@ export const yearMonthAction = yearMonth => {
   }
 }
 
+export const getYearMonth = () => {
+  return (dispatch, getState) => {
+    dispatch({ type: GET_YEARMONTH })
+  }
+}
+
 const yearMonthReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_YEARMONTH:
@@ -17,6 +24,10 @@ const yearMonthReducer = (state = initialState, action) => {
         ...state,
         yearMonth: action.payload,
       }
+    
+    case GET_YEARMONTH : 
+      return state.yearMonth
+      
     default:
       return state
   }

@@ -9,7 +9,12 @@ import {getParsingData} from '../util/parsing'
 const axios = require('axios')
 
 const ChartContainer = props => {
-  const urlKey = useSelector(state => state.user.urlKey)
+
+
+  const memberId = useSelector(state => state.user.urlKey)
+  const yearMonth = useSelector(state => state.yearMonth.yearMonth)
+  const {isGetYearMonth, title} = props
+
 
   const [labelData,setLabelData] = useState([])
   const [valueData,setValueData] = useState([])
@@ -71,32 +76,38 @@ const ChartContainer = props => {
     setChartLabelData(labelData)
   }
 
-  const getData = async (apiKey) => {
+  const getData = async (dataURL) => {
     try {
-      if (apiKey === undefined) apiKey = 0
+      // if (apiKey === undefined) apiKey = 0
 
       // url을 page에서 받는게 좋을 것 같음
       // const result = await axios.get(dataURL + `/${apiKey}`)
 
       const result = await axios.get(dataURL)
       /* props data setting */
+
+      console.log(result);
       setChartData(result.data)
       setViewCount([0, result.data.length])
       setDataCount(result.data.length)
       setChartTitle(result.data.title)
     } catch (e) {
 
-      setChartData(defaultChart())
-      setViewCount([0, 2])
-      setDataCount(2)
+      // setChartData(defaultChart())
+      // setViewCount([0, 2])
+      // setDataCount(2)
 
       console.log(e)
     }
   }
 
   useEffect(() => {
-    getData(0)
-  }, [])
+    if(isGetYearMonth){
+      getData(props.dataURL + memberId + '&yearMonth=' + yearMonth)
+    }else{
+      getData(props.dataURL + memberId)
+    }
+  }, [memberId, yearMonth])
 
   /* ----------- componentDidMount ----------- */
 
@@ -108,9 +119,9 @@ const ChartContainer = props => {
     setViewCount(newValue)
   }
 
-  useEffect(() => {
-    getData(urlKey)
-  }, [urlKey])
+  // useEffect(() => {
+  //   getData(urlKey)
+  // }, [urlKey])
   //preventDefault, stopPropagation
 
   useEffect(() => {
@@ -121,8 +132,8 @@ const ChartContainer = props => {
 
   return (
     <>
-      <BoxHeader></BoxHeader>
-      <div style={{ width: '80%', margin: 'auto', marginTop: '3%' }}>
+      <BoxHeader title={title}></BoxHeader>
+      <div style={{ width: '95%', margin: 'auto', marginTop: '3%' }}>
         {chartType === 'bar' && <BarChart chartHeight={chartHeight} chartColor={colors[0]} labelData={chartLabelData}
                                           valueData={chartValueData}/>}
         {chartType === 'doughnut' &&

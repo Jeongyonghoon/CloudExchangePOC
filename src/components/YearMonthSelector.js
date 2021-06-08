@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import FormControl from '@material-ui/core/FormControl'
 import NativeSelect from '@material-ui/core/NativeSelect'
@@ -22,30 +22,67 @@ const useStyles = makeStyles((theme) => ({
 const YearMonthSelector = props => {
 
   const dispatch = useDispatch()
-
+  // const yearMonth = useSelector(state => state.yearMonth.yearMonth) // userKey accountId로 바꾸기
   const classes = useStyles()
-  const [state, setState] = useState({
-    yearMonth: '',
-  })
+  // const [state, setState] = useState({
+  //   yearMonth: '',
+  // })
+
+  const [yearMonth, setYearMonth] = useState('')
+  // const [options, setOptions] = useState(props.op)
+  // 한 번만 렌더링 하려면 두번째 인자로 빈 배열을 넣어줌
+
+  // useEffect(()=>{
+  //     setYearMonth(useSelector(state => state.yearMonth.yearMonth))
+  //     console.log(yearMonth);
+  // },[])
+
+  useEffect(()=>{
+    if(props.options){
+      if(props.options.length===0){
+        setYearMonth('')
+        dispatch(yearMonthAction(''))
+      }else{
+        setYearMonth(props.options[0].value)
+        dispatch(yearMonthAction(props.options[0].value))
+      }
+    }
+  },[props.options])
+
+
+
+
+  const handleChange = (event) => {
+    setYearMonth(event.target.value)
+    dispatch(yearMonthAction(event.target.value))
+  }
 
   // const urlKey = useSelector(state => state.user.urlKey)
 
   // const { yearMonths } = props
   // const accountId = dispatch()
-  const handleChange = (event) => {
-    // const yearMonth = event.target.name
-    console.log(event.target.name);
-    console.log(event.target.value);
-    dispatch(yearMonthAction(event.target.value))
-    // setState({
-    //   ...state,
-    //   [yearMonth]: event.target.value,
-    // })
-  }
+  // const handleChange = (event) => {
+  //   const name = event.target.name
+  //   // console.log(event.target.name);
+  //   // console.log(event.target.value);
+  //   // dispatch(yearMonthAction(event.target.value))
+  //   setState({
+  //     ...state,
+  //     [name]: event.target.value,
+  //   })
+  //   dispatch(yearMonthAction(state.yearMonth))
+  // }
+
+  // useEffect(()=>{
+  //   setState({
+  //     ...state,
+  //     yearMonth : yearMonth
+  //   })
+  // },[yearMonth])
 
   const mapSelectOptions = (options) =>{
-    if(!options){
-      return <option></option>
+    if(!options || options.length===0){
+      return <option>No Data</option>
     }else{
       return(
         options.map(
@@ -60,7 +97,7 @@ const YearMonthSelector = props => {
     <div>
       <FormControl className={classes.formControl} size="small" style={{ minWidth: 250 }}>
         <NativeSelect
-          // value={state.user}
+          value={yearMonth}
           onChange={handleChange}
           name="yearMonth"
           className={classes.selectEmpty}

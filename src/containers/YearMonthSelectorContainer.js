@@ -35,7 +35,8 @@ const YearMonthSelectorContainer = props => {
     try {
       const response = await axios.get(dataURL)
       setYearMonths(response.data)
-      dispatch(yearMonthAction(yearMonths[0].value))
+      // dispatch(yearMonthAction(yearMonths[0].value))
+      console.log(yearMonths);
     } catch (e) {
       console.log(e)
     }
@@ -60,7 +61,8 @@ const YearMonthSelectorContainer = props => {
   //   setUserData(userList)
   // }, [userList])
   // /* -- redux --- */
-  console.log(memberId )
+  console.log(memberId)
+  // if(!yearMonths) return null
   return (
     <>
       <YearMonthSelector options={yearMonths}></YearMonthSelector>
