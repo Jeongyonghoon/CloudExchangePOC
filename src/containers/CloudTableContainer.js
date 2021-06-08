@@ -24,7 +24,7 @@ const CloudTableContainer = props => {
       if(yearMonth==undefined)
         dataResult = await axios.get(listDataURL + `${memberId}`)
       else if(bindProp=='yearMonth')
-        dataResult = await axios.get(listDataURL + `${memberId}` + '&year_month=' + `${yearMonth}`)
+        dataResult = await axios.get(listDataURL + `${memberId}` + '&yearMonth=' + `${yearMonth}`)
 
       setHeaderList(headResult.data)
       setDataList(dataResult.data)

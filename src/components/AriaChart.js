@@ -44,7 +44,7 @@ const AriaChart = (props) => {
         (dataset,index) => {
           const newDataset = {
               ...dataset,
-              backgroundColor : themeContext.palette[paletteKeys[index%paletteKeys.length]],
+              backgroundColor : themeContext.palette[paletteKeys[index%paletteKeys.length]]+'90',
               borderColor : themeContext.palette[paletteKeys[index%paletteKeys.length]]
           }
           return newDataset
@@ -79,8 +79,21 @@ const AriaChart = (props) => {
     
     scales: {
       xAxes: [{
+        type : 'time',
+        display: true,
+        scaleLabel: {
+            display: true,
+        },
         ticks: {
-          beginAtZero: true
+          beginAtZero: true,
+          // autoSkip : true
+          maxRotation :0,
+          minRotation :0,
+          callback : function(dataLabel, index){
+
+            return new Date(dataLabel)
+            
+          }
         }
       }]
     },

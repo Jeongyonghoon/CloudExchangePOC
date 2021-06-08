@@ -18,7 +18,7 @@ export const parsingDashboardAraiChart = (data) => {
         for(let i=0; i<col; i++){
             for(let j=0;j<row;j++){
                 if(j===0){
-                    array[j][i] = data[i][dataKeys[j]].replace(/(\w{4})(\w{2})/g, '$1년 $2월')
+                    array[j][i] = data[i][dataKeys[j]].replace(/(\w{4})(\w{2})/g, '$1-$2')
                     continue
                 }
                 array[j][i] = data[i][dataKeys[j]]
@@ -123,7 +123,12 @@ export const getParsingData = (originData) => {
         array = Array.from(Array(names.length), ()=> new Array(originData.length))
         
         for(let i=0;i<originData.length;i++){
-            labels.push(originData[i].label)
+
+            if(originData[i].name==='yearMonth'){
+                labels.push(originData[i].label.replace(/(\w{4})(\w{2})/g, '$1-$2'))
+            }else{
+                labels.push(originData[i].label)
+            }
             for(let j=0;j<names.length;j++){
                 array[j][i]=originData[i].datasets[j].value
             }
