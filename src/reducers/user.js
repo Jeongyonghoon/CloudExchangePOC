@@ -29,10 +29,12 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_USER_LIST:
       return {
+        ...state,
         userList: action.payload,
       }
     case SET_USER_KEY:
       return {
+        ...state,
         urlKey: action.payload,
       }
     default:

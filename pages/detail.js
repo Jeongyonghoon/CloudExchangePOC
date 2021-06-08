@@ -6,10 +6,10 @@ import { useSelector } from 'react-redux'
 
 const Detail = () => {
 
-  const urlKey = useSelector(state => state.user.urlKey)
-  const yearMonth = useSelector(state => state.yearMonth.yearMonth)
+  // const urlKey = useSelector(state => state.user.urlKey)
+  // const yearMonth = useSelector(state => state.yearMonth.yearMonth)
 
-  console.log(urlKey, yearMonth);
+  // console.log(urlKey, yearMonth);
   return(
     <>
       <PageHeader title={'클라우드 상세 요금'}></PageHeader>
@@ -19,11 +19,13 @@ const Detail = () => {
       <ComponentRow>
         <ComponentBox height={'50%'} spacing={2}>
           <ChartContainer
-            dataURL={'/static/data/detail/barChart.json'}
+            dataURL={'cloud/billings/detail/top?memberId='}
             chartType={'bar'}
             chartColor={'#FFDEAD'}
             chartHeight={100}
-            sliderDisplay={true}
+            sliderDisplay={false}
+            isGetYearMonth={true}
+            title={'클라우드 상품 단위별 상위 요금'}
           ></ChartContainer>
         </ComponentBox>
       </ComponentRow>
@@ -39,7 +41,10 @@ const Detail = () => {
 
       <ComponentRow>
         <ComponentBox width={'100%'} spacing={2}>
-          <AriaChartContainer dataURL={'/static/data/detail/ariaChart.json'}></AriaChartContainer>
+          <AriaChartContainer 
+            dataURL={'/cloud/billings/product/main?memberId='}
+            title={'주요 상품별 사용 요금 이력 [EC2, RDS, S3, CloudFront]'}
+            ></AriaChartContainer>
         </ComponentBox>
       </ComponentRow>
 

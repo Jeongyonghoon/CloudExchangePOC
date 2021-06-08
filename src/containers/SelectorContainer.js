@@ -19,18 +19,18 @@ const SelectorContainer = props => {
   const [data, setData] = useState(null)
   const [userData, setUserData] = useState(null)
 
-  const initialize = async (dataURL) => {
-    try {
-      const response = await axios.get(dataURL)
-      setData(response.data)
-    } catch (e) {
-      console.log(e)
-    }
-  }
+  // const initialize = async (dataURL) => {
+  //   try {
+  //     const response = await axios.get(dataURL)
+  //     setData(response.data)
+  //   } catch (e) {
+  //     console.log(e)
+  //   }
+  // }
 
-  useEffect(() => {
-    initialize(props.dataURL)
-  }, [])
+  // useEffect(() => {
+  //   initialize(props.dataURL)
+  // }, [])
 
   /* -- redux --- */
   useEffect(() => {
