@@ -13,7 +13,6 @@ const ValueLabelComponent = props => {
 }
 
 const ChartSlider = props => {
-
   const dataCount = props.dataCount
   const viewCount = props.viewCount
   const labelData = props.labelData
@@ -53,9 +52,3 @@ const ChartSlider = props => {
   )
 }
 export default ChartSlider
-
-/*
-
-https://codesandbox.io/s/91yti?file=/demo.js:0-848
-
-*/

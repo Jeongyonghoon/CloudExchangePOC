@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Selector } from '../components'
 import axios from 'axios'
-
-import { useDispatch, useSelector } from 'react-redux'
-import { userListAction } from '../reducers/user'
+import { useDispatch } from 'react-redux'
+import { userKeyAction } from '../reducers/user'
 
 /**
  * props
@@ -11,18 +10,15 @@ import { userListAction } from '../reducers/user'
  */
 
 const SelectorContainer = props => {
-  /* -- redux --- */
   const dispatch = useDispatch()
-  const userList = useSelector(state => state.user.userList)
-  /* -- redux --- */
 
-  const [data, setData] = useState(null)
-  const [userData, setUserData] = useState(null)
+  const [userData, setUserData] = useState([])
 
   const initialize = async (dataURL) => {
     try {
       const response = await axios.get(dataURL)
-      setData(response.data)
+      setUserData(response.data.data)
+      dispatch(userKeyAction(response.data.data[0].memberId)) // --> 초기 멤버 아이디 설정
     } catch (e) {
       console.log(e)
     }
@@ -32,16 +28,6 @@ const SelectorContainer = props => {
     initialize(props.dataURL)
   }, [])
 
-  /* -- redux --- */
-  useEffect(() => {
-    dispatch(userListAction())
-  }, [dispatch])
-  useEffect(() => {
-    setUserData(userList)
-  }, [userList])
-  /* -- redux --- */
-
-  // if (!data) return null
   if(!userData) return null
   return (
     <>

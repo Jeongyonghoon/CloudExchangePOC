@@ -36,6 +36,8 @@ const DoughnutChart = props => {
   )
 }
 DoughnutChart.defaultProps = {
+  labelData: [],
+  valueData: [],
   height: '100%'
 }
 

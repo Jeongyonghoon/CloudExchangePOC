@@ -1,15 +1,6 @@
 import React from 'react'
 import { Bar } from 'react-chartjs-2'
 
-// Chart.defaults.plugins.legend.display = false
-
-/*
-- Props -
-labelData : Array <String>
-valueData : Array <long>
-'#58ACFA'
-*/
-
 const BarChart = props => {
 
   const labelData = props.labelData
@@ -50,7 +41,8 @@ const BarChart = props => {
 }
 
 BarChart.defaultProps = {
+  labelData: [],
+  valueData: [],
   chartColor: '#58ACFA',
-
 }
 export default BarChart
