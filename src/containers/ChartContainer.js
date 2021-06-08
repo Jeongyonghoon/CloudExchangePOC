@@ -11,7 +11,7 @@ const axios = require('axios')
 const ChartContainer = props => {
 
 
-  const memberId = useSelector(state => state.user.urlKey)
+  const memberId = useSelector(state => state.user.memberId)
   const yearMonth = useSelector(state => state.yearMonth.yearMonth)
   const {isGetYearMonth, title} = props
 

@@ -31,7 +31,7 @@ const AriaChartContainer = (props) => {
     const [data, setData] = useState(null)
 
     // parameters
-    const memberId = useSelector(state => state.user.urlKey)
+    const memberId = useSelector(state => state.user.memberId)
     const yearMonth = useSelector(state => state.yearMonth.yearMonth)
 
     const getData = async (dataURL)=>{

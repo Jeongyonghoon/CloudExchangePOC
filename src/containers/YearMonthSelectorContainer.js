@@ -28,7 +28,7 @@ const YearMonthSelectorContainer = props => {
   const [yearMonths, setYearMonths] = useState(null)
   /* -- redux --- */
   const dispatch = useDispatch()
-  const memberId = useSelector(state => state.user.urlKey) // userKey accountId로 바꾸기
+  const memberId = useSelector(state => state.user.memberId) // userKey accountId로 바꾸기
   /* -- redux --- */
 
   const initialize = async (dataURL) => {
