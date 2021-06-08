@@ -1,13 +1,9 @@
 import React from 'react'
-import { DataGrid, GridToolbarContainer, GridToolbarExport } from '@material-ui/data-grid'
-import Styled from 'styled-components'
+import { DataGrid } from '@material-ui/data-grid'
 import PropTypes from 'prop-types'
 import { changeDate } from './changeFormat'
 
-// https://smartdevpreneur.com/the-easiest-way-to-implement-material-ui-table-search/  -->  search table
-
 const CloudTable = props => {
-
   const headerList = props.headerList
   const dataList = props.dataList
 
@@ -42,7 +38,7 @@ const CloudTable = props => {
     <DataGrid
       rows={rows}
       columns={columns}
-      pageSize={5}
+      pageSize={10}
       autoHeight={true}
       disableColumnMenu/>
   )
@@ -51,6 +47,11 @@ const CloudTable = props => {
 CloudTable.propTypes = {
   headerList: PropTypes.object,
   dataList: PropTypes.object
+}
+
+CloudTable.defaultProps = {
+  headerList: [],
+  dataList: []
 }
 
 export default CloudTable

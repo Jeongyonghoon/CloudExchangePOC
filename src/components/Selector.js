@@ -22,23 +22,17 @@ const useStyles = makeStyles((theme) => ({
 const Selector = props => {
   const dispatch = useDispatch()
   const classes = useStyles()
-  // const [state, setState] = React.useState({
-  //   user: '',
-  // })
 
   const { label, options } = props
   const handleChange = (event) => {
-    // const user = event.target.name
     dispatch(userKeyAction(event.target.value))
-    console.log(event.target.value)
   }
 
   const mapSelectOptions = (options) => {
     const result = []
     if (!options) return null
 
-    console.log(options);
-    options.data.forEach(item => {
+    options.forEach(item => {
       result.push(<option value={item.memberId}>{item.companyName} ({item.name})</option>)
     })
 
@@ -55,8 +49,8 @@ const Selector = props => {
           className={classes.selectEmpty}
           inputProps={{ 'aria-label': 'user' }}
           style={{
-            fontSize : '14px',
-            lineHeight : '18px'
+            fontSize: '14px',
+            lineHeight: '18px'
           }}
         >
           {mapSelectOptions(options)}
