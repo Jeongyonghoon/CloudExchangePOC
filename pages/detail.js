@@ -35,22 +35,23 @@ const Detail = () => {
         </ComponentBox>
       </ComponentRow> */}
 
-      <ComponentRow>
+      {/* <ComponentRow>
         <ComponentBox width={'100%'} spacing={2}>
           <AriaChartContainer 
             dataURL={'/cloud/billings/product/main?memberId='}
             title={'주요 상품별 사용 요금 이력 [EC2, RDS, S3, CloudFront]'}
             ></AriaChartContainer>
         </ComponentBox>
-      </ComponentRow>
+      </ComponentRow> */}
 
       <ComponentRow>
-        <ComponentBox width={'100%'} marginTop={'30px'} marginBottom={'20px'}>
+        <ComponentBox width={'100%'} spacing={2}>
           <CloudTableContainer
             headerDataURL={'/cloud/billings/detail/header'}
             listDataURL={'/cloud/billings/detail?memberId='}
             bindParam={'yearMonth'}
             width={'100%'}
+            title={'클라우드 상세 요금'}
           ></CloudTableContainer>
         </ComponentBox>
       </ComponentRow>
