@@ -19,7 +19,6 @@ const CloudTableContainer = props => {
     try {
       const headResult = await axios.get(headerDataURL)
       const dataResult = await axios.get(dataURL)
-      console.log(dataURL , ' urlcheck')
 
       setHeaderList(headResult.data)
       setDataList(dataResult.data)

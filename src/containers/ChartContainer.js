@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
+import PropTypes from 'prop-types'
 import { BarChart, BoxHeader, ChartSlider, DoughnutChart } from '../components'
 import { ThemeContext } from 'styled-components'
 import { useSelector } from 'react-redux'
@@ -9,7 +10,7 @@ const axios = require('axios')
 const ChartContainer = props => {
 
   const memberId = useSelector(state => state.user.memberId)
-  const yearMonth = useSelector(state => state.yearMonth.yearMonth)
+  const yearMonth = useSelector(state => state.yearMonth[props.bindParam])
   const { isGetYearMonth, title } = props
 
   const [labelData, setLabelData] = useState([])
@@ -51,11 +52,6 @@ const ChartContainer = props => {
 
   const getData = async (dataURL) => {
     try {
-      // if (apiKey === undefined) apiKey = 0
-
-      // url을 page에서 받는게 좋을 것 같음
-      // const result = await axios.get(dataURL + `/${apiKey}`)
-
       const result = await axios.get(dataURL)
       /* props data setting */
 
@@ -65,7 +61,7 @@ const ChartContainer = props => {
       setDataCount(result.data.length)
       setChartTitle(result.data.title)
     } catch (e) {
-      console.log(e)
+      console.log(e + ' (ChartContainer.js Error!) ')
     }
   }
 
@@ -99,7 +95,7 @@ const ChartContainer = props => {
       <div style={{ width: '95%', margin: 'auto', marginTop: '3%' }}>
         {chartType === 'bar' &&
         <BarChart chartHeight={chartHeight} chartColor={colors[0]} labelData={chartLabelData}
-                                          valueData={chartValueData}/>}
+                  valueData={chartValueData}/>}
         {chartType === 'doughnut' &&
         <DoughnutChart chartHeight={chartHeight} labelData={chartLabelData} valueData={chartValueData}
                        chartColor={colors}/>}
@@ -112,6 +108,22 @@ const ChartContainer = props => {
       </div>
     </>
   )
+}
+
+ChartContainer.propTypes = {
+  chartType: PropTypes.string,
+  sliderDisplay: PropTypes.bool,
+  dataURL: PropTypes.string,
+  chartColor: PropTypes.string,
+}
+
+ChartContainer.defaultProps = {
+  chartType: 'bar',
+  sliderDisplay: false,
+  dataURL: '',
+  width: '100%',
+  chartHeight: '100%',
+  chartColor: '#58ACFA'
 }
 
 export default ChartContainer
