@@ -11,7 +11,6 @@ const Dashboard = () => {
         dataURL={'/cloud/billings/charge/recent?memberId='}
       ></CardContainer>
 
-
       <ComponentRow>
         <ComponentBox width={'35%'} spacing={2}>
           <ChartContainer

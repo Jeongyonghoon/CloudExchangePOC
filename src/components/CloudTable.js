@@ -59,5 +59,3 @@ CloudTable.defaultProps = {
 }
 
 export default CloudTable
-
-//다른 페이지에서 테이블 정보의 타입이 다를수있기때문에 타입 같이 받아줘야함 (헤더에 타입을 받는걸로협의를 보자)
