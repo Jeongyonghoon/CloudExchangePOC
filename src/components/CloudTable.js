@@ -2,9 +2,23 @@ import React from 'react'
 import { DataGrid } from '@material-ui/data-grid'
 import PropTypes from 'prop-types'
 import { changeDate } from './changeFormat'
+import { makeStyles } from '@material-ui/styles'
 
 const checkType = ['accountId', 'accountName', 'productName', 'usageType', 'itemDescription']
+const checkBold = ['totalCost', 'cost', 'usageQuantity']
 //환경변수를 사용한 타입 지정 찾아보기
+//지금 너무 하드코딩 - 동적으로 바꿀수있는 방법 생각하기
+
+const useStyles = makeStyles({
+  bold: {
+    '& .MuiDataGrid-columnHeaderTitle': {
+      fontWeight:'1000',
+    },
+    '& .super-app-theme--cell': {
+      fontWeight: '1000',
+    }
+  }
+})
 
 const CloudTable = props => {
   const headerList = props.headerList
@@ -13,11 +27,15 @@ const CloudTable = props => {
   const columns = []
   const rows = []
 
+  const classes = useStyles();
+
   headerList.forEach((data, index) => {
     const item = {}
 
     if (data.value === 'yearMonth') item['type'] = 'date'
     else if (!checkType.includes(data.value)) item['type'] = 'number'
+
+    if (checkBold.includes(data.value) ) item['cellClassName'] = 'super-app-theme--cell'
 
     item['field'] = data.value
     item['headerName'] = data.label
@@ -39,12 +57,15 @@ const CloudTable = props => {
   })
 
   return (
-    <DataGrid
-      rows={rows}
-      columns={columns}
-      pageSize={10}
-      autoHeight={true}
-      disableColumnMenu/>
+    <div className={classes.bold}>
+      <DataGrid
+        rows={rows}
+        columns={columns}
+        pageSize={10}
+        autoHeight={true}
+        disableColumnMenu
+      />
+    </div>
   )
 }
 
@@ -59,5 +80,3 @@ CloudTable.defaultProps = {
 }
 
 export default CloudTable
-
-//다른 페이지에서 테이블 정보의 타입이 다를수있기때문에 타입 같이 받아줘야함 (헤더에 타입을 받는걸로협의를 보자)
