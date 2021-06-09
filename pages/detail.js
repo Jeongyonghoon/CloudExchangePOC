@@ -13,7 +13,7 @@ const Detail = () => {
         <YearMonthSelectorContainer></YearMonthSelectorContainer>
       </ComponentRow>
       <ComponentRow>
-        <ComponentBox height={'50%'} spacing={2}>
+        <ComponentBox height={'40%'} spacing={2}>
           <ChartContainer
             dataURL={'cloud/billings/detail/top?memberId='}
             chartType={'bar'}

@@ -48,6 +48,7 @@ const ChartSlider = props => {
       min={0}
       marks={marks}
       valueLabelFormat={dateText}
+      style={{color : "#AAB2BD"}}
     />
   )
 }

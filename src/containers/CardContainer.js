@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
-import { Card } from '../components'
+import { Card, ComponentBox, ComponentRow } from '../components'
 import { useSelector } from 'react-redux'
 
 const axios = require('axios')
@@ -23,16 +23,23 @@ const CardContainer = props => {
 
   const setData = dataList => {
     const cardList = []
+
+
+    const margin = 100/dataList.length + "%"
+
+
     dataList.forEach(function (item, index) {
       let marginRight = '15px'
       if (index === dataList.length - 1) marginRight = '0px'
       cardList.push(
-        <Card
-          title={item['label']}
-          subTitle={item['sublabel']}
-          price={item['value']}
-          marginRight={marginRight}
-        ></Card>
+        <ComponentBox width={margin} spacing={2}>
+          <Card
+            title={item['label']}
+            subTitle={item['sublabel']}
+            price={item['value']}
+            marginRight={marginRight}
+          ></Card>
+        </ComponentBox>
       )
     })
     setViewData(cardList)
@@ -43,9 +50,9 @@ const CardContainer = props => {
   }, [memberId])
 
   return (
-    <div style={{ display: 'flex', marginBottom: '30px' }}>
+    <>
       {viewData}
-    </div>
+    </>
   )
 }
 

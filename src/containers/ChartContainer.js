@@ -12,6 +12,10 @@ const ChartContainer = props => {
   const yearMonth = useSelector(state => state.yearMonth.yearMonth)
   const { isGetYearMonth, title } = props
 
+
+  const [colors, setColors] = useState([])
+
+
   const [labelData, setLabelData] = useState([])
   const [valueData, setValueData] = useState([])
   const [chartTitle, setChartTitle] = useState('default')
@@ -26,14 +30,26 @@ const ChartContainer = props => {
   // global color
   const themeContext = useContext(ThemeContext)
   const paletteKeys = Object.keys(themeContext.palette)
-  const colors = paletteKeys.map(
-    key => (themeContext.palette[key])
-  )
+  // const colors = paletteKeys.map(
+  //   key => (themeContext.palette[key])
+  // )
+
+  const getColors = (dataLen) => {
+
+    let colors = []
+
+    for(let i=0;i<dataLen;i++){
+      colors.push(themeContext.palette[paletteKeys[i%paletteKeys.length]])
+    }
+
+    return colors
+
+  }
 
   /* Chart data */
   const [chartValueData, setChartValueData] = useState([])
   const [chartLabelData, setChartLabelData] = useState([])
-
+  
   /* Slider data */
   const [dataCount, setDataCount] = useState(0)
 
@@ -49,6 +65,7 @@ const ChartContainer = props => {
     setDataCount(chartData.length)
     setChartValueData(parsedData.datasets.length===0 ? [] : parsedData.datasets[0].data)
     setChartLabelData(parsedData.labels)
+    setColors(getColors(parsedData.labels.length))
   }
 
   const getData = async (dataURL) => {

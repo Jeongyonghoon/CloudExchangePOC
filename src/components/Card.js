@@ -9,53 +9,38 @@ const Card = props => {
   const subtitle = props.subTitle
   const price = props.price
 
-  const Box = Styled.div`
-    color: rgba(0, 0, 0, 0.87);
-    width: 100%;
-    position: relative;
-    background: #FFF;
-    box-shadow: 0 1px 4px 0 rgb(0, 0, 0, 0.35);
-    border-radius: 6px;
-    flex-direction: column;
-    margin-right: ${props.marginRight};
-    
-    @media (max-width: 992px){
-      width: 250px;
-    }
-`
 
   const Top = Styled.div`
     border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
     color: black;
-    margin: 0 15px;
-`
+    margin: 0 10px;
+  `
 
   const Bottom = Styled.div`
     text-align: right;
     border-top: solid 2px #E6E6E6;
-    margin: 0 15px 10px;
+    margin: 0 10px 10px;
     align-items: center;
     padding-top: 10px; 
-    font-size: 13px;
-`
+    font-size: 14px;
+  `
 
   return (
-
-    <Box>
+    <>
       <Top>
         <div style={{textAlign:"left"}}><p>{title}</p></div>
         <div style={{textAlign:"right"}}>
-          <h3>
+          <div style={{fontSize:"16px", fontWeight : "1000", margin : "16px 0"}}>
             ₩{changeNumber(price)}
             <small> 원</small>
-          </h3>
+          </div>
         </div>
       </Top>
 
       <Bottom>
         <div>{subtitle}</div>
       </Bottom>
-    </Box>
+    </>
   )
 }
 

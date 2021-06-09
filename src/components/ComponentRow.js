@@ -8,6 +8,10 @@ const ComponentRow = props => {
   const Row = Styled.div`
     display : flex;
     padding: ${spacing || '0'};
+
+    @media (max-width: 992px){
+      min-width: 992px;
+    }
     `
 
     return (

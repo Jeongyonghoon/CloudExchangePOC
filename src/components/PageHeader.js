@@ -34,7 +34,7 @@ const PageHeader = props => {
     //     <div>test</div>
     // </div>
     <>
-      <Typography variant="h5" style={{fontSize : '1.1rem'}}>
+      <Typography variant="h5">
         {props.title}
       </Typography>
       <Divider

@@ -6,11 +6,17 @@ import { ComponentBox, ComponentRow, PageHeader } from '../src/components'
 const Dashboard = () => {
   return(
     <>
+      
       <PageHeader title={'대시보드'}></PageHeader>
-      <CardContainer
+      {/* <CardContainer
         dataURL={'/cloud/billings/charge/recent?memberId='}
-      ></CardContainer>
+      ></CardContainer> */}
 
+      <ComponentRow>
+        <CardContainer
+          dataURL={'/cloud/billings/charge/recent?memberId='}
+        ></CardContainer>
+      </ComponentRow>
 
       <ComponentRow>
         <ComponentBox width={'35%'} spacing={2}>
