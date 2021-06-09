@@ -19,8 +19,7 @@ const Detail = () => {
             chartType={'bar'}
             chartColor={'#FFDEAD'}
             chartHeight={100}
-            isGetYearMonth={true}
-            bindComponent={'yearMonth'}
+            bindParam={'yearMonth'}
             title={'클라우드 상품 단위별 상위 요금'}
           ></ChartContainer>
         </ComponentBox>

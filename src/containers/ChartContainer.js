@@ -11,11 +11,9 @@ const ChartContainer = props => {
 
   const memberId = useSelector(state => state.user.memberId)
   const yearMonth = useSelector(state => state.yearMonth[props.bindParam])
-  const { isGetYearMonth, title } = props
 
   const [labelData, setLabelData] = useState([])
   const [valueData, setValueData] = useState([])
-  const [chartTitle, setChartTitle] = useState('default')
 
   const chartType = props.chartType
   const sliderDisplay = props.sliderDisplay
@@ -23,6 +21,7 @@ const ChartContainer = props => {
   const width = props.width
   const chartColor = props.chartColor
   const chartHeight = props.chartHeight
+  const title = props.title
 
   // global color
   const themeContext = useContext(ThemeContext)
@@ -45,10 +44,10 @@ const ChartContainer = props => {
   const setChartData = chartData => {
     const parsedData = getParsingData(chartData)
     setLabelData(parsedData.labels)
-    setValueData(parsedData.datasets.length===0 ? [] : parsedData.datasets[0].data)
+    setValueData(parsedData.datasets.length === 0 ? [] : parsedData.datasets[0].data)
     setViewCount([0, chartData.length])
     setDataCount(chartData.length)
-    setChartValueData(parsedData.datasets.length===0 ? [] : parsedData.datasets[0].data)
+    setChartValueData(parsedData.datasets.length === 0 ? [] : parsedData.datasets[0].data)
     setChartLabelData(parsedData.labels)
   }
 
@@ -56,24 +55,19 @@ const ChartContainer = props => {
     try {
       const result = await axios.get(dataURL)
       /* props data setting */
-
-      // console.log(result);
-
       setChartData(result.data)
-      // setViewCount([0, result.data.length])
-      // setDataCount(result.data.length)
-      // setChartTitle(result.data.title)
-
     } catch (e) {
       console.log(e + ' (ChartContainer.js Error!) ')
     }
   }
 
   useEffect(() => {
-    if (isGetYearMonth) {
-      getData(props.dataURL + memberId + '&yearMonth=' + yearMonth)
-    } else {
-      getData(props.dataURL + memberId)
+    switch (props.bindParam) {
+      case('yearMonth'):
+        getData(props.dataURL + memberId + '&yearMonth=' + yearMonth)
+        break
+      default:
+        getData(props.dataURL + memberId)
     }
   }, [memberId, yearMonth])
 
@@ -97,18 +91,17 @@ const ChartContainer = props => {
     <>
       <BoxHeader title={title}></BoxHeader>
       <div style={{ width: '95%', margin: '2% auto'}}>
-        {chartType === 'bar' && 
-         <BarChart chartHeight={chartHeight} chartColor={colors[0]} labelData={chartLabelData}
-                                          valueData={chartValueData}/>}
+        {chartType === 'bar' &&
+        <BarChart chartHeight={chartHeight} chartColor={colors[0]} labelData={chartLabelData}
+                  valueData={chartValueData}/>}
         {chartType === 'doughnut' &&
         <DoughnutChart chartHeight={chartHeight} labelData={chartLabelData} valueData={chartValueData}
                        chartColor={colors}/>}
 
-        <div style={{ width: '95%', margin: 'auto' }}>
+        <div style={{ width: '95%', margin: '2% auto' }}>
           {sliderDisplay &&
           <ChartSlider labelData={labelData} dataCount={dataCount} viewCount={viewCount} handleChange={handleChange}/>}
         </div>
-
       </div>
     </>
   )
@@ -119,6 +112,7 @@ ChartContainer.propTypes = {
   sliderDisplay: PropTypes.bool,
   dataURL: PropTypes.string,
   chartColor: PropTypes.string,
+  title: PropTypes.string
 }
 
 ChartContainer.defaultProps = {
@@ -126,8 +120,8 @@ ChartContainer.defaultProps = {
   sliderDisplay: false,
   dataURL: '',
   width: '100%',
-  chartHeight: '100%',
-  chartColor: '#58ACFA'
+  chartColor: '#58ACFA',
+  title: 'default'
 }
 
 export default ChartContainer
