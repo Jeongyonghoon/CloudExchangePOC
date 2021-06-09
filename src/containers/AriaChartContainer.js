@@ -31,6 +31,8 @@ const AriaChartContainer = (props) => {
     const [data, setData] = useState(null)
 
     // parameters
+
+    // if문 사용해서 useSelector 사용해보기
     const memberId = useSelector(state => state.user.memberId)
     const yearMonth = useSelector(state => state.yearMonth.yearMonth)
 
@@ -62,12 +64,14 @@ const AriaChartContainer = (props) => {
     return(
         <>  
             <BoxHeader title={title}></BoxHeader>
-            <div style={{ width: '95%', margin: '0 auto' }}>
+            <div style={{ width: '95%', margin: '2% auto' }}>
                 {
                     data ? (
                         typeof data === "string" ?
                         <div style={{
-                            "textAlign" : "center"
+                            "padding" : "50px",
+                            "textAlign" : "center",
+                            "color" : "red"
                         }}>{data}</div>
                         : <AriaChart data={getParsingData(data)} height={80}></AriaChart>
                     )

@@ -6,14 +6,10 @@ import { useSelector } from 'react-redux'
 
 const Detail = () => {
 
-  // const urlKey = useSelector(state => state.user.urlKey)
-  // const yearMonth = useSelector(state => state.yearMonth.yearMonth)
-
-  // console.log(urlKey, yearMonth);
   return(
     <>
       <PageHeader title={'클라우드 상세 요금'}></PageHeader>
-      <ComponentRow spacing={2}>
+      <ComponentRow>
         <YearMonthSelectorContainer></YearMonthSelectorContainer>
       </ComponentRow>
       <ComponentRow>
@@ -23,7 +19,6 @@ const Detail = () => {
             chartType={'bar'}
             chartColor={'#FFDEAD'}
             chartHeight={100}
-            sliderDisplay={false}
             isGetYearMonth={true}
             bindComponent={'yearMonth'}
             title={'클라우드 상품 단위별 상위 요금'}

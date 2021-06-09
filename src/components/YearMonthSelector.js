@@ -95,7 +95,7 @@ const YearMonthSelector = props => {
   
   return (
     <div>
-      <FormControl className={classes.formControl} size="small" style={{ minWidth: 250 }}>
+      <FormControl className={classes.formControl} size="small" style={{ minWidth: 120 }}>
         <NativeSelect
           value={yearMonth}
           onChange={handleChange}
