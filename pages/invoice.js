@@ -1,11 +1,12 @@
-import React from 'react'
-import {PageHeader} from '../src/components';
+import React, { useEffect } from 'react'
+import Router from 'next/router'
 
 const Invoice = () => {
-  return(
-    <>
-      <PageHeader title={'월별 청구서'}></PageHeader>
-    </>
+  useEffect(() => {
+    Router.push('/ready')
+  })
+  return (
+    <></>
   )
 }
 

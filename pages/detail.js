@@ -1,12 +1,10 @@
 import React from 'react'
 import { ComponentBox, ComponentRow, PageHeader } from '../src/components'
-import { ChartContainer, CloudTableContainer, YearMonthSelectorContainer, AriaChartContainer } from '../src/containers'
-import { parsingDetailBarChart } from '../src/util/parsing.js'
-import { useSelector } from 'react-redux'
+import { ChartContainer, CloudTableContainer, YearMonthSelectorContainer } from '../src/containers'
 
 const Detail = () => {
 
-  return(
+  return (
     <>
       <PageHeader title={'클라우드 상세 요금'}></PageHeader>
       <ComponentRow>
