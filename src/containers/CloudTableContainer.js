@@ -30,6 +30,7 @@ const CloudTableContainer = props => {
         switch(props.bindParam){
           case('yearMonth'):
             getData(listDataURL + memberId + '&yearMonth=' + yearMonth)
+            break
           default:
             getData(listDataURL + memberId)
     }

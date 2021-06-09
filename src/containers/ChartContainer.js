@@ -45,9 +45,11 @@ const ChartContainer = props => {
   const setChartData = chartData => {
     const parsedData = getParsingData(chartData)
     setLabelData(parsedData.labels)
-    setValueData(parsedData.datasets[0].data)
-    setChartValueData(valueData)
-    setChartLabelData(labelData)
+    setValueData(parsedData.datasets.length===0 ? [] : parsedData.datasets[0].data)
+    setViewCount([0, chartData.length])
+    setDataCount(chartData.length)
+    setChartValueData(parsedData.datasets.length===0 ? [] : parsedData.datasets[0].data)
+    setChartLabelData(parsedData.labels)
   }
 
   const getData = async (dataURL) => {
@@ -55,11 +57,13 @@ const ChartContainer = props => {
       const result = await axios.get(dataURL)
       /* props data setting */
 
-      console.log(result)
+      // console.log(result);
+
       setChartData(result.data)
-      setViewCount([0, result.data.length])
-      setDataCount(result.data.length)
-      setChartTitle(result.data.title)
+      // setViewCount([0, result.data.length])
+      // setDataCount(result.data.length)
+      // setChartTitle(result.data.title)
+
     } catch (e) {
       console.log(e + ' (ChartContainer.js Error!) ')
     }
@@ -92,10 +96,10 @@ const ChartContainer = props => {
   return (
     <>
       <BoxHeader title={title}></BoxHeader>
-      <div style={{ width: '95%', margin: 'auto', marginTop: '3%' }}>
-        {chartType === 'bar' &&
-        <BarChart chartHeight={chartHeight} chartColor={colors[0]} labelData={chartLabelData}
-                  valueData={chartValueData}/>}
+      <div style={{ width: '95%', margin: '2% auto'}}>
+        {chartType === 'bar' && 
+         <BarChart chartHeight={chartHeight} chartColor={colors[0]} labelData={chartLabelData}
+                                          valueData={chartValueData}/>}
         {chartType === 'doughnut' &&
         <DoughnutChart chartHeight={chartHeight} labelData={chartLabelData} valueData={chartValueData}
                        chartColor={colors}/>}
