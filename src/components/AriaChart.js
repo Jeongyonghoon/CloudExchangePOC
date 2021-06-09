@@ -79,21 +79,19 @@ const AriaChart = (props) => {
     
     scales: {
       xAxes: [{
-        type : 'time',
+        // type : 'time',
         display: true,
         scaleLabel: {
-            display: true,
+            display: true
         },
         ticks: {
           beginAtZero: true,
           // autoSkip : true
-          maxRotation :0,
-          minRotation :0,
-          callback : function(dataLabel, index){
-
-            return new Date(dataLabel)
-            
-          }
+          // maxRotation :0,
+          // minRotation :0,
+          callback : (dataLabel, index) => (
+            index%2==0 ? dataLabel : null
+          )
         }
       }]
     },

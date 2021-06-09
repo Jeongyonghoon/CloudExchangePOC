@@ -126,6 +126,7 @@ export const getParsingData = (originData) => {
 
             if(originData[i].name==='yearMonth'){
                 labels.push(originData[i].label.replace(/(\w{4})(\w{2})/g, '$1-$2'))
+                // labels.push(new Date(originData[i].label.replace(/(\w{4})(\w{2})/g, '$1-$2')))
             }else{
                 labels.push(originData[i].label)
             }
