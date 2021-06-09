@@ -1,11 +1,13 @@
-import React from 'react'
-import {PageHeader} from '../src/components'
+import React, { useEffect } from 'react'
+import Router from 'next/router'
 
 const Market = () => {
-  return(
-    <>
-      <PageHeader title={'내 마켓 상품 목록'}></PageHeader>
-    </>
+
+  useEffect(() => {
+    Router.push('/ready')
+  })
+  return (
+    <></>
   )
 }
 
