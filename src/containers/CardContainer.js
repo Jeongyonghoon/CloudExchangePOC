@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
-import { Card, ComponentBox, ComponentRow } from '../components'
+import { Card, ComponentBox } from '../components'
 import { useSelector } from 'react-redux'
+import resultDefault from '../../public/static/data/dashboard/recentDefault.json'
 
 const axios = require('axios')
 
@@ -15,7 +16,10 @@ const CardContainer = props => {
   const getData = async () => {
     try {
       const result = await axios.get(dataURL + `${memberId}`)
-      setData(result.data)
+
+      if (result.data.length > 0) setData(result.data)
+      else setData(resultDefault)
+
     } catch (e) {
       console.log(e)
     }
@@ -24,9 +28,7 @@ const CardContainer = props => {
   const setData = dataList => {
     const cardList = []
 
-
-    const margin = 100/dataList.length + "%"
-
+    const margin = 100 / dataList.length + '%'
 
     dataList.forEach(function (item, index) {
       let marginRight = '15px'

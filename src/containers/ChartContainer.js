@@ -12,9 +12,7 @@ const ChartContainer = props => {
   const memberId = useSelector(state => state.user.memberId)
   const yearMonth = useSelector(state => state.yearMonth[props.bindParam])
 
-
   const [colors, setColors] = useState([])
-
 
   const [labelData, setLabelData] = useState([])
   const [valueData, setValueData] = useState([])
@@ -26,6 +24,7 @@ const ChartContainer = props => {
   const chartColor = props.chartColor
   const chartHeight = props.chartHeight
   const title = props.title
+  const marginTop = props.marginTop
 
   // global color
   const themeContext = useContext(ThemeContext)
@@ -38,8 +37,8 @@ const ChartContainer = props => {
 
     let colors = []
 
-    for(let i=0;i<dataLen;i++){
-      colors.push(themeContext.palette[paletteKeys[i%paletteKeys.length]])
+    for (let i = 0; i < dataLen; i++) {
+      colors.push(themeContext.palette[paletteKeys[i % paletteKeys.length]])
     }
 
     return colors
@@ -49,7 +48,7 @@ const ChartContainer = props => {
   /* Chart data */
   const [chartValueData, setChartValueData] = useState([])
   const [chartLabelData, setChartLabelData] = useState([])
-  
+
   /* Slider data */
   const [dataCount, setDataCount] = useState(0)
 
@@ -107,7 +106,7 @@ const ChartContainer = props => {
   return (
     <>
       <BoxHeader title={title}></BoxHeader>
-      <div style={{ width: '95%', margin: '2% auto'}}>
+      <div style={{ width: '95%', margin: '2% auto', marginTop: marginTop }}>
         {chartType === 'bar' &&
         <BarChart chartHeight={chartHeight} chartColor={colors[0]} labelData={chartLabelData}
                   valueData={chartValueData}/>}

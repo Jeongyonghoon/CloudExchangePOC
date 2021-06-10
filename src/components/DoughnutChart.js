@@ -1,16 +1,5 @@
-import React, {useContext} from 'react'
+import React from 'react'
 import { Doughnut } from 'react-chartjs-2'
-import { ThemeContext } from "styled-components";
-
-// const chartColor = [
-//   'rgba(255, 99, 132, 0.2)',
-//   'rgba(54, 162, 235, 0.2)',
-//   'rgba(255, 206, 86, 0.2)',
-//   'rgba(75, 192, 192, 0.2)',
-//   'rgba(153, 102, 255, 0.2)',
-//   'rgba(255, 159, 64, 0.2)',]
-
-// const chartColor = 
 
 const DoughnutChart = props => {
 
@@ -31,8 +20,15 @@ const DoughnutChart = props => {
     borderWidth: 1,
   }
 
+  const options = {
+    legend: {
+      position: 'bottom',
+      align: 'start',
+    },
+  }
+
   return (
-    <Doughnut data={chartData} height={chartHeight}/>
+    <Doughnut data={chartData} height={chartHeight} options={options}/>
   )
 }
 DoughnutChart.defaultProps = {

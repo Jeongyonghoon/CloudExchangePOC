@@ -1,0 +1,32 @@
+[
+  {
+    "label": "납부금액",
+    "value": "0",
+    "sublabel": "-년 -월 총 납부금액"
+  },
+  {
+    "label": "사용요금",
+    "value": "0",
+    "sublabel": "상품 사용요금"
+  },
+  {
+    "label": "요금할인",
+    "value": "0",
+    "sublabel": "할인"
+  },
+  {
+    "label": "결제대행 수수료",
+    "value": "0",
+    "sublabel": "외국환 결제대행 수수료"
+  },
+  {
+    "label": "부가세",
+    "value": "0",
+    "sublabel": "총요금액의 10%"
+  },
+  {
+    "label": "예치금",
+    "value": "0",
+    "sublabel": "예치금 사용금액"
+  }
+]
