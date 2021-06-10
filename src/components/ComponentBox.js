@@ -22,4 +22,9 @@ const ComponentBox = props => {
     </Box>
   )
 }
+
+ComponentBox.defaultProps={
+  width:'100%',
+}
+
 export default ComponentBox

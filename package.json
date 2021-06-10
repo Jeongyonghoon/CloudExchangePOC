@@ -10,6 +10,7 @@
     "compression": "^1.7.1",
     "core-js": "3.12.1",
     "cors": "2.8.5",
+    "cross-env": "^7.0.3",
     "express": "^4.16.2",
     "helmet": "^3.20.0",
     "http-proxy-middleware": "2.0.0",
@@ -54,20 +55,21 @@
     "react-test-renderer": "^16.2.0",
     "rimraf": "^3.0.0",
     "snazzy": "^8.0.0",
-    "standard": "^13.0.1"
+    "standard": "^13.0.1",
+    "babel-plugin-styled-components": "^1.12.0"
   },
   "scripts": {
     "lint-staged": "lint-staged",
-    "build": "NODE_ENV=production next build",
+    "build": "cross-env NODE_ENV=production next build",
     "test:ci": "jest --maxWorkers=2 --ci",
     "test": "jest --watch",
     "start": "nodemon -w server server/index.js",
-    "serve": "NODE_ENV=production node server/index.js",
+    "serve": "cross-env NODE_ENV=production node server/index.js",
     "clean": "rimraf node_modules/.cache .next",
     "lint": "standard --verbose | snazzy",
     "now-start": "yarn serve",
     "lint:fix": "standard --fix --verbose | snazzy"
-  },
+},
   "pre-commit": "lint-staged",
   "lint-staged": {
     "*.js": [
