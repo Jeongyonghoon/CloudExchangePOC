@@ -21,6 +21,7 @@ const drawerWidth = 250
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    minHeight : '100%',
     display: 'flex',
     '& a': {
       textDecoration: 'none',
@@ -109,6 +110,7 @@ const useStyles = makeStyles((theme) => ({
   content: {
     flexGrow: 1,
     padding: theme.spacing(3),
+    position : 'relative'
   }
 }))
 
@@ -161,7 +163,7 @@ const Layout = props => {
           <Typography variant="h5" noWrap className={classes.drawerHeaderTitle}>
             Cloud Exchange
           </Typography>
-          <Typography className={classes.selector}>
+          <Typography className={classes.selector} variant="h5">
             <SelectorContainer dataURL='/cloud/users'></SelectorContainer>
           </Typography>
         </Toolbar>
@@ -206,6 +208,20 @@ const Layout = props => {
            {/* page component */}
            {props.children}
       </main>
+
+      <style global jsx>{`
+            html {
+              background-color : #f7f9fc
+            }
+            html,
+            body,
+            body > div:first-child,
+            div#__next,
+            div#__next > div {
+              height: 100%;
+            }
+          `}
+      </style>
     </div>
   )
 }

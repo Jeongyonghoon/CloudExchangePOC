@@ -33,7 +33,7 @@ const Selector = props => {
     if (!options) return null
 
     options.forEach(item => {
-      result.push(<option value={item.memberId}>{item.companyName} ({item.name})</option>)
+      result.push(<option value={item.memberId} key={item.memberId}>{item.companyName} ({item.name})</option>)
     })
 
     return result

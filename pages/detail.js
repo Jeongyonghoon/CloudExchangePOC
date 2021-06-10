@@ -16,9 +16,10 @@ const Detail = () => {
             dataURL={'cloud/billings/detail/top?memberId='}
             chartType={'bar'}
             chartColor={'#FFDEAD'}
-            chartHeight={100}
+            chartHeight={80}
             bindParam={'yearMonth'}
             title={'클라우드 상품 단위별 상위 요금'}
+            marginTop={'3%'}
           ></ChartContainer>
         </ComponentBox>
       </ComponentRow>
@@ -35,7 +36,7 @@ const Detail = () => {
       {/* <ComponentRow>
         <ComponentBox width={'100%'} spacing={2}>
           <AriaChartContainer 
-            dataURL={'/cloud/billings/product/main?memberId='}
+            dataURL={'/static/puclic/data'}
             title={'주요 상품별 사용 요금 이력 [EC2, RDS, S3, CloudFront]'}
             ></AriaChartContainer>
         </ComponentBox>
