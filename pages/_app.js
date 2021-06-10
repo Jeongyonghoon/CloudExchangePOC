@@ -34,15 +34,6 @@ class MyApp extends App {
           <title>{title}</title>
           <meta name='viewport' content='width=device-width, initial-scale=1' />
           <meta property='og:title' content={title} />
-          <style global jsx>{`
-            html,
-            body,
-            body > div:first-child,
-            div#__next,
-            div#__next > div {
-              height: 100%;
-            }
-          `}</style>
         </Helmet>
         <ThemeProvider theme={theme}>
           <MuiThemeProvider theme={muiTheme}>

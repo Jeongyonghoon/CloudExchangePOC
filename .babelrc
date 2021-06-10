@@ -5,7 +5,13 @@
   ],
   "plugins": [
     "inline-dotenv",
-    "styled-components",
+    // "styled-components",
+    [
+      "babel-plugin-styled-components",
+      {
+        "ssr": false
+      }
+    ],
     ["module-resolver", {
       "root": ["./src"]
     }]

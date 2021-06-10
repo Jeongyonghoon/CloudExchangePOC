@@ -163,7 +163,7 @@ const Layout = props => {
           <Typography variant="h5" noWrap className={classes.drawerHeaderTitle}>
             Cloud Exchange
           </Typography>
-          <Typography className={classes.selector}>
+          <Typography className={classes.selector} variant="h5">
             <SelectorContainer dataURL='/cloud/users'></SelectorContainer>
           </Typography>
         </Toolbar>
@@ -210,6 +210,9 @@ const Layout = props => {
       </main>
 
       <style global jsx>{`
+            html {
+              background-color : #f7f9fc
+            }
             html,
             body,
             body > div:first-child,
@@ -217,7 +220,8 @@ const Layout = props => {
             div#__next > div {
               height: 100%;
             }
-          `}</style>
+          `}
+      </style>
     </div>
   )
 }

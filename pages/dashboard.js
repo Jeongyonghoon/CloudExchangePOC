@@ -24,9 +24,10 @@ const Dashboard = () => {
             dataURL={'/cloud/billings/product?memberId='}
             chartType={'doughnut'}
             sliderDisplay={false}
-            chartHeight={'275%'}
+            // chartHeight={'275%'}
+            chartHeight={275}
             title={'상품별 사용 현황'}
-            marginTop={'10%'}
+            marginTop={'3%'}
           ></ChartContainer>
         </ComponentBox>
 
@@ -36,6 +37,8 @@ const Dashboard = () => {
             chartType={'bar'}
             sliderDisplay={true}
             title={'월별 납부 금액'}
+            chartHeight={125}
+            marginTop={'3%'}
           ></ChartContainer>
         </ComponentBox>
       </ComponentRow>

@@ -1,9 +1,11 @@
+import Immutable from 'immutable'
+
 export const SET_YEARMONTH = 'SET_YEARMONTH'
 export const GET_YEARMONTH = 'GET_YEARMONTH'
 
-export const initialState = {
+export const initialState = Immutable.fromJS({
   yearMonth: 0
-}
+})
 
 export const yearMonthAction = yearMonth => {
   return (dispatch, getState) => {

@@ -3,8 +3,22 @@ import Typography from '@material-ui/core/Typography'
 import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline';
 import { Button } from '@material-ui/core';
 import Link from 'next/link'
+import { makeStyles } from '@material-ui/styles';
+
+const useStyles = makeStyles((theme) => ({
+  button : {
+    background : '#4fc3f7',
+    color : '#E6E9ED',
+    '&:hover' : {
+      background : '#4fc3f7'
+    }
+  }
+}))
+
 
 const Ready = () => {
+
+  const classes = useStyles()
 
   return(
 
@@ -13,7 +27,8 @@ const Ready = () => {
       position : "absolute",
       top: "50%",
       left: "50%",
-      transform: "translate(-50%, -50%)"
+      transform: "translate(-50%, -50%)",
+      // height : "100%"
     }}>
 
       <div>
@@ -36,7 +51,7 @@ const Ready = () => {
           pathname: '/dashboard'
         }}>
         <a>
-          <Button style={{color : "#4fc3f7"}} >Go Dashboard</Button>
+          <Button className={classes.button}>대시보드 가기</Button>
         </a>
       </Link>
     </div>
