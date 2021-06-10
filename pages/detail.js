@@ -20,6 +20,7 @@ const Detail = () => {
             bindParam={'yearMonth'}
             title={'클라우드 상품 단위별 상위 요금'}
             marginTop={'3%'}
+            chartColor={'#FCBB42'}
           ></ChartContainer>
         </ComponentBox>
       </ComponentRow>
