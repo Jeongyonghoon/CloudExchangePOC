@@ -26,6 +26,7 @@ const Dashboard = () => {
             sliderDisplay={false}
             chartHeight={'275%'}
             title={'상품별 사용 현황'}
+            marginTop={'10%'}
           ></ChartContainer>
         </ComponentBox>
 
