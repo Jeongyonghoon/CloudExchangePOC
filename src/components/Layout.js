@@ -21,6 +21,7 @@ const drawerWidth = 250
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    minHeight : '100%',
     display: 'flex',
     '& a': {
       textDecoration: 'none',
@@ -109,6 +110,7 @@ const useStyles = makeStyles((theme) => ({
   content: {
     flexGrow: 1,
     padding: theme.spacing(3),
+    position : 'relative'
   }
 }))
 
@@ -206,6 +208,16 @@ const Layout = props => {
            {/* page component */}
            {props.children}
       </main>
+
+      <style global jsx>{`
+            html,
+            body,
+            body > div:first-child,
+            div#__next,
+            div#__next > div {
+              height: 100%;
+            }
+          `}</style>
     </div>
   )
 }
