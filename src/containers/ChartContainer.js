@@ -108,7 +108,7 @@ const ChartContainer = props => {
       <BoxHeader title={title}></BoxHeader>
       <div style={{ width: '95%', margin: '2% auto', marginTop: marginTop }}>
         {chartType === 'bar' &&
-        <BarChart chartHeight={chartHeight} chartColor={colors[0]} labelData={chartLabelData}
+        <BarChart chartHeight={chartHeight} chartColor={props.chartColor} labelData={chartLabelData}
                   valueData={chartValueData}/>}
         {chartType === 'doughnut' &&
         <DoughnutChart chartHeight={chartHeight} labelData={chartLabelData} valueData={chartValueData}
@@ -136,8 +136,8 @@ ChartContainer.defaultProps = {
   sliderDisplay: false,
   dataURL: '',
   width: '100%',
-  chartColor: '#58ACFA',
-  title: 'default'
+  chartColor: '#4fc3f7',
+  title: 'default',
 }
 
 export default ChartContainer
