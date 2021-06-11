@@ -8,7 +8,7 @@ const Card = props => {
   const title = props.title
   const subtitle = props.subTitle
   const price = props.price
-
+  const spacing = props.spacing*5 +'px'
 
   const Top = Styled.div`
     border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
@@ -25,8 +25,20 @@ const Card = props => {
     font-size: 14px;
   `
 
+  const CardBox = Styled.div`
+    color: rgba(0, 0, 0, 0.87);
+    width: ${props.width || '100%'};
+    height: ${props.height};
+    position: relative;
+    background: #FFF;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.35);
+    border-radius: 6px;
+    flex-direction: column;
+    margin : ${spacing || '0px'};
+  `
+
   return (
-    <>
+    <CardBox>
       <Top>
         <div style={{textAlign:"left"}}><p>{title}</p></div>
         <div style={{textAlign:"right"}}>
@@ -40,7 +52,7 @@ const Card = props => {
       <Bottom>
         <div>{subtitle}</div>
       </Bottom>
-    </>
+    </CardBox>
   )
 }
 
