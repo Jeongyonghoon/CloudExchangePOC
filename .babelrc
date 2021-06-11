@@ -8,7 +8,6 @@
     [
       "babel-plugin-styled-components",
       {
-        "minify": false,
         "ssr": false,
         "displayName" : true,
         "preprocess" : false
