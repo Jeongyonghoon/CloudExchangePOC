@@ -1537,9 +1537,9 @@
     wait-for-expect "^3.0.2"
 
 "@testing-library/jest-dom@^5.1.1":
-  version "5.13.0"
-  resolved "https://registry.yarnpkg.com/@testing-library/jest-dom/-/jest-dom-5.13.0.tgz#0a365684e2c1159f857f5915be50089fc5657df0"
-  integrity sha512-+jXXTn8GjRnZkJfzG/tqK/2Q7dGlBInR412WE7Aml7CT3wdSpx5dMQC0HOwVQoZ3cNTmQUy8fCVGUV/Zhoyvcw==
+  version "5.14.1"
+  resolved "https://registry.yarnpkg.com/@testing-library/jest-dom/-/jest-dom-5.14.1.tgz#8501e16f1e55a55d675fe73eecee32cdaddb9766"
+  integrity sha512-dfB7HVIgTNCxH22M1+KU6viG5of2ldoA5ly8Ar8xkezKHKXjRvznCdbMbqjYGgO2xjRbwnR+rR8MLUIqF3kKbQ==
   dependencies:
     "@babel/runtime" "^7.9.2"
     "@types/testing-library__jest-dom" "^5.9.1"
@@ -1547,6 +1547,7 @@
     chalk "^3.0.0"
     css "^3.0.0"
     css.escape "^1.5.1"
+    dom-accessibility-api "^0.5.6"
     lodash "^4.17.15"
     redent "^3.0.0"
 
@@ -1749,9 +1750,9 @@
     pretty-format "^24.3.0"
 
 "@types/testing-library__jest-dom@^5.9.1":
-  version "5.13.0"
-  resolved "https://registry.yarnpkg.com/@types/testing-library__jest-dom/-/testing-library__jest-dom-5.13.0.tgz#b6bd9b57f88c87766eed43a4f0ec91c2b621576e"
-  integrity sha512-tfjY4Fzzwg1wSU31MWaIH8rzJ2WPtQtUNnZ0wcZwzzhWWRa63Jb1fB7tl79fGX7PUL/4ZHjKs+tcY5BZ8nfNyg==
+  version "5.14.0"
+  resolved "https://registry.yarnpkg.com/@types/testing-library__jest-dom/-/testing-library__jest-dom-5.14.0.tgz#98eb7537cb5502bcca7a0d82acf5f245a2e6c322"
+  integrity sha512-l2P2GO+hFF4Liye+fAajT1qBqvZOiL79YMpEvgGs1xTK7hECxBI8Wz4J7ntACJNiJ9r0vXQqYovroXRLPDja6A==
   dependencies:
     "@types/jest" "*"
 
@@ -2795,9 +2796,9 @@ camelize@1.0.0, camelize@^1.0.0:
   integrity sha1-FkpUg+Yw+kMh5a8HAg5TGDGyYJs=
 
 caniuse-lite@^1.0.30001093, caniuse-lite@^1.0.30001113, caniuse-lite@^1.0.30001219:
-  version "1.0.30001236"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001236.tgz#0a80de4cdf62e1770bb46a30d884fc8d633e3958"
-  integrity sha512-o0PRQSrSCGJKCPZcgMzl5fUaj5xHe8qA2m4QRvnyY4e1lITqoNkr7q/Oh1NcpGSy0Th97UZ35yoKcINPoq7YOQ==
+  version "1.0.30001237"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001237.tgz#4b7783661515b8e7151fc6376cfd97f0e427b9e5"
+  integrity sha512-pDHgRndit6p1NR2GhzMbQ6CkRrp4VKuSsqbcLeOQppYPKOYkKT/6ZvZDvKJUqcmtyWIAHuZq3SVS2vc1egCZzw==
 
 capture-exit@^2.0.0:
   version "2.0.0"
